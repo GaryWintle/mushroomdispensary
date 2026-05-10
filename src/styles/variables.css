@@ -1,0 +1,104 @@
+:root {
+  /* COLOR PALETTE */
+
+  /* Primary */
+  --color-primary-200: oklch(0.9433 0.2001 105.99);
+
+  /* Secondary */
+  --color-secondary-200: oklch(0.6105 0.2438 352.5);
+
+  /* Neutrals */
+  --color-neutral-100: oklch(0.9814 0.0045 258.32);
+  --color-neutral-200: oklch(0.9641 0.0069 304.24);
+  --color-neutral-600: oklch(0.2794 0.0199 311.83);
+
+  /* SEMANTIC COLORS */
+
+  /* Basic background */
+  --color-bg: var(--color-neutral-600);
+  --color-bg-title: var(--color-primary-200);
+  --color-bg-text: var(--color-neutral-100);
+  --color-bg-border: var(--color-secondary-200);
+
+  /* Light surface */
+  --color-card-neutral: var(--color-neutral-200);
+  --color-card-neutral-highlight: var(--color-primary-200);
+  --color-card-neutral-text: var(--color-neutral-600);
+
+  /* Colored surface */
+  --color-card-colored: var(--color-secondary-200);
+  --color-card-colored-highlight: var(--color-primary-200);
+  --color-card-colored-text: var(--color-neutral-100);
+
+  /* CTA Buttons */
+  --color-cta: var(--color-secondary-200);
+  --color-cta-text: var(--color-primary-200);
+  --color-cta-border: var(--color-primary-200);
+
+  /* Navigation */
+  --color-nav: var(--color-secondary-200);
+  --color-nav-title: var(--color-primary-100);
+  --color-nav-text: var(--color-primary-200);
+  --color-nav-hover: var(--color-neutral-200);
+  --color-nav-text-hover: var(--color-primary-600);
+
+  /* Icons and illustrations */
+  --art-light: var(--color-primary-200);
+  --art-dark: var(--color-secondary-200);
+  --art-line: var(--color-neutral-600);
+
+  /* UI DESIGN */
+
+  /* Spacing */
+  --sp-01: 0.25rem; /* 4px */
+  --sp-02: 0.5rem; /* 8px */
+  --sp-03: 0.75rem; /* 12px */
+  --sp-04: 1rem; /* 16px */
+  --sp-05: 1.5rem; /* 24px */
+  --sp-06: 2rem; /* 32px */
+  --sp-07: 3rem; /* 48px */
+  --sp-08: 4rem; /* 64px */
+  --max-width: min(100%, 90rem);
+
+  /* Section gutters and spacing */
+  --space-section-block: clamp(3rem, 8vw, 8rem);
+  --space-section-inline: clamp(1rem, 5vw, 2rem);
+
+  /* Border Radius */
+  --br-01: 0.25rem; /* 4px */
+  --br-02: 0.5rem; /* 8px */
+  --br-03: 0.75rem; /* 12px */
+
+  /* Border Width */
+  --border-thin: 1.5px;
+  --border-default: 3px;
+  --border-thick: 5px;
+
+  /* EFFECTS */
+
+  /* TYPOGRAPHY */
+
+  /* Font families */
+  --font-display: 'Your Display Font', sans-serif;
+  --font-body: 'Archivo', sans-serif;
+
+  /* Scale  */
+  --text-sm: clamp(0.875rem, 2vw, 1rem);
+  --text-base: clamp(1rem, 2.5vw, 1.125rem);
+  --text-lg: clamp(1.2rem, 2.5vw, 1.25rem);
+  --text-xl: clamp(1rem, 3vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 4vw, 2rem);
+  --text-hero: clamp(2rem, 6vw, 3.25rem);
+
+  /* Line height */
+  --leading-tight: 1.1;
+  --leading-loose: 1.8;
+
+  /* Letter spacing */
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.08em;
+
+  /* Measure — max line width */
+  --measure: 65ch; /* body text */
+  --measure-narrow: 45ch; /* captions */
+}

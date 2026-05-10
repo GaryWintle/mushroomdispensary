@@ -1,0 +1,38 @@
+h1 {
+  font-family: var(--font-header);
+  color: var(--text-title-ondark);
+  font-size: clamp(5.2rem, calc(6vw + 1rem), 8rem);
+  letter-spacing: -1px;
+  line-height: 113%;
+  text-wrap: balance;
+}
+
+h2 {
+  font-family: var(--font-header);
+  color: var(--text-title);
+  font-size: var(--font-05);
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+h3 {
+  font-family: var(--font-header);
+  font-weight: var(--font-weight-normal);
+  color: var(--text-title);
+  font-size: var(--font-04);
+  line-height: 100%;
+  text-wrap: balance;
+}
+
+p {
+  font-family: var(--font-body);
+  color: var(--text-body);
+  font-size: var(--font-02);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,38 +1,70 @@
-h1 {
-  font-family: var(--font-header);
-  color: var(--text-title-ondark);
-  font-size: clamp(5.2rem, calc(6vw + 1rem), 8rem);
-  letter-spacing: -1px;
-  line-height: 113%;
+@font-face {
+  font-family: "HVDComicSerifPro";
+  src: url("/fonts/HVDComicSerifPro.woff2") format("woff2");
+  font-display: swap;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* for vertical spacing and bg only */
+.section {
+  padding-block: var(--space-section-block);
+}
+
+/* for width, centering, and gutters */
+.container {
+  width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-section-inline);
+}
+
+/* Cascading text color */
+
+.section--dark {
+  color: var(--color-surface-dark-text);
+}
+.section--light {
+  color: var(--color-surface-light-text);
+}
+.section--colored {
+  color: var(--color-surface-colored-text);
+}
+
+/* GLOBAL TYPOGRAPHY */
+
+.text-title-hero {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  letter-spacing: var(--tracking-loose);
+  line-height: var(--leading-tight);
+  text-transform: uppercase;
   text-wrap: balance;
 }
 
-h2 {
-  font-family: var(--font-header);
-  color: var(--text-title);
-  font-size: var(--font-05);
-  letter-spacing: -0.5px;
-  line-height: 1.15;
-  text-wrap: balance;
-}
-
-h3 {
-  font-family: var(--font-header);
-  font-weight: var(--font-weight-normal);
-  color: var(--text-title);
-  font-size: var(--font-04);
-  line-height: 100%;
-  text-wrap: balance;
-}
-
-p {
+.text-body-display {
   font-family: var(--font-body);
-  color: var(--text-body);
-  font-size: var(--font-02);
-  line-height: 1.5;
-  font-weight: 400;
-}
-
-a {
-  text-decoration: none;
+  font-size: var(--text-lg);
+  line-height: var(--leading-loose);
+  letter-spacing: var(--tracking-tight);
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 700;
+  text-wrap: balance;
 }

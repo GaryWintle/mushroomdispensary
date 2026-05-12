@@ -14,21 +14,21 @@
 
   /* SEMANTIC COLORS */
 
-  /* Basic background */
-  --color-bg: var(--color-neutral-600);
-  --color-bg-title: var(--color-primary-200);
-  --color-bg-text: var(--color-neutral-100);
-  --color-bg-border: var(--color-secondary-200);
+  /* Dark surface */
+  --color-surface-dark: var(--color-neutral-600);
+  --color-surface-dark-text-highlight: var(--color-primary-200);
+  --color-surface-dark-text: var(--color-neutral-100);
+  --color-surface-dark-border: var(--color-secondary-200);
 
   /* Light surface */
-  --color-card-neutral: var(--color-neutral-200);
-  --color-card-neutral-highlight: var(--color-primary-200);
-  --color-card-neutral-text: var(--color-neutral-600);
+  --color-surface-light: var(--color-neutral-200);
+  --color-surface-light-text-highlight: var(--color-primary-200);
+  --color-surface-light-text: var(--color-neutral-600);
 
   /* Colored surface */
-  --color-card-colored: var(--color-secondary-200);
-  --color-card-colored-highlight: var(--color-primary-200);
-  --color-card-colored-text: var(--color-neutral-100);
+  --color-surface-colored: var(--color-secondary-200);
+  --color-surface-colored-text-highlight: var(--color-primary-200);
+  --color-surface-colored-text: var(--color-neutral-100);
 
   /* CTA Buttons */
   --color-cta: var(--color-secondary-200);
@@ -58,11 +58,11 @@
   --sp-06: 2rem; /* 32px */
   --sp-07: 3rem; /* 48px */
   --sp-08: 4rem; /* 64px */
-  --max-width: min(100%, 90rem);
 
-  /* Section gutters and spacing */
+  /* Layout Specific Spacing */
+  --max-width: min(100%, 90rem);
   --space-section-block: clamp(3rem, 8vw, 8rem);
-  --space-section-inline: clamp(1rem, 5vw, 2rem);
+  --space-section-inline: clamp(1.25rem, 5vw, 2rem);
 
   /* Border Radius */
   --br-01: 0.25rem; /* 4px */
@@ -75,24 +75,41 @@
   --border-thick: 5px;
 
   /* EFFECTS */
+  /* card shadows */
+  --card-shadow-neutral-shallow: 3px 3px 0 var(--color-neutral-600);
+  --card-shadow-neutral-medium: 5px 5px 0 var(--color-neutral-600);
+  --card-shadow-neutral-deep: 8px 8px 0 var(--color-neutral-600);
+
+  --card-shadow-color-shallow: 3px 3px 0 var(--color-secondary-200);
+  --card-shadow-color-medium: 5px 5px 0 var(--color-secondary-200);
+  --card-shadow-color-deep: 8px 8px 0 var(--color-secondary-200);
+
+  /* icon shadows */
+  --art-shadow-neutral-shallow: drop-shadow(3px 3px 0 var(--color-neutral-600));
+  --art-shadow-neutral-medium: drop-shadow(5px 5px 0 var(--color-neutral-600));
+  --art-shadow-neutral-deep: drop-shadow(8px 8px 0 var(--color-neutral-600));
+
+  --art-shadow-color-shallow: drop-shadow(3px 3px 0 var(--color-secondary-200));
+  --art-shadow-color-medium: drop-shadow(5px 5px 0 var(--color-secondary-200));
+  --art-shadow-color-deep: drop-shadow(8px 8px 0 var(--color-secondary-200));
 
   /* TYPOGRAPHY */
 
   /* Font families */
-  --font-display: 'Your Display Font', sans-serif;
-  --font-body: 'Archivo', sans-serif;
+  --font-display: "HVDComicSerifPro", serif;
+  --font-body: "Archivo", sans-serif;
 
   /* Scale  */
-  --text-sm: clamp(0.875rem, 2vw, 1rem);
+  --text-sm: clamp(0.875rem, calc(2vw + 1rem), 1rem);
   --text-base: clamp(1rem, 2.5vw, 1.125rem);
   --text-lg: clamp(1.2rem, 2.5vw, 1.25rem);
   --text-xl: clamp(1rem, 3vw, 1.5rem);
   --text-2xl: clamp(1.5rem, 4vw, 2rem);
-  --text-hero: clamp(2rem, 6vw, 3.25rem);
+  --text-hero: clamp(2rem, calc(5vw + 1rem), 2.8rem);
 
   /* Line height */
   --leading-tight: 1.1;
-  --leading-loose: 1.8;
+  --leading-loose: 1.4;
 
   /* Letter spacing */
   --tracking-tight: -0.02em;
@@ -100,5 +117,5 @@
 
   /* Measure — max line width */
   --measure: 65ch; /* body text */
-  --measure-narrow: 45ch; /* captions */
+  --measure-narrow: 20ch; /* captions */
 }

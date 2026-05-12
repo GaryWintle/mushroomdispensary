@@ -1,0 +1,85 @@
+---
+import Smiley from "@components/artwork/Smiley.astro";
+import SeenOnTV from "@components/artwork/SeenOnTV.astro";
+import CanadaFlag from "@components/artwork/CanadaFlag.astro";
+---
+
+<section class="section section--light hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-card">
+        <Smiley />
+        <SeenOnTV />
+        <h1 class="text-title-hero">Dedicated to a safe psychedelic supply</h1>
+        <p class="text-body-display hero-text-body">
+          We believe in the benefits of psychedelics and want to challenge
+          <span class="inline-icon">
+            <CanadaFlag />
+          </span>
+          's failed drug prohibition laws.
+        </p>
+      </div>
+      <div class="hero-video">
+        <img src="https://picsum.photos/800/450" alt="placeholder" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    container-type: inline-size;
+    container-name: hero;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--sp-04);
+  }
+
+  @container hero (max-width: 48rem) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .hero-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-04);
+    background-color: var(--color-surface-light);
+    border-radius: var(--br-03);
+    padding-block: var(--sp-07);
+    padding-inline: var(--sp-06);
+    box-shadow: var(--card-shadow-neutral-deep);
+  }
+
+  .hero-text-body {
+    width: var(--measure-narrow);
+  }
+
+  .hero-video {
+    border-radius: var(--br-03);
+    overflow: hidden;
+    box-shadow: var(--card-shadow-neutral-deep);
+  }
+
+  .hero-video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .inline-icon {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+  }
+
+  .inline-icon svg {
+    width: 1em; /* em scales with surrounding text size */
+    height: auto;
+  }
+</style>

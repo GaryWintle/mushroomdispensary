@@ -31,10 +31,13 @@ import MushDispLogoText from "@components/artwork/MushDispLogoText.astro";
   .nav-flex {
     position: relative;
     display: flex;
+    align-items: center;
     background-color: var(--color-nav);
-    padding-inline-start: 5.3rem;
+    padding-inline-start: 5.2rem;
+    padding-inline-end: var(--sp-05);
     border-radius: var(--br-03);
     justify-content: space-between;
+    box-shadow: var(--card-shadow-neutral-deep);
   }
 
   .nav-links-flex {
@@ -45,17 +48,36 @@ import MushDispLogoText from "@components/artwork/MushDispLogoText.astro";
   .nav-links-flex > li {
     font-family: var(--font-display);
     font-size: var(--text-sm);
+    letter-spacing: var(--tracking-semiwide);
     padding-inline: var(--sp-04);
-    padding-block: var(--sp-04);
+    padding-block: var(--sp-05-5);
     border-left: var(--border-surface-color-thin);
+    transition:
+      color 200ms ease,
+      background-color 200ms ease;
+  }
+
+  .nav-links-flex > li:hover {
+    color: var(--color-nav-text-hover);
+    background-color: var(--color-nav-hover);
+    cursor: pointer;
+  }
+
+  .logo-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
   }
 
   .logo-text-subheading {
     color: var(--color-primary-200);
     font-family: var(--font-body);
+    font-size: var(--text-xsm);
+    letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
+    line-height: 1;
     font-variation-settings:
-      "wdth" 100,
-      "wght" 700;
+      "wdth" 98,
+      "wght" 800;
   }
 </style>

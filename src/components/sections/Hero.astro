@@ -10,7 +10,9 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
       <div class="hero-card">
         <Smiley />
         <SeenOnTV />
-        <h1 class="text-title-hero">Dedicated to a safe psychedelic supply</h1>
+        <h1 class="text-title-hero">
+          Dedicated to&#8200;a&#8200;safe, psychedelic supply
+        </h1>
         <p class="text-body-display hero-text-body">
           We believe in the benefits of psychedelics and want to challenge
           <span class="inline-icon">
@@ -20,7 +22,14 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
         </p>
       </div>
       <div class="hero-video">
-        <img src="https://picsum.photos/800/450" alt="placeholder" />
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/0rFVeZ9mpe0?autoplay=1&mute=1&loop=1&playlist=0rFVeZ9mpe0"
+            title="Hero video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </div>
@@ -30,6 +39,7 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
   .hero {
     container-type: inline-size;
     container-name: hero;
+    padding-block-start: var(--sp-06);
   }
 
   .hero-grid {
@@ -66,10 +76,34 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
     box-shadow: var(--card-shadow-neutral-deep);
   }
 
-  .hero-video img {
+  .video-wrapper {
+    position: relative;
+    aspect-ratio: 16 / 9;
+  }
+  .video-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    box-shadow: inset 0 0 0 2px var(--color-primary-200);
+    z-index: 1;
+    pointer-events: none;
+    border-radius: var(--br-02);
+  }
+  .video-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 35px 5px var(--color-neutral-600-50);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    border: 0;
   }
 
   .inline-icon {

@@ -12,6 +12,9 @@
   --color-neutral-200: oklch(0.9641 0.0069 304.24);
   --color-neutral-600: oklch(0.2794 0.0199 311.83);
 
+  /* Transparencies */
+  --color-neutral-600-50: oklch(from var(--color-neutral-600) l c h / 0.5);
+
   /* SEMANTIC COLORS */
 
   /* Dark surface */
@@ -39,6 +42,7 @@
   --color-nav: var(--color-secondary-200);
   --color-nav-title: var(--color-primary-100);
   --color-nav-text: var(--color-primary-200);
+  --color-nav-border: var(--color-neutral-600);
   --color-nav-hover: var(--color-neutral-200);
   --color-nav-text-hover: var(--color-primary-600);
 
@@ -75,6 +79,7 @@
   --border-thick: 5px;
 
   /* EFFECTS */
+
   /* card shadows */
   --card-shadow-neutral-shallow: 3px 3px 0 var(--color-neutral-600);
   --card-shadow-neutral-medium: 5px 5px 0 var(--color-neutral-600);
@@ -93,10 +98,13 @@
   --art-shadow-color-medium: drop-shadow(5px 5px 0 var(--color-secondary-200));
   --art-shadow-color-deep: drop-shadow(8px 8px 0 var(--color-secondary-200));
 
+  /* Borders */
+  --border-surface-color-thin: 3px solid var(--color-neutral-600);
+
   /* TYPOGRAPHY */
 
   /* Font families */
-  --font-display: "HVDComicSerifPro", serif;
+  --font-display: "MushDispHeader", serif;
   --font-body: "Archivo", sans-serif;
 
   /* Scale  */
@@ -109,6 +117,7 @@
 
   /* Line height */
   --leading-tight: 1.1;
+  --leading-normal: 1.25;
   --leading-loose: 1.4;
 
   /* Letter spacing */
@@ -117,5 +126,5 @@
 
   /* Measure — max line width */
   --measure: 65ch; /* body text */
-  --measure-narrow: 20ch; /* captions */
+  --measure-narrow: 27ch; /* captions */
 }

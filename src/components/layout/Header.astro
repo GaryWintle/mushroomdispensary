@@ -1,0 +1,61 @@
+---
+import MushDispLogo from "@components/artwork/MushDispLogo.astro";
+import MushDispLogoText from "@components/artwork/MushDispLogoText.astro";
+---
+
+<header class="section--colored nav">
+  <div class="container">
+    <nav class="nav-flex">
+      <MushDispLogo />
+      <div class="logo-text-container">
+        <MushDispLogoText />
+        <p class="logo-text-subheading">
+          Pychedelic Mushrooms • Peyote • Kratom
+        </p>
+      </div>
+      <ul class="nav-links-flex">
+        <li>Our Story</li>
+        <li>In The News</li>
+        <li>Hours & Contact</li>
+        <li>Full Menu</li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    padding-block-start: var(--sp-06);
+  }
+
+  .nav-flex {
+    position: relative;
+    display: flex;
+    background-color: var(--color-nav);
+    padding-inline-start: 5.3rem;
+    border-radius: var(--br-03);
+    justify-content: space-between;
+  }
+
+  .nav-links-flex {
+    display: flex;
+    color: var(--color-nav-text);
+  }
+
+  .nav-links-flex > li {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    padding-inline: var(--sp-04);
+    padding-block: var(--sp-04);
+    border-left: var(--border-surface-color-thin);
+  }
+
+  .logo-text-subheading {
+    color: var(--color-primary-200);
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    font-variation-settings:
+      "wdth" 100,
+      "wght" 700;
+  }
+</style>

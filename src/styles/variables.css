@@ -50,10 +50,9 @@
   --art-light: var(--color-primary-200);
   --art-dark: var(--color-secondary-200);
   --art-line: var(--color-neutral-600);
+  --art-white: var(--color-neutral-100);
 
-  /* UI DESIGN */
-
-  /* Spacing */
+  /* UI DESIGN */ /* Spacing */
   --sp-01: 0.25rem; /* 4px */
   --sp-02: 0.5rem; /* 8px */
   --sp-03: 0.75rem; /* 12px */
@@ -90,6 +89,10 @@
   --card-shadow-color-medium: 5px 5px 0 var(--color-secondary-200);
   --card-shadow-color-deep: 8px 8px 0 var(--color-secondary-200);
 
+  /* text shadows */
+  --text-shadow-color: 0 0 12px
+    oklch(from var(--color-neutral-600) l c h / 0.25);
+
   /* icon shadows */
   --art-shadow-neutral-shallow: drop-shadow(3px 3px 0 var(--color-neutral-600));
   --art-shadow-neutral-medium: drop-shadow(5px 5px 0 var(--color-neutral-600));
@@ -102,6 +105,7 @@
   /* Borders */
   --border-surface-color-thin: 3px solid var(--color-neutral-600);
   --border-surface-dark-thin: 2px solid var(--color-secondary-200);
+  --border-cta: 2px solid var(--color-cta-border);
 
   /* TYPOGRAPHY */
 

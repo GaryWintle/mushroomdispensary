@@ -52,6 +52,7 @@ import MushDispLogoText from "@components/artwork/MushDispLogoText.astro";
     padding-inline: var(--sp-04);
     padding-block: var(--sp-05-5);
     border-left: var(--border-surface-color-thin);
+    text-shadow: var(--text-shadow-color);
     transition:
       color 200ms ease,
       background-color 200ms ease;
@@ -60,6 +61,7 @@ import MushDispLogoText from "@components/artwork/MushDispLogoText.astro";
   .nav-links-flex > li:hover {
     color: var(--color-nav-text-hover);
     background-color: var(--color-nav-hover);
+    text-shadow: none;
     cursor: pointer;
   }
 
@@ -79,5 +81,6 @@ import MushDispLogoText from "@components/artwork/MushDispLogoText.astro";
     font-variation-settings:
       "wdth" 98,
       "wght" 800;
+    text-shadow: var(--text-shadow-color);
   }
 </style>

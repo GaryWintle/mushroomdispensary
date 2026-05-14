@@ -1,0 +1,98 @@
+---
+import newsLogo01 from "@images/icons/company-logos/newsLogo01.svg?raw";
+import newsLogo02 from "@images/icons/company-logos/newsLogo02.svg?raw";
+import newsLogo03 from "@images/icons/company-logos/newsLogo03.svg?raw";
+import newsLogo04 from "@images/icons/company-logos/newsLogo04.svg?raw";
+import newsLogo05 from "@images/icons/company-logos/newsLogo05.svg?raw";
+import newsLogo06 from "@images/icons/company-logos/newsLogo06.svg?raw";
+import newsLogo07 from "@images/icons/company-logos/newsLogo07.svg?raw";
+import newsLogo08 from "@images/icons/company-logos/newsLogo08.svg?raw";
+import newsLogo09 from "@images/icons/company-logos/newsLogo09.svg?raw";
+import newsLogo10 from "@images/icons/company-logos/newsLogo10.svg?raw";
+---
+
+<section>
+  <div class="container">
+    <div class="logos-wrapper">
+      <h2 class="news-title">Featured in</h2>
+      <div class="logos-flex">
+        <Fragment set:html={newsLogo01} />
+        <Fragment set:html={newsLogo02} />
+        <Fragment set:html={newsLogo03} />
+        <Fragment set:html={newsLogo04} />
+        <Fragment set:html={newsLogo05} />
+        <Fragment set:html={newsLogo06} />
+        <Fragment set:html={newsLogo07} />
+        <Fragment set:html={newsLogo08} />
+        <Fragment set:html={newsLogo09} />
+        <Fragment set:html={newsLogo10} />
+      </div>
+    </div>
+    <button class="cta-button">Get all the Lastest News</button>
+  </div>
+</section>
+
+<style>
+  .logos-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-05);
+    border-radius: var(--br-03);
+    padding-inline: var(--sp-06);
+    padding-block: var(--sp-07);
+    margin-block: var(--sp-06);
+    box-shadow: var(--card-shadow-neutral-deep);
+    border: var(--border-surface-dark-thin);
+    /* backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px); */
+  }
+
+  .logos-flex {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    column-gap: var(--sp-06);
+    row-gap: var(--sp-05);
+    flex-wrap: wrap;
+  }
+
+  .logos-flex :global(svg) {
+    width: auto;
+    height: 2rem;
+  }
+  .logos-flex :global(svg:nth-child(3)) {
+    height: 3rem; /* CBC */
+  }
+  .logos-flex :global(svg:nth-child(4)) {
+    height: 1.6rem; /* HuffPost */
+  }
+  .logos-flex :global(svg:nth-child(6)) {
+    height: 2.5rem; /* Vancouver Sun */
+  }
+  .logos-flex :global(svg:nth-child(8)) {
+    height: 4rem; /* Global News */
+  }
+
+  .news-title {
+    color: var(--color-surface-dark-text-highlight);
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    letter-spacing: var(--tracking-semiwide);
+    text-align: center;
+    /* position: absolute; */
+  }
+
+  .cta-button {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--color-cta-text);
+    background-color: var(--color-cta);
+    border: var(--border-cta);
+    border-radius: var(--br-03);
+    padding-inline: var(--sp-06);
+    padding-block: var(--sp-04);
+    box-shadow: var(--card-shadow-neutral-deep);
+    text-shadow: var(--text-shadow-color);
+  }
+</style>

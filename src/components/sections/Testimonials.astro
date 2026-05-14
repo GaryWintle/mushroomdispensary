@@ -1,0 +1,74 @@
+---
+
+---
+
+<section class="section--colored testimonials">
+  <div class="container">
+    <div class="testimonials-flex">
+      <div class="testimonial">
+        <p class="testimonial-quote">
+          “...magic mushroom dispensaries... brazenly advertise their wares on
+          three of the city’s busiest thoroughfares.”
+        </p>
+        <div>
+          <p class="organization-name">• Globe and Mail</p>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <p class="testimonial-quote">
+          “There’s no shortage of members at Larsen’s cafe and dispensary - more
+          than 20,000 at last count.”
+        </p>
+        <div>
+          <p class="organization-name">• VICE</p>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-quote">
+          “Buying magic mushrooms... can be as easy as ordering your morning cup
+          of coffee.”
+        </p>
+        <div>
+          <p class="organization-name">• CBC News</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .testimonials-flex {
+      display: flex;
+      gap: var(--sp-04);
+    }
+    .testimonial {
+      /* background-color: var(--color-surface-colored); */
+
+      background-color: oklch(from var(--color-neutral-600) l c h / 0.4);
+      border-radius: var(--br-03);
+      padding-inline: var(--sp-06);
+      padding-block: var(--sp-07);
+      box-shadow: var(--card-shadow-neutral-deep);
+      border: var(--border-surface-dark-thin);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+
+    .testimonial-quote {
+      font-family: var(--font-body);
+      font-size: var(--text-xl);
+      line-height: var(--leading-loose);
+      margin-block-end: var(--sp-03);
+      font-style: italic;
+    }
+
+    .organization-name {
+      color: var(--color-surface-colored-text-highlight);
+      font-family: var(--font-body);
+      font-size: var(--text-xl);
+      font-variation-settings:
+        "wdth" 110,
+        "wght" 700;
+    }
+  </style>
+</section>

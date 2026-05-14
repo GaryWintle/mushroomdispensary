@@ -23,8 +23,9 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
       </div>
       <div class="hero-video">
         <div class="video-wrapper">
+          <!-- To re-enable autoplay, add autoplay=1& before mute=1 in the src -->
           <iframe
-            src="https://www.youtube-nocookie.com/embed/0rFVeZ9mpe0?autoplay=1&mute=1&loop=1&playlist=0rFVeZ9mpe0"
+            src="https://www.youtube-nocookie.com/embed/0rFVeZ9mpe0?mute=1&loop=1&playlist=0rFVeZ9mpe0"
             title="Hero video"
             loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -40,6 +41,7 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
     container-type: inline-size;
     container-name: hero;
     padding-block-start: var(--sp-06);
+    padding-block-end: var(--sp-06);
   }
 
   .hero-grid {

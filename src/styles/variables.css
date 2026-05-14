@@ -101,6 +101,7 @@
 
   /* Borders */
   --border-surface-color-thin: 3px solid var(--color-neutral-600);
+  --border-surface-dark-thin: 2px solid var(--color-secondary-200);
 
   /* TYPOGRAPHY */
 
@@ -109,7 +110,7 @@
   --font-body: "Archivo", sans-serif;
 
   /* Scale  */
-  --text-xsm: clamp(0.75rem, calc(2vw + 1rem), 0.9rem);
+  --text-xsm: clamp(0.75rem, calc(2vw + 1rem), 0.8rem);
   --text-sm: clamp(0.875rem, calc(2vw + 1rem), 1rem);
   --text-base: clamp(1rem, 2.5vw, 1.125rem);
   --text-lg: clamp(1.2rem, 2.5vw, 1.25rem);

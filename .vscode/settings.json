@@ -1,3 +1,4 @@
 {
-  "astro.typescript.diagnostics.enable": true
+  "astro.typescript.diagnostics.enable": true,
+  "editor.autoClosingTags": true
 }

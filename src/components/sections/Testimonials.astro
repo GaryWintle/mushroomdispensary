@@ -5,7 +5,16 @@
 <section class="section--colored testimonials">
   <div class="container">
     <div class="testimonials-flex">
-      <div class="testimonial">
+      <div class="testimonial test-1">
+        <p class="testimonial-quote">
+          “There’s no shortage of members at Larsen’s cafe and dispensary - more
+          than 20,000 at last count.”
+        </p>
+        <div>
+          <p class="organization-name">• VICE</p>
+        </div>
+      </div>
+      <div class="testimonial test-2">
         <p class="testimonial-quote">
           “...magic mushroom dispensaries... brazenly advertise their wares on
           three of the city’s busiest thoroughfares.”
@@ -15,16 +24,7 @@
         </div>
       </div>
 
-      <div class="testimonial">
-        <p class="testimonial-quote">
-          “There’s no shortage of members at Larsen’s cafe and dispensary - more
-          than 20,000 at last count.”
-        </p>
-        <div>
-          <p class="organization-name">• VICE</p>
-        </div>
-      </div>
-      <div class="testimonial">
+      <div class="testimonial test-3">
         <p class="testimonial-quote">
           “Buying magic mushrooms... can be as easy as ordering your morning cup
           of coffee.”
@@ -43,15 +43,29 @@
     }
     .testimonial {
       /* background-color: var(--color-surface-colored); */
-
-      /* background-color: oklch(from var(--color-neutral-600) l c h / 0.4); */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: oklch(from var(--color-neutral-600) l c h / 0.4);
       border-radius: var(--br-03);
       padding-inline: var(--sp-06);
       padding-block: var(--sp-07);
       box-shadow: var(--card-shadow-neutral-deep);
       border: var(--border-surface-dark-thin);
+
       /* backdrop-filter: blur(3px);
       -webkit-backdrop-filter: blur(3px); */
+    }
+
+    .test-1 {
+      flex: 1;
+    }
+    .test-2 {
+      flex: 1.2;
+    }
+
+    .test-3 {
+      flex: 1;
     }
 
     .testimonial-quote {
@@ -60,6 +74,7 @@
       line-height: var(--leading-loose);
       margin-block-end: var(--sp-03);
       font-style: italic;
+      text-wrap: balance;
     }
 
     .organization-name {

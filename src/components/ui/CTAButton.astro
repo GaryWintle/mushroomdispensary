@@ -1,0 +1,51 @@
+---
+const { text = "XXXX", href, isExternal = false, ariaLabel } = Astro.props;
+---
+
+<a
+  rel={isExternal ? "noopener noreferrer" : undefined}
+  target={isExternal ? "_blank" : undefined}
+  href={href}
+  class="cta-button"
+  aria-label={ariaLabel}>{text}</a
+>
+
+<style>
+  .cta-button {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    text-box: trim-both cap alphabetic;
+    color: var(--color-cta-text);
+    background-color: var(--color-cta);
+    border: var(--border-cta);
+    border-radius: var(--br-03);
+    padding-inline: var(--sp-06);
+    padding-block: var(--sp-05);
+    box-shadow: 0 0 0 12px var(--color-surface-dark);
+    text-shadow: var(--text-shadow-color);
+    cursor: pointer;
+    transform: translateY(0);
+    transition:
+      color 200ms ease,
+      background-color 300ms cubic-bezier(0.36, 0, 0.64, 1),
+      transform 250ms ease-in,
+      box-shadow 250ms ease-in;
+  }
+  .cta-button:hover,
+  .cta-button:focus-visible {
+    transform: translateY(-4px);
+    color: var(--color-cta-text-hover);
+    background-color: var(--color-cta-hover);
+    border: var(--border-cta-hover);
+    text-shadow: none;
+    box-shadow: 0 0 0 24px var(--color-surface-dark);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-button {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>

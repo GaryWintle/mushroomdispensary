@@ -1,0 +1,169 @@
+---
+import CTAButton from "@components/ui/CTAButton.astro";
+import ProductCard from "@components/ui/ProductCard.astro";
+import ArrowTwisty from "@components/artwork/ArrowTwisty.astro";
+import MushyGuyHazy from "@images/mushyguyHazy.svg?raw";
+
+const products = [
+  {
+    id: 1,
+    title: "Dried Mushrooms",
+    description:
+      "Classic and exotic dried strains, plus chocolates and gummies.",
+    image: "/images/dried-mushrooms.jpg",
+    hasGuide: true,
+  },
+  {
+    id: 2,
+    title: "Mushroom Capsules",
+    description:
+      "Microdose capsules in precise strengths from 12.5mg to 500mg.",
+    image: "/images/mushroom-capsules.jpg",
+    hasGuide: true,
+  },
+  {
+    id: 3,
+    title: "Kratom",
+    description:
+      "Powder and capsule form, with a range of strains for energy, focus, and relaxation.",
+    image: "/images/kratom.jpg",
+    hasGuide: true,
+  },
+  {
+    id: 4,
+    title: "Coca Leaf",
+    description: "Whole leaf for chewing or powdered for tea, stocks vary.",
+    image: "/images/coca-leaf.jpg",
+    hasGuide: true,
+  },
+  {
+    id: 5,
+    title: "Peyote",
+    description: "The sacred mescaline cactus, dried or as live plants.",
+    image: "/images/peyote.jpg",
+    hasGuide: true,
+  },
+  {
+    id: 6,
+    title: "LSD",
+    description: "Liquid and paper tabs, available in microdose and full-dose.",
+    image: "/images/lsd.jpg",
+    hasGuide: true,
+  },
+  {
+    id: 7,
+    title: "DMT",
+    description: "Intense 15-minute experiences via vape pen or raw powder.",
+    image: "/images/dmt.jpg",
+    hasGuide: true,
+  },
+  {
+    id: 8,
+    title: "Books & Art",
+    description: "Books, comics and art — all priced below Amazon.",
+    image: "/images/books-art.jpg",
+    hasGuide: false,
+  },
+];
+---
+
+<section class="section section--dark">
+  <div class="container">
+    <div class="products">
+      <div class="product-heading">
+        <div class="text-title-hero"><h2>Our Products</h2></div>
+        <div class="text-body-display">
+          <p>
+            No other shop in the world carries the same range of products that
+            we do!
+          </p>
+        </div>
+        <div class="cta">
+          <div class="wrapper-twisty-arrow">
+            <ArrowTwisty />
+          </div>
+          <div class="wrapper-mushyguy-hazy">
+            <Fragment set:html={MushyGuyHazy} />
+          </div>
+          <div class="wrapper-cta-button">
+            <CTAButton text="Full Menu!" />
+          </div>
+        </div>
+      </div>
+      <div class="product-grid">
+        {products.map((product) => <ProductCard title={product.title} />)}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-heading {
+    display: flex;
+    gap: var(--sp-04);
+    align-items: center;
+  }
+  .text-title-hero {
+    flex: 1 0 auto;
+    color: var(--color-surface-dark-text-highlight);
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 3.5vw, 3.5rem);
+    text-transform: uppercase;
+    text-box: trim-both cap alphabetic;
+  }
+
+  .text-body-display {
+    flex: 1 0 25%;
+    /* font-size: var(--text-lg); */
+  }
+
+  .cta {
+    position: relative;
+    flex: 1 0 none;
+    display: flex;
+    isolation: isolate;
+  }
+
+  .wrapper-twisty-arrow {
+    position: absolute;
+    top: -85px;
+    left: -90px;
+    transform: rotate(-30deg);
+    z-index: 2;
+  }
+  .wrapper-cta-button {
+    transform: rotate(6deg);
+  }
+  .wrapper-mushyguy-hazy {
+    width: 8rem;
+    position: absolute;
+    top: -120px;
+    right: -45px;
+    z-index: 2;
+    pointer-events: none;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wrapper-mushyguy-hazy {
+      animation: none;
+    }
+  }
+
+  /* PRODUCT CARDS */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+    gap: var(--sp-04);
+  }
+</style>

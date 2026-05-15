@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  hasGuide: boolean;
+  guideUrl?: string;
+}
+
+const { title, description, image, hasGuide, guideUrl } = Astro.props;
+---
+
+<div class="product-card"><h3>{title}</h3></div>
+
+<style>
+  .product-card {
+    background: red;
+    border-radius: var(--br-03);
+    aspect-ratio: 3 / 4;
+  }
+</style>

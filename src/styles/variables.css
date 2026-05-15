@@ -37,6 +37,9 @@
   --color-cta: var(--color-secondary-200);
   --color-cta-text: var(--color-primary-200);
   --color-cta-border: var(--color-primary-200);
+  --color-cta-hover: var(--color-neutral-200);
+  --color-cta-text-hover: var(--color-neutral-600);
+  --color-cta-border-hover: var(--color-secondary-200);
 
   /* Navigation */
   --color-nav: var(--color-secondary-200);
@@ -52,7 +55,9 @@
   --art-line: var(--color-neutral-600);
   --art-white: var(--color-neutral-100);
 
-  /* UI DESIGN */ /* Spacing */
+  /* UI DESIGN */
+
+  /* Spacing */
   --sp-01: 0.25rem; /* 4px */
   --sp-02: 0.5rem; /* 8px */
   --sp-03: 0.75rem; /* 12px */
@@ -62,6 +67,8 @@
   --sp-06: 2rem; /* 32px */
   --sp-07: 3rem; /* 48px */
   --sp-08: 4rem; /* 64px */
+  --sp-09: 6rem; /* 96px */
+  --sp-10: 8rem; /* 128px */
 
   /* Layout Specific Spacing */
   --max-width: min(100%, 90rem);
@@ -106,6 +113,7 @@
   --border-surface-color-thin: 3px solid var(--color-neutral-600);
   --border-surface-dark-thin: 2px solid var(--color-secondary-200);
   --border-cta: 2px solid var(--color-cta-border);
+  --border-cta-hover: 2px solid var(--color-cta-border-hover);
 
   /* TYPOGRAPHY */
 

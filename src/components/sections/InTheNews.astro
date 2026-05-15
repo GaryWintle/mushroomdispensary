@@ -9,6 +9,8 @@ import newsLogo07 from "@images/icons/company-logos/newsLogo07.svg?raw";
 import newsLogo08 from "@images/icons/company-logos/newsLogo08.svg?raw";
 import newsLogo09 from "@images/icons/company-logos/newsLogo09.svg?raw";
 import newsLogo10 from "@images/icons/company-logos/newsLogo10.svg?raw";
+
+import CTAButton from "@components/ui/CTAButton.astro";
 ---
 
 <section>
@@ -27,22 +29,34 @@ import newsLogo10 from "@images/icons/company-logos/newsLogo10.svg?raw";
         <Fragment set:html={newsLogo09} />
         <Fragment set:html={newsLogo10} />
       </div>
+      <div class="cta-button-float">
+        <CTAButton
+          text="Get all the Lastest News"
+          href="/news"
+          ariaLabel="The latest new articles featuring the Mushroom Dispensary"
+        />
+      </div>
     </div>
-    <button class="cta-button">Get all the Lastest News</button>
   </div>
 </section>
 
 <style>
+  .container {
+  }
+
   .logos-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: var(--sp-05);
     border-radius: var(--br-03);
     padding-inline: var(--sp-06);
-    padding-block: var(--sp-07);
+    padding-block-start: var(--sp-07);
+    padding-block-end: var(--sp-09);
     margin-block: var(--sp-06);
     box-shadow: var(--card-shadow-neutral-deep);
     border: var(--border-surface-dark-thin);
+    background-color: oklch(from var(--color-neutral-600) l c h / 0.4);
     /* backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px); */
   }
@@ -83,16 +97,10 @@ import newsLogo10 from "@images/icons/company-logos/newsLogo10.svg?raw";
     /* position: absolute; */
   }
 
-  .cta-button {
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    color: var(--color-cta-text);
-    background-color: var(--color-cta);
-    border: var(--border-cta);
-    border-radius: var(--br-03);
-    padding-inline: var(--sp-06);
-    padding-block: var(--sp-04);
-    box-shadow: var(--card-shadow-neutral-deep);
-    text-shadow: var(--text-shadow-color);
+  .cta-button-float {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
   }
 </style>

@@ -4,13 +4,22 @@ import ProductCard from "@components/ui/ProductCard.astro";
 import ArrowTwisty from "@components/artwork/ArrowTwisty.astro";
 import MushyGuyHazy from "@images/mushyguyHazy.svg?raw";
 
+import imgMushrooms from "@images/products/mushrooms.webp";
+import imgCapsules from "@images/products/mushroom-capsules.jpg";
+import imgKratom from "@images/products/kratom.jpg";
+import imgCocaLeaf from "@images/products/coca-leaf.avif";
+import imgPeyote from "@images/products/peyote.jpg";
+import imgLSD from "@images/products/lsd.webp";
+import imgDMT from "@images/products/dmt.jpg";
+import imgBooks from "@images/products/books.jpg";
+
 const products = [
   {
     id: 1,
     title: "Dried Mushrooms",
     description:
       "Classic and exotic dried strains, plus chocolates and gummies.",
-    image: "/images/dried-mushrooms.jpg",
+    image: imgMushrooms,
     hasGuide: true,
   },
   {
@@ -18,7 +27,7 @@ const products = [
     title: "Mushroom Capsules",
     description:
       "Microdose capsules in precise strengths from 12.5mg to 500mg.",
-    image: "/images/mushroom-capsules.jpg",
+    image: imgCapsules,
     hasGuide: true,
   },
   {
@@ -26,42 +35,42 @@ const products = [
     title: "Kratom",
     description:
       "Powder and capsule form, with a range of strains for energy, focus, and relaxation.",
-    image: "/images/kratom.jpg",
+    image: imgKratom,
     hasGuide: true,
   },
   {
     id: 4,
     title: "Coca Leaf",
     description: "Whole leaf for chewing or powdered for tea, stocks vary.",
-    image: "/images/coca-leaf.jpg",
+    image: imgCocaLeaf,
     hasGuide: true,
   },
   {
     id: 5,
     title: "Peyote",
     description: "The sacred mescaline cactus, dried or as live plants.",
-    image: "/images/peyote.jpg",
+    image: imgPeyote,
     hasGuide: true,
   },
   {
     id: 6,
     title: "LSD",
     description: "Liquid and paper tabs, available in microdose and full-dose.",
-    image: "/images/lsd.jpg",
+    image: imgLSD,
     hasGuide: true,
   },
   {
     id: 7,
     title: "DMT",
     description: "Intense 15-minute experiences via vape pen or raw powder.",
-    image: "/images/dmt.jpg",
+    image: imgDMT,
     hasGuide: true,
   },
   {
     id: 8,
     title: "Books & Art",
     description: "Books, comics and art — all priced below Amazon.",
-    image: "/images/books-art.jpg",
+    image: imgBooks,
     hasGuide: false,
   },
 ];
@@ -91,7 +100,15 @@ const products = [
         </div>
       </div>
       <div class="product-grid">
-        {products.map((product) => <ProductCard title={product.title} />)}
+        {
+          products.map((product) => (
+            <ProductCard
+              title={product.title}
+              description={product.description}
+              image={product.image}
+            />
+          ))
+        }
       </div>
     </div>
   </div>
@@ -102,6 +119,7 @@ const products = [
     display: flex;
     gap: var(--sp-04);
     align-items: center;
+    margin-block-end: var(--sp-06);
   }
   .text-title-hero {
     flex: 1 0 auto;

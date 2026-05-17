@@ -73,7 +73,7 @@
   /* Layout Specific Spacing */
   --max-width: min(100%, 90rem);
   --space-section-block: clamp(3rem, 8vw, 8rem);
-  --space-section-inline: clamp(1.25rem, 5vw, 2rem);
+  --space-section-inline: clamp(1.5rem, 5vw, 3rem);
 
   /* Border Radius */
   --br-01: 0.25rem; /* 4px */
@@ -112,6 +112,9 @@
   /* Borders */
   --border-surface-color-thin: 3px solid var(--color-neutral-600);
   --border-surface-dark-thin: 2px solid var(--color-secondary-200);
+  --border-surface-color-thick: 4px solid var(--color-neutral-600);
+  --border-surface-dark-thick: 5px solid var(--color-secondary-200);
+
   --border-cta: 2px solid var(--color-cta-border);
   --border-cta-hover: 2px solid var(--color-cta-border-hover);
 

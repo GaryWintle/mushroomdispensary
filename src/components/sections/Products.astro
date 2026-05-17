@@ -82,7 +82,7 @@ const products = [
       <div class="product-heading">
         <div class="text-title-hero"><h2>Our Products</h2></div>
         <div class="text-body-display">
-          <p>
+          <p class="text-body">
             No other shop in the world carries the same range of products that
             we do!
           </p>
@@ -106,6 +106,7 @@ const products = [
               title={product.title}
               description={product.description}
               image={product.image}
+              hasGuide={product.hasGuide}
             />
           ))
         }
@@ -117,12 +118,12 @@ const products = [
 <style>
   .product-heading {
     display: flex;
-    gap: var(--sp-04);
+    gap: var(--sp-06);
     align-items: center;
-    margin-block-end: var(--sp-06);
+    margin-block-end: var(--sp-07);
   }
   .text-title-hero {
-    flex: 1 0 auto;
+    flex: 1 0 none;
     color: var(--color-surface-dark-text-highlight);
     font-family: var(--font-display);
     font-size: clamp(1rem, 3.5vw, 3.5rem);
@@ -132,7 +133,11 @@ const products = [
 
   .text-body-display {
     flex: 1 0 25%;
-    /* font-size: var(--text-lg); */
+    font-size: var(--text-lg);
+  }
+
+  .text-body {
+    width: 100%;
   }
 
   .cta {
@@ -182,6 +187,8 @@ const products = [
   .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
-    gap: var(--sp-04);
+    align-items: stretch;
+    column-gap: var(--sp-05);
+    row-gap: var(--sp-06);
   }
 </style>

@@ -5,6 +5,7 @@ import Hero from "@components/sections/Hero.astro";
 import Testimonials from "@components/sections/Testimonials.astro";
 import InTheNews from "@components/sections/InTheNews.astro";
 import Products from "@components/sections/Products.astro";
+import PhotoCarousel from "@components/sections/PhotoCarousel.astro";
 ---
 
 <Layout>
@@ -12,4 +13,21 @@ import Products from "@components/sections/Products.astro";
   <Testimonials />
   <InTheNews />
   <Products />
+  <PhotoCarousel
+    images={[
+      {
+        src: "/images/CarouselPhotos/mushdisp-dana-counter.webp",
+        alt: "Store front on Main Street",
+      },
+      {
+        src: "/images/CarouselPhotos/mushdisp-products.webp",
+        alt: "Interior mushroom display",
+      },
+      {
+        src: "/images/CarouselPhotos/mushdisp-storefront.jpg",
+        alt: "Interior mushroom display",
+      },
+      // ...
+    ]}
+  />
 </Layout>

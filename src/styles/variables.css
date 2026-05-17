@@ -25,7 +25,7 @@
 
   /* Light surface */
   --color-surface-light: var(--color-neutral-200);
-  --color-surface-light-text-highlight: var(--color-primary-200);
+  --color-surface-light-text-highlight: var(--color-secondary-200);
   --color-surface-light-text: var(--color-neutral-600);
 
   /* Colored surface */

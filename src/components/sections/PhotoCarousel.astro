@@ -1,0 +1,175 @@
+---
+import CarouselArrow from "@components/artwork/CarouselArrow.astro";
+
+interface Props {
+  images: { src: string; alt: string }[];
+}
+const { images } = Astro.props;
+---
+
+<section
+  class="embla container"
+  aria-label="Store photo gallery"
+  aria-roledescription="carousel"
+>
+  <div class="embla__viewport">
+    <div class="embla__container">
+      {
+        images.map((img, i) => (
+          <div
+            class="embla__slide"
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${i + 1} of ${images.length}`}
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              loading={i === 0 ? "eager" : "lazy"}
+              draggable="false"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <button class="embla__btn embla__btn--prev" aria-label="Previous slide">
+    <div class="arrow arrow--left"><CarouselArrow /></div>
+  </button>
+  <button class="embla__btn embla__btn--next" aria-label="Next slide">
+    <div class="arrow arrow--right"><CarouselArrow /></div>
+  </button>
+
+  <div class="embla__dots" aria-label="Slide navigation" role="tablist"></div>
+</section>
+
+<style>
+  .embla {
+    position: relative;
+    overflow: hidden; /* crucial */
+    border-radius: var(--br-03);
+  }
+
+  .embla__viewport {
+    overflow: hidden;
+    cursor: grab;
+  }
+  .embla__viewport.is-dragging {
+    cursor: grabbing;
+  }
+
+  .embla__container {
+    display: flex;
+    touch-action: pan-y; /* allows vertical scroll, horizontal swipe */
+  }
+
+  .embla__slide {
+    flex: 0 0 100%; /* one slide at a time */
+    min-width: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .embla__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none; /* prevents ghost drag on images */
+  }
+
+  /* Position your buttons */
+  .embla__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+    padding: 0;
+  }
+  .embla__btn--prev {
+    left: var(--sp-04);
+  }
+  .embla__btn--next {
+    right: var(--sp-04);
+  }
+  .arrow--right {
+    transform: rotate(180deg);
+  }
+
+  /* Dots */
+  .embla__dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--sp-02);
+    padding-block-start: var(--sp-03);
+  }
+  .embla__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: background 200ms ease;
+  }
+  .embla__dot.is-selected {
+    background: currentColor;
+  }
+</style>
+
+<script>
+  import EmblaCarousel from "embla-carousel";
+
+  const viewport = document.querySelector(".embla__viewport");
+  const embla = EmblaCarousel(viewport, {
+    loop: true,
+    dragFree: false,
+    containScroll: "trimSnaps",
+  });
+
+  // Buttons
+  document
+    .querySelector(".embla__btn--prev")
+    .addEventListener("click", () => embla.scrollPrev());
+  document
+    .querySelector(".embla__btn--next")
+    .addEventListener("click", () => embla.scrollNext());
+
+  // Drag cursor
+  viewport.addEventListener("pointerdown", () =>
+    viewport.classList.add("is-dragging"),
+  );
+  viewport.addEventListener("pointerup", () =>
+    viewport.classList.remove("is-dragging"),
+  );
+
+  // Dots
+  const dotsContainer = document.querySelector(".embla__dots");
+  const dots = embla.scrollSnapList().map((_, i) => {
+    const dot = document.createElement("button");
+    dot.className = "embla__dot";
+    dot.setAttribute("role", "tab");
+    dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+    dot.addEventListener("click", () => embla.scrollTo(i));
+    dotsContainer.appendChild(dot);
+    return dot;
+  });
+
+  const updateDots = () => {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("is-selected", i === embla.selectedScrollSnap());
+    });
+  };
+  embla.on("select", updateDots);
+  updateDots(); // set initial state
+
+  // Reduced motion
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    embla.reInit({ duration: 0 });
+  }
+</script>

@@ -21,6 +21,7 @@ const products = [
       "Classic and exotic dried strains, plus chocolates and gummies.",
     image: imgMushrooms,
     hasGuide: true,
+    href: "",
   },
   {
     id: 2,
@@ -29,6 +30,7 @@ const products = [
       "Microdose capsules in precise strengths from 12.5mg to 500mg.",
     image: imgCapsules,
     hasGuide: true,
+    href: "",
   },
   {
     id: 3,
@@ -37,6 +39,7 @@ const products = [
       "Powder and capsule form, with a range of strains for energy, focus, and relaxation.",
     image: imgKratom,
     hasGuide: true,
+    href: "",
   },
   {
     id: 4,
@@ -44,6 +47,7 @@ const products = [
     description: "Whole leaf for chewing or powdered for tea, stocks vary.",
     image: imgCocaLeaf,
     hasGuide: true,
+    href: "",
   },
   {
     id: 5,
@@ -51,6 +55,7 @@ const products = [
     description: "The sacred mescaline cactus, dried or as live plants.",
     image: imgPeyote,
     hasGuide: true,
+    href: "",
   },
   {
     id: 6,
@@ -58,6 +63,7 @@ const products = [
     description: "Liquid and paper tabs, available in microdose and full-dose.",
     image: imgLSD,
     hasGuide: true,
+    href: "",
   },
   {
     id: 7,
@@ -65,6 +71,7 @@ const products = [
     description: "Intense 15-minute experiences via vape pen or raw powder.",
     image: imgDMT,
     hasGuide: true,
+    href: "",
   },
   {
     id: 8,
@@ -72,6 +79,7 @@ const products = [
     description: "Books, comics and art — all priced below Amazon.",
     image: imgBooks,
     hasGuide: false,
+    href: "",
   },
 ];
 ---
@@ -107,6 +115,7 @@ const products = [
               description={product.description}
               image={product.image}
               hasGuide={product.hasGuide}
+              href={product.href}
             />
           ))
         }

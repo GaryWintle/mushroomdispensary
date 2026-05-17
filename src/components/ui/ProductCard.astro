@@ -9,6 +9,7 @@ interface Props {
   description: string;
   image: ImageMetadata;
   hasGuide: boolean;
+  href: string;
 }
 
 const {
@@ -16,13 +17,14 @@ const {
   description = "This is just default text!",
   image,
   hasGuide = false,
+  href = "/products",
 } = Astro.props;
 ---
 
-<div class="card-wrapper">
+<a class="card-wrapper" href={href}>
   <div class="product-card section--light">
     <div class="card-image">
-      <Image src={image} width={600} height={400} alt={title} />
+      <Image src={image} loading="lazy" width={600} height={400} alt={title} />
     </div>
     <div class="card-text-body">
       <h3 class="card-title">{title}</h3>
@@ -36,12 +38,27 @@ const {
       </div>
     )
   }
-</div>
+</a>
 
 <style>
   .card-wrapper {
+    display: block;
     position: relative;
+    transform: translate(0, 0);
+    transition: transform 150ms ease-in;
   }
+  .card-wrapper:hover,
+  .card-wrapper:focus-visible {
+    transform: translate(-2px, -5px);
+  }
+  .card-wrapper:hover .card-title,
+  .card-wrapper:focus-visible .card-title {
+    color: var(--color-surface-light-text-highlight);
+  }
+  /* .card-wrapper:hover .user-guide,
+  .card-wrapper:focus-visible .user-guide {
+    filter: var(--art-shadow-color-medium);
+  } */
 
   .product-card {
     display: flex;
@@ -49,9 +66,15 @@ const {
     background: var(--color-surface-light);
     border-radius: var(--br-03) 3rem var(--br-03) var(--br-03);
     height: 100%;
-    /* aspect-ratio: 3 / 4; */
     overflow: hidden;
     box-shadow: var(--card-shadow-neutral-medium);
+    transition: box-shadow 200ms ease-in-out;
+  }
+  .product-card:hover,
+  .product-card:focus-visible {
+    box-shadow:
+      0 0 0 4px var(--color-neutral-600),
+      var(--card-shadow-color-deep);
     /* border: var(--border-surface-color-thick); */
   }
 
@@ -84,7 +107,9 @@ const {
     line-height: var(--leading-tight);
     /* text-transform: uppercase; */
     text-wrap: balance;
+    transition: color 200ms ease-in;
   }
+
   .card-description {
     font-family: var(--font-body);
     font-size: var(--text-lg);
@@ -103,5 +128,6 @@ const {
     top: 38%;
     transform: rotate(15deg);
     filter: var(--art-shadow-neutral-medium);
+    transition: filter 200ms ease-in;
   }
 </style>

@@ -24,8 +24,9 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
       <div class="hero-video">
         <div class="video-wrapper">
           <!-- To re-enable autoplay, add autoplay=1& before mute=1 in the src -->
+          <div class="video-overlay"></div>
           <iframe
-            src="https://www.youtube-nocookie.com/embed/0rFVeZ9mpe0?mute=1&loop=1&playlist=0rFVeZ9mpe0"
+            src="https://www.youtube-nocookie.com/embed/0rFVeZ9mpe0?autoplay=1&mute=1&loop=1&playlist=0rFVeZ9mpe0&controls=0&modestbranding=1&rel=0"
             title="Hero video"
             loading="eager"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -106,6 +107,17 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
     width: 100%;
     height: 100%;
     border: 0;
+  }
+
+  .video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    cursor: default;
+  }
+
+  .video-wrapper:hover .video-overlay {
+    pointer-events: none;
   }
 
   .inline-icon {

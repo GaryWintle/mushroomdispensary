@@ -14,6 +14,7 @@
 
   /* Transparencies */
   --color-neutral-600-50: oklch(from var(--color-neutral-600) l c h / 0.5);
+  --color-neutral-600-90: oklch(from var(--color-secondary-200) l c h / 0.3);
 
   /* SEMANTIC COLORS */
 
@@ -111,6 +112,7 @@
 
   /* Borders */
   --border-surface-color-thin: 3px solid var(--color-neutral-600);
+  --border-surface-dark-thin-highlight: 2px solid var(--color-primary-200);
   --border-surface-dark-thin: 2px solid var(--color-secondary-200);
   --border-surface-color-thick: 4px solid var(--color-neutral-600);
   --border-surface-dark-thick: 5px solid var(--color-secondary-200);

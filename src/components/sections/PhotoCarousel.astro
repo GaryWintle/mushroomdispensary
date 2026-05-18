@@ -1,60 +1,111 @@
 ---
 import CarouselArrow from "@components/artwork/CarouselArrow.astro";
+import MushyGuyHazy from "@images/mushyguyHazy.svg?raw";
 
 interface Props {
-  images: { src: string; alt: string }[];
+  images: { src: string; alt: string; caption?: string }[];
 }
 const { images } = Astro.props;
 ---
 
-<section
-  class="embla container"
-  aria-label="Store photo gallery"
-  aria-roledescription="carousel"
->
-  <div class="embla__viewport">
-    <div class="embla__container">
-      {
-        images.map((img, i) => (
-          <div
-            class="embla__slide"
-            role="group"
-            aria-roledescription="slide"
-            aria-label={`${i + 1} of ${images.length}`}
-          >
-            <img
-              src={img.src}
-              alt={img.alt}
-              loading={i === 0 ? "eager" : "lazy"}
-              draggable="false"
-            />
-          </div>
-        ))
-      }
+<div class="wrapper">
+  <section
+    class="embla container"
+    aria-label="Store photo gallery"
+    aria-roledescription="carousel"
+  >
+    <h2 class="subtitle">In Vancouver?</h2>
+    <p class="text-body-display --bottom-margin">
+      Don't miss out on a change to come say hi!
+    </p>
+    <div class="embla__viewport">
+      <div class="embla__container">
+        {
+          images.map((img, i) => (
+            <div
+              class="embla__slide"
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${i + 1} of ${images.length}`}
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading={i === 0 ? "eager" : "lazy"}
+                draggable="false"
+              />
+              {img.caption && <p class="slide__caption">{img.caption}</p>}
+            </div>
+          ))
+        }
+      </div>
     </div>
-  </div>
 
-  <button class="embla__btn embla__btn--prev" aria-label="Previous slide">
-    <div class="arrow arrow--left"><CarouselArrow /></div>
-  </button>
-  <button class="embla__btn embla__btn--next" aria-label="Next slide">
-    <div class="arrow arrow--right"><CarouselArrow /></div>
-  </button>
-
-  <div class="embla__dots" aria-label="Slide navigation" role="tablist"></div>
-</section>
+    <button class="embla__btn embla__btn--prev" aria-label="Previous slide">
+      <div class="arrow arrow--left"><CarouselArrow /></div>
+    </button>
+    <button class="embla__btn embla__btn--next" aria-label="Next slide">
+      <div class="arrow arrow--right"><CarouselArrow /></div>
+    </button>
+    <div class="embla__dots" aria-label="Slide navigation" role="tablist"></div>
+  </section>
+</div>
 
 <style>
+  /* .wrapper {
+    background:
+      url("/images/mushdisp-pattern-05percent.webp"),
+      linear-gradient(
+        to bottom,
+        oklch(from var(--color-secondary-200) l c h / 0.7),
+        oklch(from var(--color-secondary-200) l c h / 0.8) 200%
+      );
+    background-repeat: repeat;
+    background-size: auto;
+    background-attachment: fixed;
+    padding-block-start: 48px;
+    padding-block-end: 32px;
+  } */
+
+  .--bottom-margin {
+    margin-bottom: var(--sp-05);
+  }
+  .text-body-display {
+    color: var(--color-surface-dark-text);
+    text-align: center;
+  }
+
   .embla {
     position: relative;
-    overflow: hidden; /* crucial */
+    /* overflow: hidden;  */
     border-radius: var(--br-03);
+    margin-bottom: 120px;
   }
 
   .embla__viewport {
     overflow: hidden;
     cursor: grab;
+    /* border: 1px solid var(--color-primary-200); */
+    /* box-shadow: var(--card-shadow-neutral-deep); */
+    border-radius: var(--br-03);
   }
+  /* .embla__viewport::after {
+    content: "";
+    position: absolute;
+    inset: 25px;
+    box-shadow: inset 0 0 0 2px oklch(from var(--color-primary-200) l c h / 0.8);
+    z-index: 1;
+    pointer-events: none;
+    border-radius: var(--br-02);
+  }
+  .embla__viewport::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 35px 5px var(--color-neutral-600-50);
+    z-index: 1;
+    pointer-events: none;
+  } */
   .embla__viewport.is-dragging {
     cursor: grabbing;
   }
@@ -65,10 +116,28 @@ const { images } = Astro.props;
   }
 
   .embla__slide {
-    flex: 0 0 100%; /* one slide at a time */
+    position: relative;
+    flex: 0 0 91%; /* one slide at a time */
     min-width: 0;
     aspect-ratio: 16 / 9;
     overflow: hidden;
+    border-radius: var(--br-03);
+    padding-left: var(--sp-04);
+  }
+
+  .embla__slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    left: var(--sp-04); /* match your padding-left gap */
+    background: oklch(0% 0 0 / 0.6);
+    border-radius: var(--br-03);
+    transition: opacity 300ms ease;
+    pointer-events: none;
+  }
+
+  .embla__slide.is-active::after {
+    opacity: 0;
   }
 
   .embla__slide img {
@@ -76,7 +145,37 @@ const { images } = Astro.props;
     height: 100%;
     object-fit: cover;
     display: block;
-    pointer-events: none; /* prevents ghost drag on images */
+    pointer-events: none;
+    border-radius: var(--br-03);
+  }
+
+  .slide__caption {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    padding: var(--sp-03) var(--sp-06);
+    border-radius: var(--br-03) var(--br-03) 0 0;
+    background-color: var(--color-secondary-200);
+    border-left: var(--border-surface-color-thick);
+    border-top: var(--border-surface-color-thick);
+    border-right: var(--border-surface-color-thick);
+    color: var(--color-neutral-200);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    letter-spacing: var(--tracking-loose);
+    font-variation-settings:
+      "wdth" 100,
+      "wght" 700;
+    opacity: 0;
+    transition:
+      opacity 250ms ease,
+      transform 250ms ease;
+  }
+
+  .embla__slide:hover .slide__caption {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
   }
 
   /* Position your buttons */
@@ -90,11 +189,22 @@ const { images } = Astro.props;
     z-index: 2;
     padding: 0;
   }
+  .embla__btn--prev,
+  .embla__btn--next {
+    transform: scale(1);
+    transition: transform 250ms ease;
+  }
+  .embla__btn--prev:hover,
+  .embla__btn--next:hover {
+    transform: scale(1.05);
+  }
   .embla__btn--prev {
     left: var(--sp-04);
+    filter: var(--art-shadow-neutral-medium);
   }
   .embla__btn--next {
     right: var(--sp-04);
+    filter: var(--art-shadow-neutral-medium);
   }
   .arrow--right {
     transform: rotate(180deg);
@@ -105,27 +215,30 @@ const { images } = Astro.props;
     display: flex;
     justify-content: center;
     gap: var(--sp-02);
-    padding-block-start: var(--sp-03);
+    padding-block-start: var(--sp-06);
   }
-  .embla__dot {
-    width: 8px;
-    height: 8px;
+
+  :global(.embla__dot) {
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    border: 2px solid currentColor;
+    border: 3px solid var(--color-secondary-200);
     background: transparent;
     cursor: pointer;
     padding: 0;
     transition: background 200ms ease;
+    box-shadow: var(--card-shadow-neutral-shallow);
   }
-  .embla__dot.is-selected {
-    background: currentColor;
+
+  :global(.embla__dot.is-selected) {
+    background: var(--color-primary-200);
   }
 </style>
 
 <script>
   import EmblaCarousel from "embla-carousel";
 
-  const viewport = document.querySelector(".embla__viewport");
+  const viewport = document.querySelector<HTMLElement>(".embla__viewport")!;
   const embla = EmblaCarousel(viewport, {
     loop: true,
     dragFree: false,
@@ -134,10 +247,10 @@ const { images } = Astro.props;
 
   // Buttons
   document
-    .querySelector(".embla__btn--prev")
+    .querySelector(".embla__btn--prev")!
     .addEventListener("click", () => embla.scrollPrev());
   document
-    .querySelector(".embla__btn--next")
+    .querySelector(".embla__btn--next")!
     .addEventListener("click", () => embla.scrollNext());
 
   // Drag cursor
@@ -149,7 +262,7 @@ const { images } = Astro.props;
   );
 
   // Dots
-  const dotsContainer = document.querySelector(".embla__dots");
+  const dotsContainer = document.querySelector(".embla__dots")!;
   const dots = embla.scrollSnapList().map((_, i) => {
     const dot = document.createElement("button");
     dot.className = "embla__dot";
@@ -172,4 +285,13 @@ const { images } = Astro.props;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     embla.reInit({ duration: 0 });
   }
+
+  const updateSelected = () => {
+    embla.slideNodes().forEach((slide, i) => {
+      slide.classList.toggle("is-active", i === embla.selectedScrollSnap());
+    });
+  };
+
+  embla.on("select", updateSelected);
+  updateSelected(); // set on load
 </script>

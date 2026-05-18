@@ -16,7 +16,7 @@ import CTAButton from "@components/ui/CTAButton.astro";
 <section>
   <div class="container">
     <div class="logos-wrapper">
-      <h2 class="news-title">Featured in</h2>
+      <h2 class="subtitle">Featured in</h2>
       <div class="logos-flex">
         <Fragment set:html={newsLogo01} />
         <Fragment set:html={newsLogo02} />
@@ -83,15 +83,6 @@ import CTAButton from "@components/ui/CTAButton.astro";
   }
   .logos-flex :global(svg:nth-child(8)) {
     height: 4rem; /* Global News */
-  }
-
-  .news-title {
-    color: var(--color-surface-dark-text-highlight);
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    letter-spacing: var(--tracking-semiwide);
-    text-align: center;
-    /* position: absolute; */
   }
 
   .cta-button-float {

@@ -40,6 +40,37 @@ import CTAButton from "@components/ui/CTAButton.astro";
   </div>
 </section>
 
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".logos-wrapper",
+      start: "top 80%",
+    },
+  });
+
+  tl.from(".subtitle", {
+    opacity: 0,
+    y: 20,
+    duration: 0.7,
+    ease: "power2.out",
+  }).from(
+    ".logos-flex svg",
+    {
+      opacity: 0,
+      y: 20,
+      duration: 1.5,
+      ease: "power2.out",
+      stagger: 0.25,
+    },
+    "+=0.1",
+  );
+</script>
+
 <style>
   .logos-wrapper {
     position: relative;

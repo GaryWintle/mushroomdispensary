@@ -124,6 +124,35 @@ const products = [
   </div>
 </section>
 
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".products",
+      start: "top 80%",
+    },
+  });
+
+  tl.from(".product-heading", {
+    opacity: 0,
+    y: 20,
+    duration: 0.5,
+    ease: "power2.out",
+  }).from(
+    ".product-grid .card-wrapper",
+    {
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+      stagger: 0.25,
+    },
+    "+=0.1",
+  );
+</script>
+
 <style>
   .product-heading {
     display: flex;

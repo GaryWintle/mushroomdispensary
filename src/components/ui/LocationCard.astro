@@ -31,25 +31,40 @@ import location1 from "@images/locations/mushdisp-location-01.webp";
     />
   </div>
   <div class="location-text-block">
-    <h3>West End Vancouver</h3>
-    <h4>1674 Davie St.</h4>
-  </div>
-  <div>
-    <p>Mon-Wed: 11am–7pm</p>
-    <p>Thu-Sat: 10am–11pm</p>
-    <p>Sun: 11am-6pm</p>
+    <h3 class="text-location">West End Vancouver</h3>
+    <h4 class="text-address">1674 Davie St.</h4>
+
+    <div class="container-hours">
+      <p class="text-hours">
+        Mon-Wed:
+        <span class="hours-time">11am–7pm</span>
+      </p>
+      <p class="text-hours">
+        Thu-Sat:
+        <span class="hours-time">10am–11pm</span>
+      </p>
+      <p class="text-hours">
+        Sun:
+        <span class="hours-time">11am-6pm</span>
+      </p>
+    </div>
   </div>
 </div>
 
 <style>
   .location {
     display: flex;
+    border-radius: var(--br-03);
+    overflow: hidden;
+    border: var(--border-surface-color-thin);
+    box-shadow: var(--card-shadow-neutral-deep);
   }
   .location-image {
+    flex: 1 0 auto;
     height: auto;
     aspect-ratio: 2 / 1;
     border-right: var(--border-surface-color-thick);
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   .location-image img {
@@ -57,5 +72,44 @@ import location1 from "@images/locations/mushdisp-location-01.webp";
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  .location-text-block {
+    background-color: var(--color-surface-light);
+    color: var(--color-surface-light-text);
+    padding-inline: var(--sp-07);
+    padding-block: var(--sp-07);
+  }
+
+  .text-location {
+    color: var(--color-surface-light-text-highlight);
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    text-transform: uppercase;
+    line-height: var(--leading-tight);
+    text-box: trim-both cap alphabetic;
+    margin-block-end: var(--sp-04);
+    /* letter-spacing: var(--tracking-semiwide); */
+  }
+  .text-address {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    margin-block-end: var(--sp-04);
+    text-box: trim-both cap alphabetic;
+    letter-spacing: var(--tracking-tight);
+    font-variation-settings:
+      "wdth" 100,
+      "wght" 900;
+  }
+  .text-hours {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-variation-settings:
+      "wdth" 95,
+      "wght" 750;
+  }
+
+  .hours-time {
+    color: var(--color-surface-light-text-highlight);
   }
 </style>

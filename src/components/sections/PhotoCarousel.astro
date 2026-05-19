@@ -1,6 +1,6 @@
 ---
 import CarouselArrow from "@components/artwork/CarouselArrow.astro";
-import MushyGuySmiley from "@images/mushyguySmiley.svg?raw";
+import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
 
 interface Props {
   images: { src: string; alt: string; caption?: string }[];
@@ -41,7 +41,7 @@ const { images } = Astro.props;
       </div>
     </div>
     <div class="wrapper-mushyguy-smiley">
-      <Fragment set:html={MushyGuySmiley} />
+      <MushyGuySmiley />
     </div>
     <button class="embla__btn embla__btn--prev" aria-label="Previous slide">
       <div class="arrow arrow--left"><CarouselArrow /></div>
@@ -223,10 +223,10 @@ const { images } = Astro.props;
   }
 
   .wrapper-mushyguy-smiley {
-    width: 8rem;
+    width: 5rem;
     position: absolute;
-    bottom: 30px;
-    right: -30px;
+    bottom: 20px;
+    right: 0;
     z-index: 2;
     pointer-events: none;
     animation: bounce 2s ease-in-out infinite;

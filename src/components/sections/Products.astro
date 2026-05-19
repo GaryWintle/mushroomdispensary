@@ -84,45 +84,47 @@ const products = [
 ];
 ---
 
-<section class="section section--dark">
-  <div class="container">
-    <div class="products">
-      <div class="product-heading">
-        <div class="text-title-hero"><h2>Our Products</h2></div>
-        <div class="text-body-display">
-          <p class="text-body">
-            No other shop in the world carries the same range of products that
-            we do!
-          </p>
+<div class="wrapper">
+  <section class="section section--dark">
+    <div class="container">
+      <div class="products">
+        <div class="product-heading">
+          <div class="text-title-hero"><h2>Our Products</h2></div>
+          <div class="text-body-display">
+            <p class="text-body">
+              No other shop in the world carries the same range of products that
+              we do!
+            </p>
+          </div>
+          <div class="cta">
+            <div class="wrapper-twisty-arrow">
+              <ArrowTwisty />
+            </div>
+            <div class="wrapper-mushyguy-hazy">
+              <Fragment set:html={MushyGuyHazy} />
+            </div>
+            <div class="wrapper-cta-button">
+              <CTAButton text="Full Menu!" />
+            </div>
+          </div>
         </div>
-        <div class="cta">
-          <div class="wrapper-twisty-arrow">
-            <ArrowTwisty />
-          </div>
-          <div class="wrapper-mushyguy-hazy">
-            <Fragment set:html={MushyGuyHazy} />
-          </div>
-          <div class="wrapper-cta-button">
-            <CTAButton text="Full Menu!" />
-          </div>
+        <div class="product-grid">
+          {
+            products.map((product) => (
+              <ProductCard
+                title={product.title}
+                description={product.description}
+                image={product.image}
+                hasGuide={product.hasGuide}
+                href={product.href}
+              />
+            ))
+          }
         </div>
-      </div>
-      <div class="product-grid">
-        {
-          products.map((product) => (
-            <ProductCard
-              title={product.title}
-              description={product.description}
-              image={product.image}
-              hasGuide={product.hasGuide}
-              href={product.href}
-            />
-          ))
-        }
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <script>
   import gsap from "gsap";
@@ -154,6 +156,20 @@ const products = [
 </script>
 
 <style>
+  /* .wrapper {
+    background:
+      url("/images/mushdisp-pattern-05percent.webp"),
+      linear-gradient(
+        to bottom,
+        oklch(from var(--color-secondary-200) l c h / 0.8) 70%,
+        oklch(from var(--color-secondary-200) l c h / 0.6) 200%
+      );
+    background-repeat: repeat;
+    background-size: auto;
+    background-attachment: fixed;
+    margin-block: 100px;
+  } */
+
   .product-heading {
     display: flex;
     gap: var(--sp-06);

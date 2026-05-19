@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+
+import location1 from "@images/locations/mushdisp-location-01.webp";
+import LocationCard from "@components/ui/LocationCard.astro";
+---
+
+<section class="section section--dark">
+  <div class="container">
+    <div class="contact-container">
+      <div class="locations-header">
+        <div class="phone-container">
+          <h2>3 Locations</h2>
+          <p>We have three storefronts in Vancouver, BC, Canada</p>
+          <p>Phone numbers for all locations:</p>
+          <p>604-343-4687</p>
+        </div>
+        <div class="phone-container">
+          <h2>Adults Only</h2>
+          <p>
+            Minors cannot enter unless accompanied by a parent. Minors cannot
+            make any purchases.
+          </p>
+        </div>
+      </div>
+      <div class="locations-card">
+        <LocationCard />
+        <LocationCard />
+        <LocationCard />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "sidebar cards";
+  }
+  .locations-header {
+    grid-area: sidebar;
+  }
+  .locations-card {
+    grid-area: cards;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-04);
+  }
+</style>

@@ -2,7 +2,45 @@
 
 ---
 
-<div class="icon">
+<svg
+  style="position:absolute;width:0;height:0;overflow:hidden;"
+  aria-hidden="true"
+>
+  <defs>
+    <filter
+      id="ca-smiley"
+      x="-15%"
+      y="-15%"
+      width="130%"
+      height="130%"
+      color-interpolation-filters="sRGB"
+    >
+      <feColorMatrix
+        type="matrix"
+        values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"
+        in="SourceGraphic"
+        result="r"></feColorMatrix>
+      <feOffset id="ca-smiley-r" in="r" dx="0" dy="0" result="r-shift"
+      ></feOffset>
+      <feColorMatrix
+        type="matrix"
+        values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0"
+        in="SourceGraphic"
+        result="g"></feColorMatrix>
+      <feColorMatrix
+        type="matrix"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0"
+        in="SourceGraphic"
+        result="b"></feColorMatrix>
+      <feOffset id="ca-smiley-b" in="b" dx="0" dy="0" result="b-shift"
+      ></feOffset>
+      <feBlend in="r-shift" in2="g" mode="screen" result="rg"></feBlend>
+      <feBlend in="rg" in2="b-shift" mode="screen"></feBlend>
+    </filter>
+  </defs>
+</svg>
+
+<div class="icon" id="smiley-icon">
   <svg width="56" height="56" viewBox="0 0 60 60" fill="none">
     <circle
       cx="26.25"
@@ -40,8 +78,52 @@
     transform: rotate(16deg);
     filter: var(--art-shadow-color-shallow);
   }
+
   .icon svg {
     width: 4.5rem;
     height: auto;
   }
+
+  .icon svg.ca-on {
+    filter: url(#ca-smiley);
+  }
 </style>
+
+<script>
+  const icon = document.getElementById("smiley-icon");
+  const svg = icon?.querySelector("svg");
+  const rOffset = document.getElementById(
+    "ca-smiley-r",
+  ) as SVGFEOffsetElement | null;
+  const bOffset = document.getElementById(
+    "ca-smiley-b",
+  ) as SVGFEOffsetElement | null;
+
+  if (icon && svg && rOffset && bOffset) {
+    let cur = 0,
+      target = 0;
+
+    function tick() {
+      cur += (target - cur) * 0.1;
+      if (Math.abs(cur) < 0.05) {
+        cur = 0;
+        if (target === 0) svg!.classList.remove("ca-on");
+      }
+      rOffset!.setAttribute("dx", cur.toFixed(2));
+      bOffset!.setAttribute("dx", (-cur).toFixed(2));
+      requestAnimationFrame(tick);
+    }
+
+    icon.addEventListener("mousemove", (e) => {
+      const rect = icon.getBoundingClientRect();
+      target = ((e.clientX - rect.left) / rect.width - 0.5) * 22;
+      svg!.classList.add("ca-on");
+    });
+
+    icon.addEventListener("mouseleave", () => {
+      target = 0;
+    });
+
+    requestAnimationFrame(tick);
+  }
+</script>

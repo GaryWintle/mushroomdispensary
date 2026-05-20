@@ -2,7 +2,43 @@
 import { Image } from "astro:assets";
 
 import location1 from "@images/locations/mushdisp-location-01.webp";
+import location2 from "@images/locations/mushdisp-location-02.avif";
+import location3 from "@images/locations/mushdisp-location-03.jpg";
+
 import LocationCard from "@components/ui/LocationCard.astro";
+
+const locations = [
+  {
+    cityArea: "West End Vancouver",
+    address: "1674 Davie St.",
+    storeHours: [
+      { days: "Mon-Wed", hours: "11am-7pm" },
+      { days: "Thu-Sat", hours: "10am-11pm" },
+      { days: "Sun", hours: "11am-6pm" },
+    ],
+    image: location1,
+  },
+  {
+    cityArea: "East Vancouver",
+    address: "651 East Hastings",
+    storeHours: [
+      { days: "Mon-Thu", hours: "10am-10pm" },
+      { days: "Fri-Sat", hours: "10am-11pm" },
+      { days: "Sun", hours: "11am-6pm" },
+    ],
+    image: location2,
+  },
+  {
+    cityArea: "Mount Pleasant",
+    address: "247 West Broadway",
+    storeHours: [
+      { days: "Mon-Wed", hours: "11am-7pm" },
+      { days: "Thu-Sat", hours: "10am-10pm" },
+      { days: "Sun", hours: "11am-6pm" },
+    ],
+    image: location3,
+  },
+];
 ---
 
 <section class="section section--dark">
@@ -24,9 +60,16 @@ import LocationCard from "@components/ui/LocationCard.astro";
         </div>
       </div>
       <div class="locations-card">
-        <LocationCard />
-        <LocationCard />
-        <LocationCard />
+        {
+          locations.map((location) => (
+            <LocationCard
+              cityArea={location.cityArea}
+              address={location.address}
+              storeHours={location.storeHours}
+              image={location.image}
+            />
+          ))
+        }
       </div>
     </div>
   </div>

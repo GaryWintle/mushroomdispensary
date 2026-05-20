@@ -2,15 +2,16 @@
   /* COLOR PALETTE */
 
   /* Primary */
-  --color-primary-200: oklch(0.9433 0.2001 105.99);
+  --color-primary-200: oklch(93.515% 0.197 104.636);
 
   /* Secondary */
-  --color-secondary-200: oklch(0.6105 0.2438 352.5);
+  --color-secondary-200: oklch(0.61 0.244 353);
 
   /* Neutrals */
-  --color-neutral-100: oklch(0.9814 0.0045 258.32);
-  --color-neutral-200: oklch(0.9641 0.0069 304.24);
-  --color-neutral-600: oklch(0.2794 0.0199 311.83);
+  --color-neutral-100: oklch(0.99 0.0035 258);
+  --color-neutral-200: oklch(0.96 0.007 304);
+  --color-neutral-500: oklch(32.738% 0.02662 310.53);
+  --color-neutral-600: oklch(0.28 0.02 312);
 
   /* Transparencies */
   --color-neutral-600-50: oklch(from var(--color-neutral-600) l c h / 0.5);
@@ -111,6 +112,7 @@
   --art-shadow-color-deep: drop-shadow(8px 8px 0 var(--color-secondary-200));
 
   /* Borders */
+  --border-photo-dark-thin: 2px solid var(--color-neutral-500);
   --border-surface-color-thin: 3px solid var(--color-neutral-600);
   --border-surface-dark-thin-highlight: 2px solid var(--color-primary-200);
   --border-surface-dark-thin: 2px solid var(--color-secondary-200);

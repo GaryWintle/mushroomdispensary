@@ -32,6 +32,12 @@ img {
 .section {
   padding-block: var(--space-section-block);
 }
+.section-only-top {
+  padding-block-start: var(--space-section-block);
+}
+.section-only-bottom {
+  padding-block-end: var(--space-section-block);
+}
 
 /* for width, centering, and gutters */
 .container {

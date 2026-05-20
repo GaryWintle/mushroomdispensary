@@ -8,92 +8,94 @@ interface Props {
 const { images } = Astro.props;
 ---
 
-<div class="wrapper">
-  <section
-    class="embla container"
-    aria-label="Store photo gallery"
-    aria-roledescription="carousel"
-  >
-    <h2 class="subtitle">In Vancouver?</h2>
-    <p class="text-body-display --bottom-margin">
-      Don't miss out on a chance to come say high!
-    </p>
-    <div class="embla__viewport">
-      <div class="embla__container">
-        {
-          images.map((img, i) => (
-            <div
-              class="embla__slide"
-              role="group"
-              aria-roledescription="slide"
-              aria-label={`${i + 1} of ${images.length}`}
-            >
-              <img
-                src={img.src}
-                alt={img.alt}
-                loading={i === 0 ? "eager" : "lazy"}
-                draggable="false"
-              />
-              {img.caption && <p class="slide__caption">{img.caption}</p>}
-            </div>
-          ))
-        }
-      </div>
+<section
+  class="embla section section--dark container"
+  aria-label="Store photo gallery"
+  aria-roledescription="carousel"
+>
+  <div class="product-heading">
+    <div class="text-title-hero"><h2>In Vancouver?</h2></div>
+    <div class="text-body-display">
+      <p class="text-body">
+        We are Vancouver’s source for microdose and high-dose psychedelics and
+        plant medicines. Come check us out!
+      </p>
     </div>
-    <div class="wrapper-mushyguy-smiley">
-      <MushyGuySmiley />
+  </div>
+  <div class="embla__viewport">
+    <div class="embla__container">
+      {
+        images.map((img, i) => (
+          <div
+            class="embla__slide"
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${i + 1} of ${images.length}`}
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              loading={i === 0 ? "eager" : "lazy"}
+              draggable="false"
+            />
+            {img.caption && <p class="slide__caption">{img.caption}</p>}
+          </div>
+        ))
+      }
     </div>
-    <button class="embla__btn embla__btn--prev" aria-label="Previous slide">
-      <div class="arrow arrow--left"><CarouselArrow /></div>
-    </button>
-    <button class="embla__btn embla__btn--next" aria-label="Next slide">
-      <div class="arrow arrow--right"><CarouselArrow /></div>
-    </button>
-    <div class="embla__dots" aria-label="Slide navigation" role="tablist"></div>
-  </section>
-</div>
+  </div>
+  <div class="wrapper-mushyguy-smiley">
+    <MushyGuySmiley />
+  </div>
+  <button class="embla__btn embla__btn--prev" aria-label="Previous slide">
+    <div class="arrow arrow--left"><CarouselArrow /></div>
+  </button>
+  <button class="embla__btn embla__btn--next" aria-label="Next slide">
+    <div class="arrow arrow--right"><CarouselArrow /></div>
+  </button>
+  <div class="embla__dots" aria-label="Slide navigation" role="tablist"></div>
+</section>
 
 <style>
-  .--bottom-margin {
-    margin-bottom: var(--sp-05);
+  .product-heading {
+    display: flex;
+    gap: var(--sp-06);
+    align-items: center;
+    margin-block-end: var(--sp-07);
   }
+  .text-title-hero {
+    flex: 1 0 none;
+    color: var(--color-surface-dark-text-highlight);
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 3.5vw, 3.5rem);
+    text-transform: uppercase;
+    text-box: trim-both cap alphabetic;
+  }
+
   .text-body-display {
+    flex: 1 0 25%;
     font-size: var(--text-lg);
-    color: var(--color-surface-dark-text);
-    text-align: center;
+  }
+
+  .text-body {
+    width: 100%;
   }
 
   .embla {
     position: relative;
     /* overflow: hidden;  */
     border-radius: var(--br-03);
-    margin-bottom: 120px;
+    /* margin-bottom: 120px; */
   }
 
   .embla__viewport {
     overflow: hidden;
     cursor: grab;
-    /* border: 1px solid var(--color-primary-200); */
-    /* box-shadow: var(--card-shadow-neutral-deep); */
+    border: var(--border-photo-dark-thin);
     border-radius: var(--br-03);
+    box-shadow: var(--card-shadow-neutral-deep);
   }
-  /* .embla__viewport::after {
-    content: "";
-    position: absolute;
-    inset: 25px;
-    box-shadow: inset 0 0 0 2px oklch(from var(--color-primary-200) l c h / 0.8);
-    z-index: 1;
-    pointer-events: none;
-    border-radius: var(--br-02);
-  }
-  .embla__viewport::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    box-shadow: inset 0 0 35px 5px var(--color-neutral-600-50);
-    z-index: 1;
-    pointer-events: none;
-  } */
+
   .embla__viewport.is-dragging {
     cursor: grabbing;
   }
@@ -105,27 +107,12 @@ const { images } = Astro.props;
 
   .embla__slide {
     position: relative;
-    flex: 0 0 91%; /* one slide at a time */
+    flex: 0 0 100%; /* one slide at a time */
     min-width: 0;
     aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: var(--br-03);
-    padding-left: var(--sp-04);
-  }
-
-  .embla__slide::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    left: var(--sp-04); /* match your padding-left gap */
-    background: oklch(0% 0 0 / 0.6);
-    border-radius: var(--br-03);
-    transition: opacity 300ms ease;
-    pointer-events: none;
-  }
-
-  .embla__slide.is-active::after {
-    opacity: 0;
+    /* padding-left: var(--sp-04); */
   }
 
   .embla__slide img {
@@ -225,7 +212,7 @@ const { images } = Astro.props;
   .wrapper-mushyguy-smiley {
     width: 5rem;
     position: absolute;
-    bottom: 20px;
+    bottom: 140px;
     right: 0;
     z-index: 2;
     pointer-events: none;

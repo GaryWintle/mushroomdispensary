@@ -1,52 +1,40 @@
 ---
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
-import location1 from "@images/locations/mushdisp-location-01.webp";
 
-// interface Props {
-//   location: string;
-//   address: string;
-//   image: ImageMetadata;
-//   hasGuide: boolean;
-//   href: string;
-// }
+interface Props {
+  cityArea: string;
+  address: string;
+  storeHours: { days: string; hours: string }[];
+  image: ImageMetadata;
+  // href: string;
+}
 
-// const {
-//   title = "Mushroom Dispensary",
-//   description = "This is just default text!",
-//   image,
-//   hasGuide = false,
-//   href = "/products",
-// } = Astro.props;
+const {
+  cityArea = "City Area",
+  address = "420 Hastings St.",
+  storeHours = [],
+  image,
+  // href = "/products",
+} = Astro.props;
 ---
 
 <div class="location">
   <div class="location-image">
-    <Image
-      src={location1}
-      loading="lazy"
-      width={600}
-      height={400}
-      alt="location"
-    />
+    <Image src={image} loading="lazy" width={600} height={400} alt="location" />
   </div>
   <div class="location-text-block">
-    <h3 class="text-location">West End Vancouver</h3>
-    <h4 class="text-address">1674 Davie St.</h4>
+    <h3 class="text-location">{cityArea}</h3>
+    <h4 class="text-address">{address}</h4>
 
     <div class="container-hours">
-      <p class="text-hours">
-        Mon-Wed:
-        <span class="hours-time">11am–7pm</span>
-      </p>
-      <p class="text-hours">
-        Thu-Sat:
-        <span class="hours-time">10am–11pm</span>
-      </p>
-      <p class="text-hours">
-        Sun:
-        <span class="hours-time">11am-6pm</span>
-      </p>
+      {
+        storeHours.map((s) => (
+          <p class="text-hours">
+            {s.days}: <span class="hours-time">{s.hours}</span>
+          </p>
+        ))
+      }
     </div>
   </div>
 </div>
@@ -56,15 +44,15 @@ import location1 from "@images/locations/mushdisp-location-01.webp";
     display: flex;
     border-radius: var(--br-03);
     overflow: hidden;
-    border: var(--border-surface-color-thin);
+    border: var(--border-photo-dark-thin);
     box-shadow: var(--card-shadow-neutral-deep);
   }
   .location-image {
-    flex: 1 0 auto;
-    height: auto;
-    aspect-ratio: 2 / 1;
+    flex: 4 1 0;
+    min-width: 0;
+    height: 100%;
     border-right: var(--border-surface-color-thick);
-    /* overflow: hidden; */
+    overflow: hidden;
   }
 
   .location-image img {
@@ -75,16 +63,21 @@ import location1 from "@images/locations/mushdisp-location-01.webp";
   }
 
   .location-text-block {
+    flex: 2 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
     background-color: var(--color-surface-light);
     color: var(--color-surface-light-text);
     padding-inline: var(--sp-07);
-    padding-block: var(--sp-07);
+    padding-block: var(--sp-05);
   }
 
   .text-location {
     color: var(--color-surface-light-text-highlight);
     font-family: var(--font-display);
-    font-size: var(--text-xl);
+    font-size: var(--text-2xl);
     text-transform: uppercase;
     line-height: var(--leading-tight);
     text-box: trim-both cap alphabetic;
@@ -93,19 +86,23 @@ import location1 from "@images/locations/mushdisp-location-01.webp";
   }
   .text-address {
     font-family: var(--font-body);
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
     margin-block-end: var(--sp-04);
     text-box: trim-both cap alphabetic;
     letter-spacing: var(--tracking-tight);
     font-variation-settings:
-      "wdth" 100,
+      "wdth" 87,
       "wght" 900;
+  }
+  .container-hours {
+    display: flex;
+    flex-direction: column;
   }
   .text-hours {
     font-family: var(--font-body);
-    font-size: var(--text-base);
+    font-size: var(--text-lg);
     font-variation-settings:
-      "wdth" 95,
+      "wdth" 90,
       "wght" 750;
   }
 

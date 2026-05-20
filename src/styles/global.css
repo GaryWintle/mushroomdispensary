@@ -67,6 +67,7 @@ img {
   line-height: var(--leading-tight);
   text-transform: uppercase;
   text-wrap: balance;
+  text-box: trim-both cap alphabetic;
 }
 
 .subtitle {

@@ -1,6 +1,7 @@
 ---
 import CarouselArrow from "@components/artwork/CarouselArrow.astro";
 import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
+import ArrowTwisty from "@components/artwork/ArrowTwisty.astro";
 
 interface Props {
   images: { src: string; alt: string; caption?: string }[];
@@ -14,12 +15,17 @@ const { images } = Astro.props;
   aria-roledescription="carousel"
 >
   <div class="product-heading">
-    <div class="text-title-hero"><h2>In Vancouver?</h2></div>
+    <div class="text-title-hero">
+      <h2>In Vancouver?</h2>
+    </div>
     <div class="text-body-display">
       <p class="text-body">
         We are Vancouver’s source for microdose and high-dose psychedelics and
         plant medicines. Come check us out!
       </p>
+    </div>
+    <div class="wrapper-twisty-arrow">
+      <ArrowTwisty />
     </div>
   </div>
   <div class="embla__viewport">
@@ -61,7 +67,7 @@ const { images } = Astro.props;
     display: flex;
     gap: var(--sp-06);
     align-items: center;
-    margin-block-end: var(--sp-07);
+    margin-block-end: var(--sp-08);
   }
   .text-title-hero {
     flex: 1 0 none;
@@ -78,7 +84,15 @@ const { images } = Astro.props;
   }
 
   .text-body {
-    width: 100%;
+    width: 90%;
+  }
+
+  .wrapper-twisty-arrow {
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    transform: rotate(20deg);
+    z-index: 2;
   }
 
   .embla {

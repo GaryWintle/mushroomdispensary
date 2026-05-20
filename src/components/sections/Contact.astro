@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import location1 from "@images/locations/mushdisp-location-01.webp";
 import location2 from "@images/locations/mushdisp-location-02.avif";
 import location3 from "@images/locations/mushdisp-location-03.jpg";
+import PhoneIllo from "@components/artwork/PhoneIllo.astro";
 
 import LocationCard from "@components/ui/LocationCard.astro";
 
@@ -44,21 +45,32 @@ const locations = [
 <section class="section section--dark">
   <div class="container">
     <div class="contact-container">
-      <div class="locations-header">
-        <div class="phone-container">
-          <h2>3 Locations</h2>
-          <p>We have three storefronts in Vancouver, BC, Canada</p>
-          <p>Phone numbers for all locations:</p>
-          <p>604-343-4687</p>
+      <div class="locations-header-container">
+        <div class="locations-header">
+          <div class="header-text-container">
+            <h2 class="subtitle --bignumber">3</h2>
+            <h2 class="subtitle --locations">Locations!</h2>
+            <p class="text-body-display">
+              We have three storefronts in Vancouver, BC, Canada
+            </p>
+          </div>
+          <div class="illo-container">
+            <PhoneIllo />
+          </div>
+          <div class="bottom-text-container">
+            <p class="text-body-display">Phone numbers for all locations:</p>
+            <p class="subtitle --phonenumber">604-343-4687</p>
+          </div>
         </div>
-        <div class="phone-container">
-          <h2>Adults Only</h2>
-          <p>
+        <div class="container-adultsonly">
+          <h2 class="subtitle">Adults Only</h2>
+          <p class="text-body-display">
             Minors cannot enter unless accompanied by a parent. Minors cannot
             make any purchases.
           </p>
         </div>
       </div>
+
       <div class="locations-card">
         {
           locations.map((location) => (
@@ -80,14 +92,51 @@ const locations = [
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-areas: "sidebar cards";
+    gap: var(--sp-05);
   }
   .locations-header {
     grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-06);
   }
   .locations-card {
     grid-area: cards;
     display: flex;
     flex-direction: column;
     gap: var(--sp-04);
+  }
+  .locations-header {
+    border: var(--border-surface-dark-thin);
+    border-radius: var(--br-03);
+    background-color: var(--color-neutral-600-50);
+
+    position: relative;
+    padding-block-start: var(--sp-09);
+    padding-block-end: var(--sp-06);
+    text-align: center;
+  }
+  /* .phone-container {
+    position: relative;
+    padding-block-start: var(--sp-09);
+    padding-block-end: var(--sp-06);
+    text-align: center;
+  } */
+  .--bignumber {
+    font-size: 10rem;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-box: trim-both cap alphabetic;
+  }
+  .--locations {
+    font-size: clamp(2rem, calc(5vw + 1rem), 3rem);
+    text-transform: uppercase;
+  }
+  .--phonenumber {
+    font-size: clamp(2rem, calc(5vw + 1rem), 3rem);
+    text-transform: uppercase;
   }
 </style>

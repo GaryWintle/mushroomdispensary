@@ -7,6 +7,7 @@ interface Props {
   address: string;
   storeHours: { days: string; hours: string }[];
   image: ImageMetadata;
+  locationIcon: string;
   // href: string;
 }
 
@@ -15,6 +16,7 @@ const {
   address = "420 Hastings St.",
   storeHours = [],
   image,
+  locationIcon,
   // href = "/products",
 } = Astro.props;
 ---
@@ -24,6 +26,7 @@ const {
     <Image src={image} loading="lazy" width={600} height={400} alt="location" />
   </div>
   <div class="location-text-block">
+    <div set:html={locationIcon} class="location-icon" />
     <h3 class="text-location">{cityArea}</h3>
     <h4 class="text-address">{address}</h4>
 
@@ -60,6 +63,11 @@ const {
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .location-image:hover img {
+    transform: scale(1.25);
   }
 
   .location-text-block {
@@ -72,6 +80,15 @@ const {
     color: var(--color-surface-light-text);
     padding-inline: var(--sp-07);
     padding-block: var(--sp-05);
+    position: relative;
+  }
+
+  .location-icon {
+    position: absolute;
+    width: 4rem;
+    top: 15%;
+    left: -10%;
+    filter: var(--art-shadow-neutral-medium);
   }
 
   .text-location {

@@ -1,10 +1,15 @@
 ---
 import { Image } from "astro:assets";
 
-import location1 from "@images/locations/mushdisp-location-01.webp";
-import location2 from "@images/locations/mushdisp-location-02.avif";
-import location3 from "@images/locations/mushdisp-location-03.jpg";
+// import location1 from "@images/locations/mushdisp-location-01.webp";
+import location1 from "@images/locations/map01.png";
+import location2 from "@images/locations/map02.png";
+import location3 from "@images/locations/map03.png";
 import PhoneIllo from "@components/artwork/PhoneIllo.astro";
+import LocationIcon01 from "@images/location1.svg?raw";
+import LocationIcon02 from "@images/location2.svg?raw";
+import LocationIcon03 from "@images/location3.svg?raw";
+
 import NineteenPlus from "@components/artwork/NineteenPlus.astro";
 
 import LocationCard from "@components/ui/LocationCard.astro";
@@ -19,6 +24,7 @@ const locations = [
       { days: "Sun", hours: "11am-6pm" },
     ],
     image: location1,
+    locationIcon: LocationIcon01,
   },
   {
     cityArea: "East Vancouver",
@@ -29,6 +35,7 @@ const locations = [
       { days: "Sun", hours: "11am-6pm" },
     ],
     image: location2,
+    locationIcon: LocationIcon02,
   },
   {
     cityArea: "Mount Pleasant",
@@ -39,6 +46,7 @@ const locations = [
       { days: "Sun", hours: "11am-6pm" },
     ],
     image: location3,
+    locationIcon: LocationIcon03,
   },
 ];
 ---
@@ -85,6 +93,7 @@ const locations = [
               address={location.address}
               storeHours={location.storeHours}
               image={location.image}
+              locationIcon={location.locationIcon}
             />
           ))
         }

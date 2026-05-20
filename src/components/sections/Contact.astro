@@ -5,6 +5,7 @@ import location1 from "@images/locations/mushdisp-location-01.webp";
 import location2 from "@images/locations/mushdisp-location-02.avif";
 import location3 from "@images/locations/mushdisp-location-03.jpg";
 import PhoneIllo from "@components/artwork/PhoneIllo.astro";
+import NineteenPlus from "@components/artwork/NineteenPlus.astro";
 
 import LocationCard from "@components/ui/LocationCard.astro";
 
@@ -58,16 +59,21 @@ const locations = [
             <PhoneIllo />
           </div>
           <div class="bottom-text-container">
-            <p class="text-body-display">Phone numbers for all locations:</p>
+            <p class="text-body-display">
+              Phone number for<br />all locations:
+            </p>
             <p class="subtitle --phonenumber">604-343-4687</p>
           </div>
         </div>
         <div class="container-adultsonly">
-          <h2 class="subtitle">Adults Only</h2>
+          <h2 class="subtitle --adultsonly">Adults Only</h2>
           <p class="text-body-display">
             Minors cannot enter unless accompanied by a parent. Minors cannot
             make any purchases.
           </p>
+          <div class="art-container">
+            <NineteenPlus />
+          </div>
         </div>
       </div>
 
@@ -138,5 +144,20 @@ const locations = [
   .--phonenumber {
     font-size: clamp(2rem, calc(5vw + 1rem), 3rem);
     text-transform: uppercase;
+  }
+
+  .container-adultsonly {
+    padding-block: var(--sp-07);
+    padding-inline: var(--sp-07);
+    position: relative;
+  }
+
+  .--adultsonly {
+    text-align: start;
+  }
+  .art-container {
+    position: absolute;
+    top: 48px;
+    right: 24px;
   }
 </style>

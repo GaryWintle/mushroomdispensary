@@ -89,3 +89,10 @@ img {
     "wght" 700;
   text-wrap: balance;
 }
+
+.--underline {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--color-secondary-200);
+}

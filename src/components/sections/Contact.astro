@@ -25,7 +25,7 @@ const locations = [
     ],
     image: location1,
     locationIcon: LocationIcon01,
-    href: "https://maps.app.goo.gl/obv896WAwTtwXzNX7",
+    href: "https://maps.app.goo.gl/ZWsd2aXFoNPHkgMFA",
   },
   {
     cityArea: "East Vancouver",
@@ -37,7 +37,7 @@ const locations = [
     ],
     image: location2,
     locationIcon: LocationIcon02,
-    href: "https://maps.app.goo.gl/obv896WAwTtwXzNX7",
+    href: "https://maps.app.goo.gl/fSV8WLYfYqDHX6oY8",
   },
   {
     cityArea: "Mount Pleasant",
@@ -71,16 +71,18 @@ const locations = [
           </div>
           <div class="bottom-text-container">
             <p class="text-body-display">
-              Same phone number for all locations:
+              Same phone number <br />for all locations:
             </p>
-            <p class="subtitle --phonenumber">604-343-4687</p>
+            <a href="tel:+16043434687" class="subtitle --phonenumber"
+              >604-343-4687</a
+            >
           </div>
         </div>
         <div class="container-adultsonly">
           <h2 class="subtitle --adultsonly">Adults Only</h2>
           <p class="text-body-display">
-            Minors cannot enter unless accompanied by a parent. Minors cannot
-            make any purchases.
+            Minors <span class="--underline">cannot enter</span> unless accompanied
+            by a parent. Minors cannot make any purchases.
           </p>
           <div class="art-container">
             <NineteenPlus />
@@ -135,7 +137,7 @@ const locations = [
 
     position: relative;
     padding-block-start: var(--sp-09);
-    padding-block-end: var(--sp-06);
+    padding-block-end: var(--sp-08);
     text-align: center;
   }
   /* .phone-container {
@@ -171,11 +173,18 @@ const locations = [
     text-align: start;
   }
   .text-body-display {
-    font-size: var(--text-base);
+    font-size: var(--text-lg);
   }
   .art-container {
     position: absolute;
     top: 48px;
     right: 24px;
+  }
+
+  .--underline {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--color-secondary-200);
   }
 </style>

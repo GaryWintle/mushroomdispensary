@@ -60,8 +60,8 @@ const locations = [
       <div class="locations-header-container">
         <div class="locations-header">
           <div class="header-text-container">
-            <h2 class="subtitle --bignumber">3</h2>
-            <h2 class="subtitle --locations">Locations!</h2>
+            <h2 class="subtitle --bignumber --margin-bottom">3</h2>
+            <h2 class="subtitle --locations --margin-bottom">Locations!</h2>
             <p class="text-body-display">
               We have three storefronts in Vancouver, BC, Canada
             </p>
@@ -70,7 +70,7 @@ const locations = [
             <PhoneIllo />
           </div>
           <div class="bottom-text-container">
-            <p class="text-body-display">
+            <p class="text-body-display --margin-bottom-large">
               Same phone number <br />for all locations:
             </p>
             <a href="tel:+16043434687" class="subtitle --phonenumber"
@@ -79,9 +79,9 @@ const locations = [
           </div>
         </div>
         <div class="container-adultsonly">
-          <h2 class="subtitle --adultsonly">Adults Only</h2>
+          <h2 class="subtitle --adultsonly --margin-bottom">Adults Only</h2>
           <p class="text-body-display">
-            Minors <span class="--underline">cannot enter</span> unless accompanied
+            Minors <span class="--underline">cannot enter </span> unless accompanied
             by a parent. Minors cannot make any purchases.
           </p>
           <div class="art-container">
@@ -120,7 +120,7 @@ const locations = [
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--sp-06);
+    gap: var(--sp-07);
     padding-inline: var(--sp-05);
     padding-block: var(--sp-05);
   }
@@ -140,12 +140,6 @@ const locations = [
     padding-block-end: var(--sp-08);
     text-align: center;
   }
-  /* .phone-container {
-    position: relative;
-    padding-block-start: var(--sp-09);
-    padding-block-end: var(--sp-06);
-    text-align: center;
-  } */
   .--bignumber {
     font-size: 10rem;
     position: absolute;
@@ -155,16 +149,18 @@ const locations = [
     text-box: trim-both cap alphabetic;
   }
   .--locations {
+    margin-top: 0.2em;
     font-size: clamp(2rem, calc(5vw + 1rem), 3rem);
     text-transform: uppercase;
   }
   .--phonenumber {
+    font-family: var(--font-display);
     font-size: clamp(2rem, calc(5vw + 1rem), 3rem);
     text-transform: uppercase;
   }
 
   .container-adultsonly {
-    padding-block: var(--sp-07);
+    padding-block: var(--sp-08);
     padding-inline: var(--sp-07);
     position: relative;
   }
@@ -172,19 +168,9 @@ const locations = [
   .--adultsonly {
     text-align: start;
   }
-  .text-body-display {
-    font-size: var(--text-lg);
-  }
   .art-container {
     position: absolute;
-    top: 48px;
+    top: 22px;
     right: 24px;
-  }
-
-  .--underline {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
-    text-decoration-color: var(--color-secondary-200);
   }
 </style>

@@ -3,9 +3,11 @@
 
   /* Primary */
   --color-primary-200: oklch(93.515% 0.197 104.636);
+  --color-primary-100: oklch(from var(--color-secondary-200) l c h);
 
   /* Secondary */
   --color-secondary-200: oklch(0.61 0.244 353);
+  --color-secondary-300: oklch(from var(--color-secondary-200) 0.22 c h);
 
   /* Neutrals */
   --color-neutral-100: oklch(0.99 0.0035 258);

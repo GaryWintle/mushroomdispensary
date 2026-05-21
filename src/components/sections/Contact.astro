@@ -54,7 +54,7 @@ const locations = [
 ];
 ---
 
-<section class="section section--dark">
+<section class="section section--dark contact">
   <div class="container">
     <div class="contact-container">
       <div class="locations-header-container">
@@ -107,6 +107,35 @@ const locations = [
     </div>
   </div>
 </section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".contact",
+      start: "top 80%",
+    },
+  });
+
+  tl.from(".locations-header-container", {
+    opacity: 0,
+    y: 20,
+    duration: 0.5,
+    ease: "power2.out",
+  }).from(
+    ".locations-card .location",
+    {
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+      stagger: 0.25,
+    },
+    "+=0.1",
+  );
+</script>
 
 <style>
   .contact-container {

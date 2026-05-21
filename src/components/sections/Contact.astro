@@ -2,9 +2,9 @@
 import { Image } from "astro:assets";
 
 // import location1 from "@images/locations/mushdisp-location-01.webp";
-import location1 from "@images/locations/map01.png";
-import location2 from "@images/locations/map02.png";
-import location3 from "@images/locations/map03.png";
+import location1 from "@images/locations/Map01-davie.png";
+import location2 from "@images/locations/Map02-eastvancouver.png";
+import location3 from "@images/locations/Map03-mountpleasant.png";
 import PhoneIllo from "@components/artwork/PhoneIllo.astro";
 import LocationIcon01 from "@images/location1.svg?raw";
 import LocationIcon02 from "@images/location2.svg?raw";
@@ -25,6 +25,7 @@ const locations = [
     ],
     image: location1,
     locationIcon: LocationIcon01,
+    href: "https://maps.app.goo.gl/obv896WAwTtwXzNX7",
   },
   {
     cityArea: "East Vancouver",
@@ -36,6 +37,7 @@ const locations = [
     ],
     image: location2,
     locationIcon: LocationIcon02,
+    href: "https://maps.app.goo.gl/obv896WAwTtwXzNX7",
   },
   {
     cityArea: "Mount Pleasant",
@@ -47,6 +49,7 @@ const locations = [
     ],
     image: location3,
     locationIcon: LocationIcon03,
+    href: "https://maps.app.goo.gl/obv896WAwTtwXzNX7",
   },
 ];
 ---
@@ -94,6 +97,7 @@ const locations = [
               storeHours={location.storeHours}
               image={location.image}
               locationIcon={location.locationIcon}
+              href={location.href}
             />
           ))
         }
@@ -165,6 +169,9 @@ const locations = [
 
   .--adultsonly {
     text-align: start;
+  }
+  .text-body-display {
+    font-size: var(--text-base);
   }
   .art-container {
     position: absolute;

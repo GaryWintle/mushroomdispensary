@@ -8,7 +8,7 @@ interface Props {
   storeHours: { days: string; hours: string }[];
   image: ImageMetadata;
   locationIcon: string;
-  // href: string;
+  href: string;
 }
 
 const {
@@ -17,14 +17,20 @@ const {
   storeHours = [],
   image,
   locationIcon,
-  // href = "/products",
+  href = "/",
 } = Astro.props;
 ---
 
 <div class="location">
-  <div class="location-image">
-    <Image src={image} loading="lazy" width={600} height={400} alt="location" />
-  </div>
+  <a href={href} class="location-image">
+    <Image
+      src={image}
+      loading="lazy"
+      width={1042}
+      height={693}
+      alt="location"
+    />
+  </a>
   <div class="location-text-block">
     <div set:html={locationIcon} class="location-icon" />
     <h3 class="text-location">{cityArea}</h3>
@@ -60,6 +66,7 @@ const {
 
   .location-image img {
     width: 100%;
+    max-width: 518px;
     height: 100%;
     object-fit: cover;
     display: block;

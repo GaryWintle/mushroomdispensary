@@ -125,7 +125,7 @@
   /* TYPOGRAPHY */
 
   /* Font families */
-  --font-display: "MushDispHeader", serif;
+  --font-display: "mushdispHeader", "mushdispHeader Fallback", serif;
   --font-body: "Archivo", sans-serif;
 
   /* Scale  */

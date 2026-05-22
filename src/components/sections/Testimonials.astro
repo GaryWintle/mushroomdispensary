@@ -35,55 +35,73 @@
       </div>
     </div>
   </div>
+</section>
 
-  <style>
+<style>
+  .testimonials-flex {
+    display: flex;
+    gap: var(--sp-04);
+  }
+  .testimonial {
+    /* background-color: var(--color-surface-colored); */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--color-neutral-600-50);
+    border-radius: var(--br-03);
+    padding-inline: var(--sp-06);
+    padding-block: var(--sp-07);
+    box-shadow: var(--card-shadow-neutral-deep);
+    border: var(--border-surface-dark-thin);
+
+    /* backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px); */
+  }
+
+  .test-1 {
+    flex: 1;
+  }
+  .test-2 {
+    flex: 1.2;
+  }
+
+  .test-3 {
+    flex: 1;
+  }
+
+  .testimonial-quote {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    line-height: var(--leading-loose);
+    margin-block-end: var(--sp-04);
+    font-style: italic;
+    text-wrap: balance;
+  }
+
+  .organization-name {
+    color: var(--color-surface-colored-text-highlight);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-variation-settings:
+      "wdth" 110,
+      "wght" 700;
+  }
+
+  @media (max-width: 900px) {
     .testimonials-flex {
-      display: flex;
-      gap: var(--sp-04);
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
     }
     .testimonial {
-      /* background-color: var(--color-surface-colored); */
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background-color: var(--color-neutral-600-50);
-      border-radius: var(--br-03);
-      padding-inline: var(--sp-06);
-      padding-block: var(--sp-07);
-      box-shadow: var(--card-shadow-neutral-deep);
-      border: var(--border-surface-dark-thin);
-
-      /* backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px); */
+      flex: 0 0 85%;
+      scroll-snap-align: start;
     }
-
-    .test-1 {
-      flex: 1;
-    }
-    .test-2 {
-      flex: 1.2;
-    }
-
+    /* .test-1,
+    .test-2,
     .test-3 {
-      flex: 1;
-    }
-
-    .testimonial-quote {
-      font-family: var(--font-body);
-      font-size: var(--text-lg);
-      line-height: var(--leading-loose);
-      margin-block-end: var(--sp-04);
-      font-style: italic;
-      text-wrap: balance;
-    }
-
-    .organization-name {
-      color: var(--color-surface-colored-text-highlight);
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      font-variation-settings:
-        "wdth" 110,
-        "wght" 700;
-    }
-  </style>
-</section>
+      flex-shrink: 0;
+      flex: unset;
+    } */
+  }
+</style>

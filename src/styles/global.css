@@ -16,6 +16,9 @@
   line-gap-override: 16.34%;
   size-adjust: 122.39%;
 }
+* {
+  /* border: 2px solid red; */
+}
 
 .skip-link {
   position: absolute;
@@ -30,6 +33,9 @@
 ::selection {
   background-color: var(--color-primary-200);
   color: var(--color-secondary-200);
+}
+html {
+  overflow-x: clip;
 }
 
 body {

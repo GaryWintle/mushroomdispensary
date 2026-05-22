@@ -8,8 +8,12 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
   <div class="container">
     <div class="hero-grid">
       <div class="hero-card">
-        <Smiley />
-        <SeenOnTV />
+        <div class="icon-smiley">
+          <Smiley />
+        </div>
+        <div class="icon-seen-on-tv">
+          <SeenOnTV />
+        </div>
         <h1 class="text-title-hero">
           Dedicated to&#8200;a&#8200;safe, psychedelic supply
         </h1>
@@ -48,13 +52,8 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
   .hero-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    align-items: start;
     gap: var(--sp-04);
-  }
-
-  @container hero (max-width: 48rem) {
-    .hero-grid {
-      grid-template-columns: 1fr;
-    }
   }
 
   .hero-card {
@@ -67,6 +66,7 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
     padding-block: var(--sp-07);
     padding-inline: var(--sp-06);
     box-shadow: var(--card-shadow-neutral-deep);
+    align-self: stretch;
   }
 
   .hero-text-body {
@@ -77,6 +77,7 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
     border-radius: var(--br-03);
     overflow: hidden;
     box-shadow: var(--card-shadow-neutral-deep);
+    aspect-ratio: 16 / 9;
   }
 
   .video-wrapper {
@@ -129,5 +130,109 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
   .inline-icon svg {
     width: 1em;
     height: auto;
+  }
+  .icon-seen-on-tv {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(35%, -20%) rotate(-5deg);
+    z-index: 2;
+  }
+
+  .icon-seen-on-tv :global(svg) {
+    width: 9rem;
+    height: 9rem;
+    filter: var(--art-shadow-neutral-medium);
+  }
+
+  .icon-smiley {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-17%, 45%) rotate(16deg);
+    filter: var(--art-shadow-color-shallow);
+  }
+
+  .icon-smiley :global(svg) {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  @container hero (max-width: 1177px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .hero-video {
+      order: -1;
+    }
+    .hero-card {
+      flex-direction: row;
+      border-top: var(--border-photo-dark-thin);
+      border-radius: 0 0 var(--br-03) var(--br-03);
+      align-items: start;
+      padding-block-start: var(--sp-06);
+      padding-block-end: var(--sp-07);
+    }
+    .hero-text-body {
+      text-box: trim-both cap alphabetic;
+      width: 80%;
+    }
+    .hero-video {
+      border-radius: var(--br-03);
+      overflow: hidden;
+      border-radius: var(--br-03) var(--br-03) 0 0;
+      box-shadow: var(--card-shadow-neutral-deep);
+      aspect-ratio: 16 / 9;
+    }
+    .icon-seen-on-tv {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      transform: translate(20%, -160%) rotate(35deg);
+      z-index: 2;
+    }
+
+    .icon-seen-on-tv :global(svg) {
+      width: 9rem;
+      height: 9rem;
+      filter: var(--art-shadow-neutral-medium);
+    }
+    .icon-smiley {
+      transform: translate(20%, 155%) rotate(16deg);
+    }
+
+    .icon-smiley :global(svg) {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+  @container hero (max-width: 850px) {
+    .hero-card {
+      flex-direction: column;
+      border-top: var(--border-photo-dark-thin);
+      border-radius: 0 0 var(--br-03) var(--br-03);
+      align-items: start;
+      padding-block-start: var(--sp-06);
+      padding-block-end: var(--sp-07);
+    }
+    .icon-seen-on-tv {
+      transform: translate(20%, -60%) rotate(35deg);
+      z-index: 2;
+    }
+
+    .icon-seen-on-tv :global(svg) {
+      width: 9rem;
+      height: 9rem;
+    }
+    .icon-smiley {
+      transform: translate(-150%, 155%) rotate(16deg);
+    }
+
+    .icon-smiley :global(svg) {
+      width: 4.5rem;
+      height: 4.5rem;
+    }
   }
 </style>

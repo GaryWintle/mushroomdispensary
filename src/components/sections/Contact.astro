@@ -202,4 +202,14 @@ const locations = [
     top: 22px;
     right: 24px;
   }
+
+  @media (max-width: 1135px) {
+    .contact-container {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "sidebar"
+        "cards";
+      gap: var(--sp-05);
+    }
+  }
 </style>

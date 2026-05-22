@@ -140,4 +140,21 @@ const {
   .hours-time {
     color: var(--color-surface-light-text-highlight);
   }
+  @media (max-width: 577px) {
+    .location {
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--br-03);
+      overflow: hidden;
+      border: var(--border-photo-dark-thin);
+      box-shadow: var(--card-shadow-neutral-deep);
+    }
+    .location-image {
+      flex: 1 1 100%;
+      min-width: 0;
+      height: 100%;
+      border-right: var(--border-surface-color-thick);
+      overflow: hidden;
+    }
+  }
 </style>

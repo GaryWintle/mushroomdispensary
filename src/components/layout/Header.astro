@@ -13,11 +13,11 @@ import MushDispLogoText from "@components/artwork/MushDispLogoText.astro";
           Mushrooms • DMT • Peyote • Kratom • LSD
         </p>
       </div>
-      <ul class="nav-links-flex">
+      <ul class="nav-links-flex --hidden">
         <li>Our Story</li>
-        <li>In The News</li>
-        <li>Hours & Contact</li>
-        <li>Full Menu</li>
+        <li>News</li>
+        <li>Contact</li>
+        <li>Menu</li>
       </ul>
     </nav>
   </div>
@@ -82,5 +82,11 @@ import MushDispLogoText from "@components/artwork/MushDispLogoText.astro";
       "wdth" 100,
       "wght" 800;
     text-shadow: var(--text-shadow-color);
+  }
+
+  @media (max-width: 987px) {
+    .--hidden {
+      display: none;
+    }
   }
 </style>

@@ -92,16 +92,13 @@
       overflow-x: scroll;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
+      margin-inline: calc(-1 * var(--space-section-inline));
+      padding-inline: var(--space-section-inline);
+      scroll-padding-inline: var(--space-section-inline);
     }
     .testimonial {
       flex: 0 0 85%;
       scroll-snap-align: start;
     }
-    /* .test-1,
-    .test-2,
-    .test-3 {
-      flex-shrink: 0;
-      flex: unset;
-    } */
   }
 </style>

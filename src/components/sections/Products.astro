@@ -96,7 +96,7 @@ const products = [
               we do!
             </p>
           </div>
-          <div class="cta">
+          <div class="cta --desktop">
             <div class="wrapper-twisty-arrow">
               <ArrowTwisty />
             </div>
@@ -120,6 +120,14 @@ const products = [
               />
             ))
           }
+        </div>
+      </div>
+      <div class="cta --mobile">
+        <div class="wrapper-mushyguy-hazy">
+          <Fragment set:html={MushyGuyHazy} />
+        </div>
+        <div class="wrapper-cta-button">
+          <CTAButton text="Full Menu!" />
         </div>
       </div>
     </div>
@@ -244,5 +252,31 @@ const products = [
     align-items: stretch;
     column-gap: var(--sp-05);
     row-gap: var(--sp-06);
+  }
+
+  @media (max-width: 1075px) {
+    .product-heading {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-06);
+      align-items: center;
+      margin-block-end: var(--sp-08);
+    }
+    .--desktop {
+      display: none;
+    }
+  }
+  @media (max-width: 600px) {
+    .product-grid {
+      grid-template-columns: unset; /* kills the auto-fill */
+      grid-auto-flow: column; /* items flow horizontally */
+      grid-auto-columns: 85%; /* each implicit column is 85% wide */
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      margin-inline: calc(-1 * var(--space-section-inline));
+      padding-inline: var(--space-section-inline);
+      scroll-padding-inline: var(--space-section-inline);
+    }
   }
 </style>

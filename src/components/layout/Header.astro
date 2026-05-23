@@ -1,24 +1,30 @@
 ---
 import MushDispLogo from "@components/artwork/MushDispLogo.astro";
+import MushDispLogoMobile from "@components/artwork/MushDispLogoMobile.astro";
 import MushDispLogoText from "@components/artwork/MushDispLogoText.astro";
+import HamburgerMushroom from "@images/mushdisp-hamburger-default.svg?raw";
 ---
 
 <header class="section--colored nav">
   <div class="container">
     <nav class="nav-flex">
-      <MushDispLogo />
-      <div class="logo-text-container">
-        <MushDispLogoText />
-        <p class="logo-text-subheading">
-          Mushrooms • DMT • Peyote • Kratom • LSD
-        </p>
+      <div class="nav-logo-container">
+        <div class="nav-logo --hidden-on-mobile"><MushDispLogo /></div>
+        <div class="nav-logo --hidden-on-desktop"><MushDispLogoMobile /></div>
+        <div class="logo-text-container">
+          <MushDispLogoText />
+          <p class="logo-text-subheading --hidden-on-mobile">
+            Mushrooms • DMT • Peyote • Kratom • LSD
+          </p>
+        </div>
       </div>
-      <ul class="nav-links-flex --hidden">
+      <ul class="nav-links-flex --hidden-on-mobile">
         <li>Our Story</li>
         <li>News</li>
         <li>Contact</li>
         <li>Menu</li>
       </ul>
+      <div><Fragment set:html={HamburgerMushroom} /></div>
     </nav>
   </div>
 </header>
@@ -83,10 +89,37 @@ import MushDispLogoText from "@components/artwork/MushDispLogoText.astro";
       "wght" 800;
     text-shadow: var(--text-shadow-color);
   }
+  .--hidden-on-desktop {
+    display: none;
+  }
 
   @media (max-width: 987px) {
-    .--hidden {
+    .nav {
+      padding-block-start: 0;
+    }
+    .nav-logo-container {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-03);
+      padding-block: var(--sp-01);
+    }
+    .--hidden-on-desktop {
+      display: unset;
+    }
+    .--hidden-on-mobile {
       display: none;
+    }
+    .container {
+      width: 100%;
+      padding-inline: 0;
+    }
+    .nav-flex {
+      background-color: var(--color-nav);
+      padding-inline-start: var(--sp-05);
+      padding-inline-end: var(--sp-05);
+      border-radius: 0;
+      justify-content: space-between;
+      box-shadow: var(--card-shadow-neutral-deep);
     }
   }
 </style>

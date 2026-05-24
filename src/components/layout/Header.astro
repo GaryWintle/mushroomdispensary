@@ -2,7 +2,8 @@
 import MushDispLogo from "@components/artwork/MushDispLogo.astro";
 import MushDispLogoMobile from "@components/artwork/MushDispLogoMobile.astro";
 import MushDispLogoText from "@components/artwork/MushDispLogoText.astro";
-import HamburgerMushroom from "@images/mushdisp-hamburger-default.svg?raw";
+import Hamburger from "@images/mushdisp-hamburger-default.svg?raw";
+import HamburgerClose from "@images/mushdisp-hamburger-close.svg?raw";
 ---
 
 <header class="section--colored nav">
@@ -24,10 +25,58 @@ import HamburgerMushroom from "@images/mushdisp-hamburger-default.svg?raw";
         <li>Contact</li>
         <li>Menu</li>
       </ul>
-      <div><Fragment set:html={HamburgerMushroom} /></div>
+      <button
+        class="hamburger-btn --hidden-on-desktop"
+        data-menu-trigger
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Open navigation menu"
+      >
+        <Fragment set:html={Hamburger} />
+      </button>
     </nav>
   </div>
+  <dialog id="mobile-menu" class="mobile-nav" aria-label="Navigation menu">
+    <button
+      class="drawer-close"
+      data-menu-close
+      aria-label="Close navigation menu"
+    >
+      <Fragment set:html={HamburgerClose} />
+    </button>
+    <ul class="nav-links-flex-mobile">
+      <li>Our Story</li>
+      <li>News</li>
+      <li>Contact</li>
+      <li>Menu</li>
+    </ul>
+  </dialog>
 </header>
+
+<script>
+  const trigger = document.querySelector("[data-menu-trigger]");
+  const menu = document.querySelector("#mobile-menu") as HTMLElement;
+  const close = document.querySelector("[data-menu-close]");
+
+  trigger?.addEventListener("click", () => {
+    if (menu.open) {
+      document.body.style.overflow = "";
+      menu.close();
+    } else {
+      document.body.style.overflow = "hidden";
+      menu.showModal();
+    }
+  });
+
+  close?.addEventListener("click", () => {
+    document.body.style.overflow = "";
+    menu.close();
+  });
+
+  menu?.addEventListener("toggle", () => {
+    trigger?.setAttribute("aria-expanded", String(menu.open));
+  });
+</script>
 
 <style>
   .nav {
@@ -38,6 +87,7 @@ import HamburgerMushroom from "@images/mushdisp-hamburger-default.svg?raw";
     position: relative;
     display: flex;
     align-items: center;
+    gap: var(--sp-04);
     background-color: var(--color-nav);
     padding-inline-start: 5.2rem;
     padding-inline-end: var(--sp-05);
@@ -120,6 +170,57 @@ import HamburgerMushroom from "@images/mushdisp-hamburger-default.svg?raw";
       border-radius: 0;
       justify-content: space-between;
       box-shadow: var(--card-shadow-neutral-deep);
+    }
+    .mobile-nav {
+      position: fixed;
+      inset-block-start: 0;
+      inset-inline-end: 0;
+      inset-block-end: 0;
+      inset-inline-start: auto;
+      width: 75%;
+      height: 100dvh;
+      margin: 0;
+      border: none;
+      background: var(--color-nav);
+
+      translate: 100% 0;
+      transition:
+        translate 400ms cubic-bezier(0.32, 0.72, 0, 1),
+        overlay 400ms allow-discrete,
+        display 400ms allow-discrete;
+    }
+
+    .mobile-nav[open] {
+      translate: 0 0;
+    }
+
+    @starting-style {
+      .mobile-nav[open] {
+        translate: 100% 0;
+      }
+    }
+
+    .mobile-nav::backdrop {
+      background: hsl(0 0% 0% / 0);
+      backdrop-filter: blur(0px);
+      transition:
+        background 400ms ease,
+        backdrop-filter 400ms ease,
+        overlay 400ms allow-discrete,
+        display 400ms allow-discrete;
+    }
+
+    .mobile-nav[open]::backdrop {
+      background: hsl(0 0% 0% / 0.35);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    @starting-style {
+      .mobile-nav[open]::backdrop {
+        background: hsl(0 0% 0% / 0);
+        backdrop-filter: blur(0px);
+      }
     }
   }
 </style>

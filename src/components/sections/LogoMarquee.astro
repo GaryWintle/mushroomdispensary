@@ -1,0 +1,155 @@
+---
+import newsLogo01 from "@images/icons/company-logos/newsLogo01.svg?raw";
+import newsLogo02 from "@images/icons/company-logos/newsLogo02.svg?raw";
+import newsLogo03 from "@images/icons/company-logos/newsLogo03.svg?raw";
+import newsLogo04 from "@images/icons/company-logos/newsLogo04.svg?raw";
+import newsLogo05 from "@images/icons/company-logos/newsLogo05.svg?raw";
+import newsLogo06 from "@images/icons/company-logos/newsLogo06.svg?raw";
+import newsLogo07 from "@images/icons/company-logos/newsLogo07.svg?raw";
+import newsLogo08 from "@images/icons/company-logos/newsLogo08.svg?raw";
+import newsLogo09 from "@images/icons/company-logos/newsLogo09.svg?raw";
+import newsLogo10 from "@images/icons/company-logos/newsLogo10.svg?raw";
+
+const row1 = [newsLogo01, newsLogo02, newsLogo03, newsLogo04, newsLogo05];
+const row2 = [newsLogo06, newsLogo07, newsLogo08, newsLogo09, newsLogo10];
+
+const row1Dense = [...row1, ...row1, ...row1, ...row1];
+const row2Dense = [...row2, ...row2, ...row2, ...row2];
+---
+
+<section class="logomarquee" aria-label="As seen in">
+  <div class="container">
+    <!-- <p class="marquee-label subtitle --center-text">As seen on</p> -->
+  </div>
+  <div class="marquee-overflow">
+    <div class="marquee-track marquee-track--a" aria-hidden="true">
+      {
+        row1Dense.map((logo, i) => (
+          <span class={`logo-item logo-item--${(i % row1.length) + 1}`}>
+            <Fragment set:html={logo} />
+          </span>
+        ))
+      }
+    </div>
+    <div class="marquee-track marquee-track--b" aria-hidden="true">
+      {
+        row2Dense.map((logo, i) => (
+          <span class={`logo-item logo-item--${(i % row2.length) + 6}`}>
+            <Fragment set:html={logo} />
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const section = document.querySelector(".logomarquee");
+  const trackA = document.querySelector<HTMLElement>(".marquee-track--a");
+  const trackB = document.querySelector<HTMLElement>(".marquee-track--b");
+
+  if (section && trackA && trackB) {
+    const shared = {
+      trigger: section,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 1.5,
+    };
+
+    gsap.fromTo(
+      trackA,
+      { x: "-140px" },
+      { x: "140px", ease: "none", scrollTrigger: shared },
+    );
+    gsap.fromTo(
+      trackB,
+      { x: "140px" },
+      { x: "-140px", ease: "none", scrollTrigger: shared },
+    );
+  }
+</script>
+
+<style>
+  .logomarquee {
+    padding-block-start: var(--sp-07);
+    padding-block-end: var(--sp-08);
+    overflow: clip;
+  }
+
+  .marquee-label {
+    margin-block-end: var(--sp-06);
+  }
+
+  .marquee-overflow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-05);
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-08);
+    width: max-content;
+    will-change: transform;
+  }
+
+  .logo-item {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    opacity: 1;
+    transition: opacity 200ms ease;
+  }
+
+  .logo-item:hover {
+    opacity: 1;
+  }
+
+  .logo-item :global(svg) {
+    height: 2.2rem;
+    width: auto;
+    max-width: 138px;
+  }
+
+  /* CBC — taller wordmark */
+  .logo-item--3 :global(svg) { height: 3.3rem; max-width: 207px; }
+  /* HuffPost — wide and short */
+  .logo-item--4 :global(svg) { height: 1.75rem; max-width: 110px; }
+  /* Vancouver Sun — slightly tall */
+  .logo-item--6 :global(svg) { height: 2.75rem; max-width: 172px; }
+  /* Global News — tall stacked logo */
+  .logo-item--8 :global(svg) { height: 4.4rem; max-width: 276px; }
+
+  @media (max-width: 850px) {
+    .logo-item :global(svg) {
+      height: 1.75rem;
+      max-width: 100px;
+    }
+    .logo-item--3 :global(svg) { height: 2.6rem; max-width: 160px; }
+    .logo-item--4 :global(svg) { height: 1.4rem; max-width: 85px; }
+    .logo-item--6 :global(svg) { height: 2.2rem; max-width: 135px; }
+    .logo-item--8 :global(svg) { height: 3.5rem; max-width: 215px; }
+    .marquee-track {
+      gap: var(--sp-06);
+    }
+  }
+</style>

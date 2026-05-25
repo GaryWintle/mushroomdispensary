@@ -272,15 +272,29 @@ const products = [
   }
   @media (max-width: 600px) {
     .product-grid {
-      grid-template-columns: unset; /* kills the auto-fill */
-      grid-auto-flow: column; /* items flow horizontally */
-      grid-auto-columns: 85%; /* each implicit column is 85% wide */
+      grid-template-columns: unset;
+      grid-auto-flow: column;
+      grid-auto-columns: 85%;
       overflow-x: scroll;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
       margin-inline: calc(-1 * var(--space-section-inline));
       padding-inline: var(--space-section-inline);
       scroll-padding-inline: var(--space-section-inline);
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+      );
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+      );
     }
   }
 </style>

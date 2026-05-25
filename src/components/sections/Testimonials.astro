@@ -95,10 +95,25 @@
       margin-inline: calc(-1 * var(--space-section-inline));
       padding-inline: var(--space-section-inline);
       scroll-padding-inline: var(--space-section-inline);
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+      );
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+      );
     }
     .testimonial {
       flex: 0 0 85%;
       scroll-snap-align: start;
+      border: var(--border-surface-dark-thinnest);
     }
   }
 </style>

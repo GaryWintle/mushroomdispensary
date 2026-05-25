@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 
 import Hero from "@components/sections/Hero.astro";
 import Testimonials from "@components/sections/Testimonials.astro";
+import LogoMarquee from "@components/sections/LogoMarquee.astro";
 import InTheNews from "@components/sections/InTheNews.astro";
 import Products from "@components/sections/Products.astro";
 import PhotoCarousel from "@components/sections/PhotoCarousel.astro";
@@ -82,7 +83,9 @@ const imagesMobile = [
   </div>
   <Hero />
   <Testimonials />
-  <InTheNews />
+  <div class="--mobile-only"><LogoMarquee /></div>
+  <div class="--desktop-only"><InTheNews /></div>
+
   <Products />
   <div class="--desktop-only"><PhotoCarousel images={images} /></div>
   <Contact />

@@ -47,13 +47,57 @@ const images = [
     caption: "Please stop by for a visit!",
   },
 ];
+const imagesMobile = [
+  {
+    src: danaCounter,
+    alt: "Store front on Main Street",
+    caption: "Founder Dana Larsen working the desk",
+  },
+  {
+    src: mushcounter,
+    alt: "Interior mushroom display",
+    caption: "A beautiful collection of just some of our products",
+  },
+  {
+    src: products,
+    alt: "Interior mushroom display",
+    caption: "A beautiful collection of just some of our products",
+  },
+  {
+    src: storefront,
+    alt: "Interior mushroom display",
+    caption: "Please stop by for a visit!",
+  },
+  {
+    src: mushwithlabels,
+    alt: "Interior mushroom display",
+    caption: "Please stop by for a visit!",
+  },
+];
 ---
 
 <Layout>
+  <div class="carousel-container --mobile-only">
+    <PhotoCarousel images={imagesMobile} mobileHero={true} />
+  </div>
   <Hero />
   <Testimonials />
   <InTheNews />
   <Products />
-  <PhotoCarousel images={images} />
+  <div class="--desktop-only"><PhotoCarousel images={images} /></div>
   <Contact />
 </Layout>
+
+<style>
+  .--mobile-only {
+    display: none;
+  }
+  @media (max-width: 850px) {
+    .--mobile-only {
+      display: block;
+    }
+    .--desktop-only {
+      display: none;
+    }
+  }
+</style>

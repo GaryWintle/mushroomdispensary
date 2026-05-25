@@ -7,16 +7,23 @@ import ArrowTwisty from "@components/artwork/ArrowTwisty.astro";
 
 interface Props {
   images: { src: ImageMetadata; alt: string; caption?: string }[];
+  mobileHero?: boolean;
 }
-const { images } = Astro.props;
+const { images, mobileHero = false } = Astro.props;
 ---
 
 <section
-  class="embla section section--dark container"
+  class:list={[
+    "embla",
+    "section",
+    "section--dark",
+    "container",
+    { "embla--mobile-hero": mobileHero },
+  ]}
   aria-label="Store photo gallery"
   aria-roledescription="carousel"
 >
-  <div class="photocarousel-heading">
+  <div class="photocarousel-heading --desktop-only">
     <div class="text-title-hero">
       <h2>In Vancouver?</h2>
     </div>
@@ -55,39 +62,44 @@ const { images } = Astro.props;
       }
     </div>
   </div>
-  <div class="wrapper-mushyguy-smiley">
+  <div class="wrapper-mushyguy-smiley --desktop-only">
     <MushyGuySmiley />
   </div>
-  <button class="embla__btn embla__btn--prev" aria-label="Previous slide">
+  <button
+    class="embla__btn embla__btn--prev --desktop-only"
+    aria-label="Previous slide"
+  >
     <div class="arrow arrow--left"><CarouselArrow /></div>
   </button>
-  <button class="embla__btn embla__btn--next" aria-label="Next slide">
+  <button
+    class="embla__btn embla__btn--next --desktop-only"
+    aria-label="Next slide"
+  >
     <div class="arrow arrow--right"><CarouselArrow /></div>
   </button>
   <div class="embla__dots" aria-label="Slide navigation" role="tablist"></div>
 </section>
 
 <script>
+  // --- GSAP block ---
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   gsap.registerPlugin(ScrollTrigger);
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".embla",
-      start: "top 80%",
-    },
-  });
+  document.querySelectorAll(".embla").forEach((emblaEl) => {
+    const heading = emblaEl.querySelector(".photocarousel-heading");
+    if (!heading) return; // skip the hero carousel, it has no heading
 
-  tl.from(".photocarousel-heading", {
-    opacity: 0,
-    y: 20,
-    duration: 0.5,
-    ease: "power2.out",
-  }).from(".embla__viewport", {
-    opacity: 0,
-    duration: 1,
-    ease: "power2.out",
+    gsap
+      .timeline({
+        scrollTrigger: { trigger: emblaEl, start: "top 80%" },
+      })
+      .from(heading, { opacity: 0, y: 20, duration: 0.5, ease: "power2.out" })
+      .from(emblaEl.querySelector(".embla__viewport"), {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+      });
   });
 </script>
 
@@ -124,10 +136,32 @@ const { images } = Astro.props;
     z-index: 2;
   }
 
+  .embla--mobile-hero .embla__viewport {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .embla--mobile-hero .embla__slide {
+    aspect-ratio: unset;
+    height: 70svh;
+    border-radius: 0;
+  }
+
+  .embla--mobile-hero .embla__slide img {
+    border-radius: 0;
+  }
+  .embla--mobile-hero .embla__dots {
+    display: none;
+  }
+  .embla--mobile-hero .slide__caption {
+    display: none;
+  }
+
   .embla {
     position: relative;
     overflow: clip;
-    border-radius: var(--br-03);
+    border-radius: 0;
     /* margin-bottom: 120px; */
   }
 
@@ -262,65 +296,90 @@ const { images } = Astro.props;
     pointer-events: none;
     animation: bounce 2s ease-in-out infinite;
   }
+
+  @media (max-width: 850px) {
+    .section {
+      padding-block: 0;
+    }
+    .container {
+      width: 100%;
+      margin-inline: auto;
+      padding-inline: 0;
+    }
+    .--desktop-only {
+      display: none;
+    }
+  }
 </style>
 
 <script>
+  // --- Embla block ---
   import EmblaCarousel from "embla-carousel";
+  import Autoplay from "embla-carousel-autoplay";
 
-  const viewport = document.querySelector<HTMLElement>(".embla__viewport")!;
-  const embla = EmblaCarousel(viewport, {
-    loop: true,
-    dragFree: false,
-    containScroll: "trimSnaps",
-  });
-
-  // Buttons
   document
-    .querySelector(".embla__btn--prev")!
-    .addEventListener("click", () => embla.scrollPrev());
-  document
-    .querySelector(".embla__btn--next")!
-    .addEventListener("click", () => embla.scrollNext());
+    .querySelectorAll<HTMLElement>(".embla__viewport")
+    .forEach((viewport) => {
+      const root = viewport.closest(".embla")!;
 
-  // Drag cursor
-  viewport.addEventListener("pointerdown", () =>
-    viewport.classList.add("is-dragging"),
-  );
-  viewport.addEventListener("pointerup", () =>
-    viewport.classList.remove("is-dragging"),
-  );
+      const embla = EmblaCarousel(
+        viewport,
+        {
+          loop: true,
+          dragFree: false,
+          containScroll: "trimSnaps",
+        },
+        [Autoplay({ delay: 4000 })],
+      );
 
-  // Dots
-  const dotsContainer = document.querySelector(".embla__dots")!;
-  const dots = embla.scrollSnapList().map((_, i) => {
-    const dot = document.createElement("button");
-    dot.className = "embla__dot";
-    dot.setAttribute("role", "tab");
-    dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
-    dot.addEventListener("click", () => embla.scrollTo(i));
-    dotsContainer.appendChild(dot);
-    return dot;
-  });
+      root
+        .querySelector(".embla__btn--prev")
+        ?.addEventListener("click", () => embla.scrollPrev());
+      root
+        .querySelector(".embla__btn--next")
+        ?.addEventListener("click", () => embla.scrollNext());
 
-  const updateDots = () => {
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("is-selected", i === embla.selectedScrollSnap());
+      viewport.addEventListener("pointerdown", () =>
+        viewport.classList.add("is-dragging"),
+      );
+      viewport.addEventListener("pointerup", () =>
+        viewport.classList.remove("is-dragging"),
+      );
+
+      const dotsContainer = root.querySelector(".embla__dots")!;
+      const dots = embla.scrollSnapList().map((_, i) => {
+        const dot = document.createElement("button");
+        dot.className = "embla__dot";
+        dot.setAttribute("role", "tab");
+        dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+        dot.addEventListener("click", () => embla.scrollTo(i));
+        dotsContainer.appendChild(dot);
+        return dot;
+      });
+
+      const updateDots = () => {
+        dots.forEach((dot, i) =>
+          dot.classList.toggle("is-selected", i === embla.selectedScrollSnap()),
+        );
+      };
+      embla.on("select", updateDots);
+      updateDots();
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        embla.reInit({ duration: 0 });
+      }
+
+      const updateSelected = () => {
+        embla
+          .slideNodes()
+          .forEach((slide, i) =>
+            slide.classList.toggle(
+              "is-active",
+              i === embla.selectedScrollSnap(),
+            ),
+          );
+      };
+      embla.on("select", updateSelected);
+      updateSelected();
     });
-  };
-  embla.on("select", updateDots);
-  updateDots(); // set initial state
-
-  // Reduced motion
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    embla.reInit({ duration: 0 });
-  }
-
-  const updateSelected = () => {
-    embla.slideNodes().forEach((slide, i) => {
-      slide.classList.toggle("is-active", i === embla.selectedScrollSnap());
-    });
-  };
-
-  embla.on("select", updateSelected);
-  updateSelected(); // set on load
 </script>

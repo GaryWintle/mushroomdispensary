@@ -2,11 +2,53 @@
 import Smiley from "@components/artwork/Smiley.astro";
 import SeenOnTV from "@components/artwork/SeenOnTV.astro";
 import CanadaFlag from "@components/artwork/CanadaFlag.astro";
+import PhotoCarousel from "@components/sections/PhotoCarousel.astro";
+
+import danaCounter from "@images/carousel/mushdisp-dana-counter.webp";
+import products from "@images/carousel/mushdisp-products.webp";
+import storefront from "@images/carousel/mushdisp-storefront.jpg";
+import mushcounter from "@images/carousel/mushdisp-mushcounter.jpg";
+import mushwithlabels from "@images/carousel/mushdisp-mushwithlabels.avif";
+import signage from "@images/carousel/mushdisp-signage.jpg";
+
+const images = [
+  {
+    src: danaCounter,
+    alt: "Store front on Main Street",
+    caption: "Founder Dana Larsen working the desk",
+  },
+  {
+    src: mushcounter,
+    alt: "Interior mushroom display",
+    caption: "A beautiful collection of just some of our products",
+  },
+  {
+    src: signage,
+    alt: "Interior mushroom display",
+    caption: "Please stop by for a visit!",
+  },
+  {
+    src: products,
+    alt: "Interior mushroom display",
+    caption: "A beautiful collection of just some of our products",
+  },
+  {
+    src: storefront,
+    alt: "Interior mushroom display",
+    caption: "Please stop by for a visit!",
+  },
+  {
+    src: mushwithlabels,
+    alt: "Interior mushroom display",
+    caption: "Please stop by for a visit!",
+  },
+];
 ---
 
 <section class="section section--light hero">
   <div class="container">
     <div class="hero-grid">
+      <!-- <div class="carousel-container"><PhotoCarousel images={images} /></div> -->
       <div class="hero-card">
         <div class="icon-smiley">
           <Smiley />
@@ -25,7 +67,7 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
           's failed drug prohibition laws.
         </p>
       </div>
-      <div class="hero-video">
+      <div class="hero-video --desktop-only">
         <div class="video-wrapper">
           <!-- To re-enable autoplay, add autoplay=1& before mute=1 in the src -->
           <div class="video-overlay"></div>
@@ -178,7 +220,7 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
     }
     .hero-text-body {
       text-box: trim-both cap alphabetic;
-      width: 80%;
+      width: 100%;
     }
     .hero-video {
       border-radius: var(--br-03);
@@ -209,18 +251,27 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
       height: 4rem;
     }
   }
+  @media (max-width: 850px) {
+    .hero {
+      overflow: visible;
+    }
+  }
+
   @container hero (max-width: 850px) {
     .hero-card {
       flex-direction: column;
-      border-top: var(--border-photo-dark-thin);
-      border-radius: 0 0 var(--br-03) var(--br-03);
+      border: var(--border-photo-dark-thin);
+      border-radius: var(--br-03);
       align-items: start;
       padding-block-start: var(--sp-06);
       padding-block-end: var(--sp-07);
+      margin-top: -80px;
+      z-index: 999;
     }
     .icon-seen-on-tv {
       transform: translate(20%, -60%) rotate(35deg);
       z-index: 2;
+      display: none;
     }
 
     .icon-seen-on-tv :global(svg) {
@@ -228,12 +279,31 @@ import CanadaFlag from "@components/artwork/CanadaFlag.astro";
       height: 9rem;
     }
     .icon-smiley {
-      transform: translate(-150%, 155%) rotate(16deg);
+      transform: translate(-20%, -25%) rotate(16deg);
     }
 
     .icon-smiley :global(svg) {
-      width: 4.5rem;
-      height: 4.5rem;
+      width: 4rem;
+      height: 4rem;
+    }
+    .--desktop-only {
+      display: none;
+    }
+    .text-title-hero {
+      font-size: var(--text-hero);
+      text-transform: uppercase;
+      text-wrap: balance;
+      text-box: trim-both cap alphabetic;
+      line-height: 1.05;
+    }
+
+    .text-body-display {
+      font-size: var(--text-lg);
+      line-height: var(--leading-loose);
+      font-variation-settings:
+        "wdth" 100,
+        "wght" 600;
+      text-wrap: unset;
     }
   }
 </style>

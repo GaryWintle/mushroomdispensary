@@ -149,6 +149,9 @@ import HamburgerClose from "@images/mushdisp-hamburger-close.svg?raw";
   @media (max-width: 987px) {
     .nav {
       padding-block-start: 0;
+      position: sticky;
+      z-index: 1000;
+      top: 0;
     }
     .nav-logo-container {
       display: flex;
@@ -156,6 +159,7 @@ import HamburgerClose from "@images/mushdisp-hamburger-close.svg?raw";
       gap: var(--sp-03);
       padding-block: var(--sp-01);
     }
+
     .--hidden-on-desktop {
       display: unset;
     }
@@ -167,12 +171,16 @@ import HamburgerClose from "@images/mushdisp-hamburger-close.svg?raw";
       padding-inline: 0;
     }
     .nav-flex {
-      background-color: var(--color-nav);
+      background-color: oklch(from var(--color-nav) l c h / 0.9);
+
       padding-inline-start: var(--sp-05);
       padding-inline-end: var(--sp-05);
       border-radius: 0;
       justify-content: space-between;
-      box-shadow: var(--card-shadow-neutral-deep);
+      border-bottom: var(--border-surface-color-thin);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: unset;
     }
     .mobile-nav {
       position: fixed;

@@ -192,7 +192,7 @@ const products = [
     flex: 1 0 none;
     color: var(--color-surface-dark-text-highlight);
     font-family: var(--font-display);
-    font-size: clamp(1rem, 3.5vw, 3.5rem);
+    font-size: clamp(1.8rem, 3.5vw, 3.5rem);
     text-transform: uppercase;
     text-box: trim-both cap alphabetic;
   }
@@ -211,6 +211,9 @@ const products = [
     flex: 1 0 none;
     display: flex;
     isolation: isolate;
+  }
+  .--mobile {
+    display: none;
   }
 
   .wrapper-twisty-arrow {
@@ -295,6 +298,22 @@ const products = [
         black 90%,
         transparent
       );
+    }
+    .wrapper-cta-button {
+      transform: rotate(0);
+      margin-top: var(--sp-05);
+    }
+    .wrapper-mushyguy-hazy {
+      width: 6rem;
+      position: absolute;
+      top: -50px;
+      right: -35px;
+      z-index: 2;
+      pointer-events: none;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    .--mobile {
+      display: block;
     }
   }
 </style>

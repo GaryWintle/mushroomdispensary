@@ -172,7 +172,14 @@ const ogImage =
 
 <style is:global>
   body {
-    /* background-color: var(--color-surface-dark); */
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
     background:
       url("/images/mushdisp-pattern-10percent-pink.webp"),
       linear-gradient(
@@ -181,7 +188,6 @@ const ogImage =
         var(--color-neutral-600) 200%
       );
     background-repeat: repeat;
-    background-attachment: fixed;
     background-size: max(30%, 320px);
   }
 </style>

@@ -131,11 +131,16 @@ const {
     font-size: var(--text-lg);
     font-variation-settings:
       "wdth" 90,
-      "wght" 750;
+      "wght" 800;
+    line-height: var(--leading-loose);
   }
 
   .hours-time {
     color: var(--color-surface-light-text-highlight);
+    font-variation-settings:
+      "wdth" 90,
+      "wght" 950;
+    margin-left: var(--sp-01);
   }
 
   @media (max-width: 577px) {
@@ -185,10 +190,11 @@ const {
     }
 
     .location-icon {
+      width: 4.5rem;
       top: -20%;
       right: -5%;
       left: unset;
-      display: none;
+      /* display: none; */
     }
   }
 </style>

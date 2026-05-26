@@ -48,7 +48,7 @@
   /* Navigation */
   --color-nav: var(--color-secondary-200);
   --color-nav-title: var(--color-primary-100);
-  --color-nav-text: var(--color-primary-200);
+  --color-nav-text: var(--color-neutral-200);
   --color-nav-border: var(--color-neutral-600);
   --color-nav-hover: var(--color-neutral-200);
   --color-nav-text-hover: var(--color-neutral-600);

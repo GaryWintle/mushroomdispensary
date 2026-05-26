@@ -57,34 +57,6 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
   </dialog>
 </header>
 
-<script>
-  const trigger = document.querySelector("[data-menu-trigger]");
-  const menu = document.querySelector("#mobile-menu") as HTMLDialogElement;
-  const close = document.querySelector("[data-menu-close]");
-
-  trigger?.addEventListener("click", () => {
-    if (menu.open) {
-      menu.close();
-    } else {
-      menu.showModal();
-    }
-  });
-
-  close?.addEventListener("click", () => menu.close());
-
-  menu?.addEventListener("click", (e) => {
-    if (e.target === menu) menu.close();
-  });
-
-  menu?.querySelectorAll("li").forEach((link) => {
-    link.addEventListener("click", () => menu.close());
-  });
-
-  menu?.addEventListener("toggle", () => {
-    trigger?.setAttribute("aria-expanded", String(menu.open));
-  });
-</script>
-
 <style>
   .nav {
     padding-block-start: var(--sp-06);
@@ -160,7 +132,6 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
       top: 0;
     }
     .nav-logo-container {
-      background-color:;
       display: flex;
       align-items: center;
       gap: var(--sp-03);
@@ -205,7 +176,7 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
       max-height: 100dvh;
       margin: 0;
       border: none;
-      background: var(--color-nav);
+      background: oklch(from var(--color-nav) l c h / 0.9);
       border-radius: var(--br-03) 0 0 var(--br-03);
       box-shadow: inset 3px -1px 0 3px var(--color-neutral-600);
 
@@ -225,15 +196,15 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
       align-items: end;
       gap: var(--sp-07);
       padding-inline-end: var(--sp-04);
-    }
-    .nav-links-flex-mobile li {
-      color: var(--color-nav-text);
-      font-family: var(--font-display);
-      font-size: var(--text-hero);
-      text-transform: uppercase;
-      text-wrap: balance;
-      text-box: trim-both cap alphabetic;
-      line-height: 1.05;
+      & li {
+        color: var(--color-nav-text);
+        font-family: var(--font-display);
+        font-size: var(--text-hero);
+        text-transform: uppercase;
+        text-wrap: balance;
+        text-box: trim-both cap alphabetic;
+        line-height: 1.05;
+      }
     }
     .wrapper-mushyguy-smiley {
       align-self: self-start;
@@ -274,3 +245,31 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
     }
   }
 </style>
+
+<script>
+  const trigger = document.querySelector("[data-menu-trigger]");
+  const menu = document.querySelector("#mobile-menu") as HTMLDialogElement;
+  const close = document.querySelector("[data-menu-close]");
+
+  trigger?.addEventListener("click", () => {
+    if (menu.open) {
+      menu.close();
+    } else {
+      menu.showModal();
+    }
+  });
+
+  close?.addEventListener("click", () => menu.close());
+
+  menu?.addEventListener("click", (e) => {
+    if (e.target === menu) menu.close();
+  });
+
+  menu?.querySelectorAll("li").forEach((link) => {
+    link.addEventListener("click", () => menu.close());
+  });
+
+  menu?.addEventListener("toggle", () => {
+    trigger?.setAttribute("aria-expanded", String(menu.open));
+  });
+</script>

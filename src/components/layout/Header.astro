@@ -38,23 +38,21 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
     </nav>
   </div>
   <dialog id="mobile-menu" class="mobile-nav" aria-label="Navigation menu">
-    <div class="mobile-menu-inner-container">
-      <button
-        class="drawer-close"
-        data-menu-close
-        aria-label="Close navigation menu"
-      >
-        <Fragment set:html={HamburgerClose} />
-      </button>
-      <ul class="nav-links-flex-mobile">
-        <li>Our Story</li>
-        <li>News</li>
-        <li>Contact</li>
-        <li>Menu</li>
-      </ul>
-      <div class="wrapper-mushyguy-smiley --desktop-only">
-        <MushyGuySmiley />
-      </div>
+    <button
+      class="drawer-close"
+      data-menu-close
+      aria-label="Close navigation menu"
+    >
+      <Fragment set:html={HamburgerClose} />
+    </button>
+    <ul class="nav-links-flex-mobile">
+      <li>Our Story</li>
+      <li>News</li>
+      <li>Contact</li>
+      <li>Menu</li>
+    </ul>
+    <div class="wrapper-mushyguy-smiley">
+      <MushyGuySmiley />
     </div>
   </dialog>
 </header>
@@ -161,14 +159,8 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
       z-index: 1000;
       top: 0;
     }
-    .mobile-menu-inner-container {
-      display: flex;
-      flex-direction: column;
-      gap: 25%;
-      align-items: center;
-      justify-content: space-between;
-    }
     .nav-logo-container {
+      background-color:;
       display: flex;
       align-items: center;
       gap: var(--sp-03);
@@ -200,18 +192,22 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
     .mobile-nav {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
+      gap: auto;
       position: fixed;
       inset-block-start: 0;
       inset-inline-end: 0;
       inset-block-end: 0;
       inset-inline-start: auto;
+
       width: 75%;
       height: 100dvh;
+      max-height: 100dvh;
       margin: 0;
       border: none;
       background: var(--color-nav);
       border-radius: var(--br-03) 0 0 var(--br-03);
+      box-shadow: inset 3px -1px 0 3px var(--color-neutral-600);
 
       translate: 100% 0;
       transition:
@@ -228,6 +224,7 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
       flex-direction: column;
       align-items: end;
       gap: var(--sp-07);
+      padding-inline-end: var(--sp-04);
     }
     .nav-links-flex-mobile li {
       color: var(--color-nav-text);
@@ -237,6 +234,11 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
       text-wrap: balance;
       text-box: trim-both cap alphabetic;
       line-height: 1.05;
+    }
+    .wrapper-mushyguy-smiley {
+      align-self: self-start;
+      scale: -1 1;
+      rotate: -12deg;
     }
     .drawer-close {
       align-self: self-end;

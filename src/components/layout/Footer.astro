@@ -11,9 +11,9 @@ import LogoRectangular from "@components/artwork/LogoRectangular.astro";
       <div class="footer-text-container">
         <ul class="nav-links-flex">
           <li>Our Story</li>
-          <li>In The News</li>
-          <li>Hours & Contact</li>
-          <li>Full Menu</li>
+          <li>News</li>
+          <li>Contact</li>
+          <li>Menu</li>
         </ul>
         <p class="copyright-text">
           © Medicinal Mushroom Dispensary 2026. All rights reserved.
@@ -73,5 +73,20 @@ import LogoRectangular from "@components/artwork/LogoRectangular.astro";
     font-size: var(--text-sm);
     text-align: end;
     margin-inline-end: var(--sp-03);
+  }
+
+  @media (max-width: 987px) {
+    .nav-flex {
+      display: flex;
+      flex-direction: column;
+    }
+    .nav-links-flex > li {
+      padding-inline: var(--sp-03);
+      padding-block: var(--sp-05-5);
+    }
+    .copyright-text {
+      text-align: center;
+      margin-inline-end: var(--sp-03);
+    }
   }
 </style>

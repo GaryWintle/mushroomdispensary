@@ -87,7 +87,7 @@ const row2Dense = [...row2, ...row2, ...row2, ...row2];
   .marquee-overflow {
     display: flex;
     flex-direction: column;
-    gap: var(--sp-05);
+    gap: var(--sp-04);
     mask-image: linear-gradient(
       to right,
       transparent,
@@ -131,23 +131,57 @@ const row2Dense = [...row2, ...row2, ...row2, ...row2];
   }
 
   /* CBC — taller wordmark */
-  .logo-item--3 :global(svg) { height: 3.3rem; max-width: 207px; }
+  .logo-item--1 :global(svg) {
+    height: 13.3rem;
+    max-width: 250px;
+  }
+  /* CBC — taller wordmark */
+  .logo-item--3 :global(svg) {
+    height: 3.3rem;
+    max-width: 207px;
+  }
   /* HuffPost — wide and short */
-  .logo-item--4 :global(svg) { height: 1.75rem; max-width: 110px; }
+  .logo-item--4 :global(svg) {
+    height: 1.75rem;
+    max-width: 110px;
+  }
   /* Vancouver Sun — slightly tall */
-  .logo-item--6 :global(svg) { height: 2.75rem; max-width: 172px; }
+  .logo-item--6 :global(svg) {
+    height: 2.75rem;
+    max-width: 172px;
+  }
   /* Global News — tall stacked logo */
-  .logo-item--8 :global(svg) { height: 4.4rem; max-width: 276px; }
+  .logo-item--8 :global(svg) {
+    height: 4.4rem;
+    max-width: 276px;
+  }
 
   @media (max-width: 850px) {
     .logo-item :global(svg) {
       height: 1.75rem;
       max-width: 100px;
     }
-    .logo-item--3 :global(svg) { height: 2.6rem; max-width: 160px; }
-    .logo-item--4 :global(svg) { height: 1.4rem; max-width: 85px; }
-    .logo-item--6 :global(svg) { height: 2.2rem; max-width: 135px; }
-    .logo-item--8 :global(svg) { height: 3.5rem; max-width: 215px; }
+    /* CBC — taller wordmark */
+    .logo-item--1 :global(svg) {
+      height: 1.2rem;
+      max-width: 250px;
+    }
+    .logo-item--3 :global(svg) {
+      height: 2.6rem;
+      max-width: 160px;
+    }
+    .logo-item--4 :global(svg) {
+      height: 1.4rem;
+      max-width: 85px;
+    }
+    .logo-item--6 :global(svg) {
+      height: 2.2rem;
+      max-width: 135px;
+    }
+    .logo-item--8 :global(svg) {
+      height: 3.5rem;
+      max-width: 215px;
+    }
     .marquee-track {
       gap: var(--sp-06);
     }

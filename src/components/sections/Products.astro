@@ -283,31 +283,46 @@ const products = [
       scrollbar-width: none;
       margin-inline: calc(-1 * var(--space-section-inline));
       padding-inline: var(--space-section-inline);
+      margin-block-end: var(--sp-08);
       scroll-padding-inline: var(--space-section-inline);
       mask-image: linear-gradient(
         to right,
         transparent,
-        black 10%,
-        black 90%,
+        black 5%,
+        black 95%,
         transparent
       );
       -webkit-mask-image: linear-gradient(
         to right,
         transparent,
-        black 10%,
-        black 90%,
+        black 5%,
+        black 95%,
         transparent
       );
     }
+    .product-heading {
+      display: flex;
+      gap: var(--sp-04);
+      align-items: center;
+      margin-block-end: var(--sp-08);
+    }
+    .text-title-hero {
+      flex: 1 0 none;
+      font-size: clamp(1.8rem, 3.5vw, 3.5rem);
+      align-self: flex-start;
+    }
     .wrapper-cta-button {
+      display: grid;
+      text-align: center;
+      /* margin-inline: var(--sp-06); */
       transform: rotate(0);
       margin-top: var(--sp-05);
     }
     .wrapper-mushyguy-hazy {
       width: 6rem;
       position: absolute;
-      top: -50px;
-      right: -35px;
+      top: -80px;
+      right: -45px;
       z-index: 2;
       pointer-events: none;
       animation: bounce 2s ease-in-out infinite;

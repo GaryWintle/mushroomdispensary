@@ -4,6 +4,7 @@ import MushDispLogoMobile from "@components/artwork/MushDispLogoMobile.astro";
 import MushDispLogoText from "@components/artwork/MushDispLogoText.astro";
 import Hamburger from "@images/mushdisp-hamburger-default.svg?raw";
 import HamburgerClose from "@images/mushdisp-hamburger-close.svg?raw";
+import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
 ---
 
 <header class="section--colored nav">
@@ -37,19 +38,24 @@ import HamburgerClose from "@images/mushdisp-hamburger-close.svg?raw";
     </nav>
   </div>
   <dialog id="mobile-menu" class="mobile-nav" aria-label="Navigation menu">
-    <button
-      class="drawer-close"
-      data-menu-close
-      aria-label="Close navigation menu"
-    >
-      <Fragment set:html={HamburgerClose} />
-    </button>
-    <ul class="nav-links-flex-mobile">
-      <li>Our Story</li>
-      <li>News</li>
-      <li>Contact</li>
-      <li>Menu</li>
-    </ul>
+    <div class="mobile-menu-inner-container">
+      <button
+        class="drawer-close"
+        data-menu-close
+        aria-label="Close navigation menu"
+      >
+        <Fragment set:html={HamburgerClose} />
+      </button>
+      <ul class="nav-links-flex-mobile">
+        <li>Our Story</li>
+        <li>News</li>
+        <li>Contact</li>
+        <li>Menu</li>
+      </ul>
+      <div class="wrapper-mushyguy-smiley --desktop-only">
+        <MushyGuySmiley />
+      </div>
+    </div>
   </dialog>
 </header>
 
@@ -146,12 +152,21 @@ import HamburgerClose from "@images/mushdisp-hamburger-close.svg?raw";
     display: none;
   }
 
+  /* MOBILE MENU */
+
   @media (max-width: 987px) {
     .nav {
       padding-block-start: env(safe-area-inset-top);
       position: sticky;
       z-index: 1000;
       top: 0;
+    }
+    .mobile-menu-inner-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25%;
+      align-items: center;
+      justify-content: space-between;
     }
     .nav-logo-container {
       display: flex;
@@ -183,6 +198,9 @@ import HamburgerClose from "@images/mushdisp-hamburger-close.svg?raw";
       box-shadow: unset;
     }
     .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       position: fixed;
       inset-block-start: 0;
       inset-inline-end: 0;
@@ -193,6 +211,7 @@ import HamburgerClose from "@images/mushdisp-hamburger-close.svg?raw";
       margin: 0;
       border: none;
       background: var(--color-nav);
+      border-radius: var(--br-03) 0 0 var(--br-03);
 
       translate: 100% 0;
       transition:
@@ -203,6 +222,24 @@ import HamburgerClose from "@images/mushdisp-hamburger-close.svg?raw";
 
     .mobile-nav[open] {
       translate: 0 0;
+    }
+    .nav-links-flex-mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      gap: var(--sp-07);
+    }
+    .nav-links-flex-mobile li {
+      color: var(--color-nav-text);
+      font-family: var(--font-display);
+      font-size: var(--text-hero);
+      text-transform: uppercase;
+      text-wrap: balance;
+      text-box: trim-both cap alphabetic;
+      line-height: 1.05;
+    }
+    .drawer-close {
+      align-self: self-end;
     }
 
     @starting-style {

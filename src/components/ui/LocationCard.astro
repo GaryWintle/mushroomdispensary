@@ -157,8 +157,9 @@ const {
     }
 
     .location-card-image {
-      flex: 1 1 100%;
-      height: 150px;
+      flex: 2 1 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
       border-radius: var(--br-03) var(--br-03) 0 0;
       border-right: unset;
       border-bottom: var(--border-surface-color-thick);
@@ -168,16 +169,22 @@ const {
       }
     }
     .location-card-body {
-      padding-block: var(--sp-06) var(--sp-09);
-      padding-inline: var(--sp-07);
+      align-items: center;
+      padding-block: var(--sp-07) var(--sp-09);
+      padding-inline: var(--sp-04);
       border-radius: 0 0 var(--br-03) var(--br-03);
     }
-
+    .location-card-title {
+      text-align: center;
+    }
     .location-card-icon {
-      width: 4.5rem;
+      width: 5rem;
       top: -20%;
       right: -5%;
       left: auto;
+    }
+    .location-card-schedule {
+      text-align: right;
     }
   }
 </style>

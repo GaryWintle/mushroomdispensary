@@ -125,6 +125,9 @@
   --border-cta: 2px solid var(--color-cta-border);
   --border-cta-hover: 2px solid var(--color-cta-border-hover);
 
+  /* Usability */
+  --keyboard-focus: 3px solid var(--color-primary-200);
+
   /* TYPOGRAPHY */
 
   /* Font families */
@@ -149,6 +152,11 @@
   --tracking-tight: -0.02em;
   --tracking-semiwide: 0.05em;
   --tracking-wide: 0.08em;
+
+  /* Font Body Variations */
+  --fvs-tight-heavy: "wdth" 90, "wght" 950;
+  --fvs-tight-bold: "wdth" 90, "wght" 800;
+  /* --fvs-condensed-bold: "wdth" 87, "wght" 900; */
 
   /* Measure — max line width */
   --measure: 65ch; /* body text */

@@ -63,6 +63,12 @@ h5,
 h6 {
   text-wrap: balance;
 }
+address {
+  font-style: normal;
+}
+dd {
+  margin-inline-start: 0; /* removes browser default indent */
+}
 
 #root,
 #__next {

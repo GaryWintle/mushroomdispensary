@@ -106,6 +106,32 @@ const locations = [
       display: revert;
     }
   }
+
+  @media (max-width: 650px) {
+    .locations-card {
+      flex-direction: row;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      margin-inline: calc(-1 * var(--space-section-inline));
+      padding-inline: var(--space-section-inline);
+      scroll-padding-inline: var(--space-section-inline);
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 7%,
+        black 93%,
+        transparent
+      );
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 7%,
+        black 93%,
+        transparent
+      );
+    }
+  }
 </style>
 
 <script>

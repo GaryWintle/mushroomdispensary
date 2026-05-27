@@ -1,0 +1,122 @@
+---
+import PhoneIllo from "@components/artwork/PhoneIllo.astro";
+import NineteenPlus from "@components/artwork/NineteenPlus.astro";
+import AdultsOnly from "./AdultsOnly.astro";
+---
+
+<div class="locations-header-container">
+  <div class="header-text-container --mobile-only">
+    <h2 class="subtitle --locations --margin-bottom">3 Locations!</h2>
+    <p class="text-body-display">
+      We have three storefronts in Vancouver, BC, Canada
+    </p>
+  </div>
+  <div class="locations-header">
+    <div class="header-text-container --desktop-only">
+      <h2 class="subtitle --bignumber --margin-bottom">3</h2>
+      <h2 class="subtitle --locations --margin-bottom">Locations!</h2>
+      <p class="text-body-display">
+        We have three storefronts in Vancouver, BC, Canada
+      </p>
+    </div>
+
+    <div class="illo-container">
+      <PhoneIllo />
+    </div>
+    <div class="bottom-text-container">
+      <p class="text-body-display --margin-bottom-large">
+        Same phone number for all locations:
+      </p>
+      <a href="tel:+16043434687" class="subtitle --phonenumber">604-343-4687</a>
+    </div>
+  </div>
+  <div class="locations-header-container-adults-only">
+    <AdultsOnly />
+  </div>
+</div>
+
+<style>
+  .locations-header {
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-07);
+    padding-inline: var(--sp-05);
+    padding-block: var(--sp-05);
+  }
+  .locations-header {
+    border: var(--border-surface-dark-thinnest);
+    border-radius: var(--br-03);
+    background-color: var(--color-neutral-600-50);
+    position: relative;
+    padding-block-start: var(--sp-09);
+    padding-block-end: var(--sp-08);
+    text-align: center;
+  }
+  .--bignumber {
+    font-size: 10rem;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-box: trim-both cap alphabetic;
+  }
+  .--locations {
+    margin-top: 0.2em;
+    font-size: clamp(2rem, calc(5vw + 1rem), 3rem);
+    text-transform: uppercase;
+  }
+  .--phonenumber {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, calc(5vw + 1rem), 3rem);
+    text-transform: uppercase;
+  }
+
+  .--desktop-only {
+    display: block;
+  }
+  .--mobile-only {
+    display: none;
+  }
+
+  @media (max-width: 1135px) {
+    .header-text-container {
+      margin-block-end: var(--sp-08);
+    }
+    .text-body-display {
+      width: 100%;
+    }
+    .--locations {
+      margin-top: 0;
+      margin-bottom: var(--sp-01);
+      font-size: clamp(2.8rem, 3.5vw, 3.5rem);
+      text-transform: uppercase;
+    }
+
+    .--desktop-only {
+      display: none;
+    }
+    .--mobile-only {
+      display: block;
+    }
+    .locations-header-container-adults-only {
+      display: none;
+    }
+  }
+  @media (max-width: 600px) {
+    .locations-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: var(--border-surface-dark-thinnest);
+      border-radius: var(--br-03);
+      background-color: var(--color-neutral-600-50);
+
+      position: relative;
+      padding-block-start: var(--sp-06);
+      padding-block-end: var(--sp-08);
+      text-align: center;
+    }
+  }
+</style>

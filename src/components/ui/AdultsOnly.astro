@@ -1,0 +1,41 @@
+---
+import NineteenPlus from "@components/artwork/NineteenPlus.astro";
+---
+
+<div class="adults-only-body">
+  <h2 class="subtitle">Adults Only</h2>
+  <p class="adults-only-text">
+    Minors <span class="underline">cannot enter </span> unless accompanied by a parent.
+    Minors cannot make any purchases.
+  </p>
+  <div class="adults-only-icon" aria-hidden="true">
+    <NineteenPlus />
+  </div>
+</div>
+
+<style>
+  .adults-only-body {
+    position: relative; /* For the 19+ icon */
+    padding-block: var(--sp-08);
+    padding-inline: var(--sp-05);
+  }
+  .adults-only-text {
+    width: min(100%, 45ch);
+  }
+  .adults-only-icon {
+    position: absolute;
+    top: 5%;
+    right: 0;
+  }
+  @media (max-width: 600px) {
+    .adults-only-body {
+      padding-block: var(--sp-04);
+      padding-inline: 0;
+    }
+    .adults-only-icon {
+      width: 4rem;
+      top: -25%;
+      right: 0;
+    }
+  }
+</style>

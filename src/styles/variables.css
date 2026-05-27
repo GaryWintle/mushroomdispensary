@@ -156,6 +156,7 @@
   /* Font Body Variations */
   --fvs-tight-heavy: "wdth" 90, "wght" 950;
   --fvs-tight-bold: "wdth" 90, "wght" 800;
+  --fvs-regular-regular: "wdth" 100, "wght" 600;
   /* --fvs-condensed-bold: "wdth" 87, "wght" 900; */
 
   /* Measure — max line width */

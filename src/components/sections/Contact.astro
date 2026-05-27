@@ -1,19 +1,19 @@
 ---
-import { Image } from "astro:assets";
+import LocationsHeader from "@components/ui/LocationsHeader.astro";
+import LocationCard from "@components/ui/LocationCard.astro";
+import AdultsOnly from "@components/ui/AdultsOnly.astro";
 
-// import location1 from "@images/locations/mushdisp-location-01.webp";
+// Map Photos
 import location1 from "@images/locations/Map01-davie.png";
 import location2 from "@images/locations/Map02-eastvancouver.png";
 import location3 from "@images/locations/Map03-mountpleasant.png";
-import PhoneIllo from "@components/artwork/PhoneIllo.astro";
+
+// Numbered Icons
 import LocationIcon01 from "@images/location1.svg?raw";
 import LocationIcon02 from "@images/location2.svg?raw";
 import LocationIcon03 from "@images/location3.svg?raw";
 
-import NineteenPlus from "@components/artwork/NineteenPlus.astro";
-
-import LocationCard from "@components/ui/LocationCard.astro";
-
+//Location & Hours Data
 const locations = [
   {
     cityArea: "West End Vancouver",
@@ -54,96 +54,35 @@ const locations = [
 ];
 ---
 
-<section class="section section--dark contact">
-  <div class="container">
-    <div class="contact-container">
-      <div class="locations-header-container">
-        <div class="header-text-container --mobile-only">
-          <h2 class="subtitle --locations --margin-bottom">3 Locations!</h2>
-          <p class="text-body-display">
-            We have three storefronts in Vancouver, BC, Canada
-          </p>
-        </div>
-        <div class="locations-header">
-          <div class="header-text-container --desktop-only">
-            <h2 class="subtitle --bignumber --margin-bottom">3</h2>
-            <h2 class="subtitle --locations --margin-bottom">Locations!</h2>
-            <p class="text-body-display">
-              We have three storefronts in Vancouver, BC, Canada
-            </p>
-          </div>
-
-          <div class="illo-container">
-            <PhoneIllo />
-          </div>
-          <div class="bottom-text-container">
-            <p class="text-body-display --margin-bottom-large">
-              Same phone number for all locations:
-            </p>
-            <a href="tel:+16043434687" class="subtitle --phonenumber"
-              >604-343-4687</a
-            >
-          </div>
-        </div>
-        <div class="container-adultsonly --desktop-only">
-          <h2 class="subtitle --adultsonly --margin-bottom">Adults Only</h2>
-          <p class="text-body-display">
-            Minors <span class="--underline">cannot enter </span> unless accompanied
-            by a parent. Minors cannot make any purchases.
-          </p>
-          <div class="art-container">
-            <NineteenPlus />
-          </div>
-        </div>
-      </div>
-
-      <div class="locations-card">
-        {
-          locations.map((location) => (
-            <LocationCard
-              cityArea={location.cityArea}
-              address={location.address}
-              storeHours={location.storeHours}
-              image={location.image}
-              locationIcon={location.locationIcon}
-              href={location.href}
-            />
-          ))
-        }
-      </div>
-      <div class="container-adultsonly --mobile-only">
-        <h2 class="subtitle --adultsonly --margin-bottom">Adults Only</h2>
-        <p class="text-body-display">
-          Minors <span class="--underline">cannot enter </span> unless accompanied
-          by a parent. Minors cannot make any purchases.
-        </p>
-        <div class="art-container">
-          <NineteenPlus />
-        </div>
-      </div>
+<section class="section section--dark container contact">
+  <div class="contact-container">
+    <LocationsHeader />
+    <div class="locations-card">
+      {
+        locations.map((location) => (
+          <LocationCard
+            cityArea={location.cityArea}
+            address={location.address}
+            storeHours={location.storeHours}
+            image={location.image}
+            locationIcon={location.locationIcon}
+            href={location.href}
+          />
+        ))
+      }
+    </div>
+    <div class="contact-container-adults-only">
+      <AdultsOnly />
     </div>
   </div>
 </section>
 
 <style>
-  section {
-    overflow: clip;
-  }
-
   .contact-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-areas: "sidebar cards";
     gap: var(--sp-05);
-  }
-  .locations-header {
-    grid-area: sidebar;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--sp-07);
-    padding-inline: var(--sp-05);
-    padding-block: var(--sp-05);
   }
   .locations-card {
     grid-area: cards;
@@ -151,54 +90,7 @@ const locations = [
     flex-direction: column;
     gap: var(--sp-04);
   }
-  .locations-header {
-    border: var(--border-surface-dark-thinnest);
-    border-radius: var(--br-03);
-    background-color: var(--color-neutral-600-50);
-
-    position: relative;
-    padding-block-start: var(--sp-09);
-    padding-block-end: var(--sp-08);
-    text-align: center;
-  }
-  .--bignumber {
-    font-size: 10rem;
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-box: trim-both cap alphabetic;
-  }
-  .--locations {
-    margin-top: 0.2em;
-    font-size: clamp(2rem, calc(5vw + 1rem), 3rem);
-    text-transform: uppercase;
-  }
-  .--phonenumber {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, calc(5vw + 1rem), 3rem);
-    text-transform: uppercase;
-  }
-
-  .container-adultsonly {
-    padding-block: var(--sp-08);
-    padding-inline: var(--sp-07);
-    position: relative;
-  }
-
-  .--adultsonly {
-    text-align: start;
-  }
-  .art-container {
-    position: absolute;
-    top: 22px;
-    right: 24px;
-  }
-
-  .--desktop-only {
-    display: block;
-  }
-  .--mobile-only {
+  .contact-container-adults-only {
     display: none;
   }
 
@@ -210,61 +102,8 @@ const locations = [
         "cards";
       gap: var(--sp-05);
     }
-    .locations-header {
-      grid-area: sidebar;
-      display: flex;
-      flex-direction: row;
-      align-items: end;
-      gap: var(--sp-07);
-      padding-inline: var(--sp-06);
-      padding-block: var(--sp-07);
-    }
-    .header-text-container {
-      margin-block-end: var(--sp-08);
-    }
-    .text-body-display {
-      width: 100%;
-    }
-    .--locations {
-      margin-top: 0;
-      margin-bottom: var(--sp-01);
-      font-size: clamp(2.8rem, 3.5vw, 3.5rem);
-      text-transform: uppercase;
-    }
-
-    .--desktop-only {
-      display: none;
-    }
-    .--mobile-only {
-      display: block;
-    }
-  }
-  @media (max-width: 600px) {
-    .locations-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: var(--border-surface-dark-thinnest);
-      border-radius: var(--br-03);
-      background-color: var(--color-neutral-600-50);
-
-      position: relative;
-      padding-block-start: var(--sp-06);
-      padding-block-end: var(--sp-08);
-      text-align: center;
-    }
-    .container-adultsonly {
-      padding-block: var(--sp-04);
-      padding-inline: 0;
-      & p {
-        line-height: var(--leading-loose);
-      }
-    }
-    .art-container {
-      position: absolute;
-      width: 4.5rem;
-      top: -10px;
-      right: 0;
+    .contact-container-adults-only {
+      display: revert;
     }
   }
 </style>
@@ -287,7 +126,7 @@ const locations = [
     duration: 0.5,
     ease: "power2.out",
   }).from(
-    ".locations-card .location",
+    ".locations-card .location-card",
     {
       opacity: 0,
       duration: 1,

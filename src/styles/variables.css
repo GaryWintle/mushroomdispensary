@@ -76,8 +76,14 @@
 
   /* Layout Specific Spacing */
   --max-width: min(100%, 90rem);
+
   --space-section-block: clamp(6rem, 8vw, 8rem);
   --space-section-inline: clamp(1.5rem, 5vw, 3rem);
+
+  --space-sub-section-block: clamp(2rem, 5vw, 4rem);
+
+  --space-gutter-primary: clamp(var(--sp-05), 5vw, var(--sp-06));
+  --space-gutter-secondary: clamp(var(--sp-04), 4.5vw, var(--sp-05));
 
   /* Border Radius */
   --br-01: 0.25rem; /* 4px */

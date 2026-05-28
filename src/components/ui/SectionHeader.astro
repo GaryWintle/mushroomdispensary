@@ -1,0 +1,71 @@
+---
+import ArrowTwisty from "@components/artwork/ArrowTwisty.astro";
+const { title, text } = Astro.props;
+---
+
+<div class="section-header-body">
+  <h2 class="section-header-title">{title}</h2>
+  <p class="section-header-text">
+    {text}
+  </p>
+  <div class="products-twisty-arrow">
+    <ArrowTwisty />
+  </div>
+</div>
+
+<style>
+  /* DESKTOP */
+  .section-header-body {
+    display: flex;
+    gap: var(--sp-06);
+    align-items: center;
+    margin-block-end: var(--space-sub-section-block);
+  }
+  .section-header-title {
+    flex: 1 0 50%;
+    font-family: var(--font-display);
+    font-size: clamp(2.3rem, 6.5vw, 5.5rem);
+    text-transform: uppercase;
+    text-box: trim-both cap alphabetic;
+    color: var(--color-surface-dark-text-highlight);
+    white-space: nowrap;
+  }
+
+  .section-header-text {
+    width: min(100%, 35ch);
+    font-size: var(--text-lg);
+  }
+
+  /* TABLET */
+  @media (max-width: 1075px) {
+    .section-header-body {
+      flex-direction: column;
+      /* align-items: center; */
+      text-align: center;
+    }
+    .products-twisty-arrow {
+      display: none;
+    }
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .section-header-body {
+      display: flex;
+      gap: var(--sp-04);
+      align-items: center;
+    }
+    .section-header-title {
+      flex: 1 0 none;
+      /* font-size: clamp(2.3rem, 3.5vw, 3.5rem); */
+      align-self: auto;
+      text-align: center;
+    }
+
+    .section-header-text {
+      width: min(100%, 35ch);
+      font-size: var(--text-lg);
+      text-align: center;
+    }
+  }
+</style>

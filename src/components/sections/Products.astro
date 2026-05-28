@@ -1,7 +1,7 @@
 ---
 import CTAButton from "@components/ui/CTAButton.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
 import ProductCard from "@components/ui/ProductCard.astro";
-import ArrowTwisty from "@components/artwork/ArrowTwisty.astro";
 import MushyGuyHazy from "@images/mushyguyHazy.svg?raw";
 
 import imgMushrooms from "@images/products/mushrooms.webp";
@@ -84,251 +84,143 @@ const products = [
 ];
 ---
 
-<div class="wrapper">
-  <section class="section section--dark">
-    <div class="container">
-      <div class="products">
-        <div class="product-heading">
-          <div class="text-title-hero"><h2>Our Products</h2></div>
-          <div class="text-body-display">
-            <p class="text-body">
-              No other shop in the world carries the same range of products that
-              we do!
-            </p>
-          </div>
-          <div class="cta --desktop">
-            <div class="wrapper-twisty-arrow">
-              <ArrowTwisty />
-            </div>
-            <div class="wrapper-mushyguy-hazy">
-              <Fragment set:html={MushyGuyHazy} />
-            </div>
-            <div class="wrapper-cta-button">
-              <CTAButton text="Full Menu!" />
-            </div>
-          </div>
-        </div>
-        <div class="product-grid">
-          {
-            products.map((product) => (
-              <ProductCard
-                title={product.title}
-                description={product.description}
-                image={product.image}
-                hasGuide={product.hasGuide}
-                href={product.href}
-              />
-            ))
-          }
-        </div>
+<section class="section section--dark container">
+  <div class="products">
+    <SectionHeader
+      title="Our Products"
+      text="No other shop in the world carries the same range of products that we do!"
+    />
+    <div class="products-grid">
+      {
+        products.map((product) => (
+          <ProductCard
+            title={product.title}
+            description={product.description}
+            image={product.image}
+            hasGuide={product.hasGuide}
+            href={product.href}
+          />
+        ))
+      }
+    </div>
+
+    <div class="products-cta">
+      <div class="products-cta-button">
+        <CTAButton text="View Our Full Menu!" />
       </div>
-      <div class="cta --mobile">
-        <div class="wrapper-mushyguy-hazy">
-          <Fragment set:html={MushyGuyHazy} />
-        </div>
-        <div class="wrapper-cta-button">
-          <CTAButton text="Full Menu!" />
-        </div>
+      <div class="products-mushy-guy">
+        <Fragment set:html={MushyGuyHazy} />
       </div>
     </div>
-  </section>
-</div>
+  </div>
 
-<script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".products",
-      start: "top 80%",
-    },
-  });
-
-  tl.from(".product-heading", {
-    opacity: 0,
-    y: 20,
-    duration: 0.5,
-    ease: "power2.out",
-  }).from(
-    ".product-grid .card-wrapper",
-    {
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-      stagger: 0.25,
-    },
-    "+=0.1",
-  );
-</script>
-
-<style>
-  section {
-    overflow: clip;
-  }
-
-  /* .wrapper {
-    background:
-      url("/images/mushdisp-pattern-05percent.webp"),
-      linear-gradient(
-        to bottom,
-        oklch(from var(--color-secondary-200) l c h / 0.8) 70%,
-        oklch(from var(--color-secondary-200) l c h / 0.6) 200%
-      );
-    background-repeat: repeat;
-    background-size: auto;
-    background-attachment: fixed;
-    margin-block: 100px;
-  } */
-
-  .product-heading {
-    display: flex;
-    gap: var(--sp-06);
-    align-items: center;
-    margin-block-end: var(--sp-08);
-  }
-  .text-title-hero {
-    flex: 1 0 none;
-    color: var(--color-surface-dark-text-highlight);
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3.5vw, 3.5rem);
-    text-transform: uppercase;
-    text-box: trim-both cap alphabetic;
-  }
-
-  .text-body-display {
-    flex: 1 0 25%;
-    font-size: var(--text-lg);
-  }
-
-  .text-body {
-    width: 100%;
-  }
-
-  .cta {
-    position: relative;
-    flex: 1 0 none;
-    display: flex;
-    isolation: isolate;
-  }
-  .--mobile {
-    display: none;
-  }
-
-  .wrapper-twisty-arrow {
-    position: absolute;
-    top: -85px;
-    left: -90px;
-    transform: rotate(-30deg);
-    z-index: 2;
-  }
-  .wrapper-cta-button {
-    transform: rotate(6deg);
-  }
-  .wrapper-mushyguy-hazy {
-    width: 8rem;
-    position: absolute;
-    top: -120px;
-    right: -45px;
-    z-index: 2;
-    pointer-events: none;
-    animation: bounce 2s ease-in-out infinite;
-  }
-
-  @keyframes bounce {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-3px);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .wrapper-mushyguy-hazy {
-      animation: none;
-    }
-  }
-
-  /* PRODUCT CARDS */
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
-    align-items: stretch;
-    column-gap: var(--sp-05);
-    row-gap: var(--sp-06);
-  }
-
-  @media (max-width: 1075px) {
-    .product-heading {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-06);
-      align-items: center;
-      margin-block-end: var(--sp-08);
-    }
-    .--desktop {
-      display: none;
-    }
-  }
-  @media (max-width: 600px) {
-    .product-grid {
-      grid-template-columns: unset;
-      grid-auto-flow: column;
-      grid-auto-columns: 85%;
-      overflow-x: scroll;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-      margin-inline: calc(-1 * var(--space-section-inline));
-      padding-inline: var(--space-section-inline);
-      margin-block-end: var(--sp-08);
-      scroll-padding-inline: var(--space-section-inline);
-      mask-image: linear-gradient(
-        to right,
-        transparent,
-        black 5%,
-        black 95%,
-        transparent
-      );
-      -webkit-mask-image: linear-gradient(
-        to right,
-        transparent,
-        black 5%,
-        black 95%,
-        transparent
-      );
-    }
-    .product-heading {
-      display: flex;
-      gap: var(--sp-04);
-      align-items: center;
-      margin-block-end: var(--sp-08);
-    }
-    .text-title-hero {
-      flex: 1 0 none;
-      font-size: clamp(1.8rem, 3.5vw, 3.5rem);
-      align-self: flex-start;
-    }
-    .wrapper-cta-button {
+  <style>
+    .products-cta {
+      position: relative;
+      isolation: isolate; /* establishes stacking context for z-index children */
       display: grid;
-      text-align: center;
-      /* margin-inline: var(--sp-06); */
-      transform: rotate(0);
-      margin-top: var(--sp-05);
+      place-content: center;
     }
-    .wrapper-mushyguy-hazy {
-      width: 6rem;
+
+    .products-mushy-guy {
       position: absolute;
-      top: -80px;
-      right: -45px;
+      top: -120%;
+      right: calc(50% - 20rem);
       z-index: 2;
+      width: 8rem;
       pointer-events: none;
-      animation: bounce 2s ease-in-out infinite;
+      rotate: 8deg;
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: bounce 2s ease-in-out infinite;
+      }
     }
-    .--mobile {
-      display: block;
+
+    @keyframes bounce {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-3px);
+      }
     }
-  }
-</style>
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+      align-items: stretch;
+      column-gap: var(--space-gutter-secondary);
+      row-gap: var(--space-gutter-primary);
+      margin-block-end: var(--space-sub-section-block);
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .products-grid {
+        grid-template-columns: unset;
+        grid-auto-flow: column;
+        grid-auto-columns: 85%;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        margin-inline: calc(-1 * var(--space-section-inline));
+        padding-inline: var(--space-section-inline);
+        margin-block-end: var(--sp-08);
+        scroll-padding-inline: var(--space-section-inline);
+        mask-image: linear-gradient(
+          to right,
+          transparent,
+          black 5%,
+          black 95%,
+          transparent
+        );
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent,
+          black 5%,
+          black 95%,
+          transparent
+        );
+      }
+      .products-cta-button {
+        display: grid;
+        text-align: center;
+      }
+      .products-mushy-guy {
+        top: -120%;
+        right: calc(50% - 15rem);
+        width: 6rem;
+      }
+    }
+  </style>
+
+  <script>
+    import gsap from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".products",
+        start: "top 80%",
+      },
+    });
+
+    tl.from(".product-heading", {
+      opacity: 0,
+      y: 20,
+      duration: 0.5,
+      ease: "power2.out",
+    }).from(
+      ".products-grid .card-wrapper",
+      {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.1,
+      },
+      "+=0.1",
+    );
+  </script>
+</section>

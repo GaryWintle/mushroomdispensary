@@ -51,6 +51,9 @@ img {
 /* for vertical spacing and bg only */
 .section {
   padding-block: var(--space-section-block);
+  @media (max-width: 600px) {
+    overflow-x: hidden;
+  }
 }
 .section-only-top {
   padding-block-start: var(--space-section-block);

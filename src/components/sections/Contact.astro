@@ -12,6 +12,7 @@ import location3 from "@images/locations/Map03-mountpleasant.png";
 import LocationIcon01 from "@images/location1.svg?raw";
 import LocationIcon02 from "@images/location2.svg?raw";
 import LocationIcon03 from "@images/location3.svg?raw";
+import SectionHeader from "@components/ui/SectionHeader.astro";
 
 //Location & Hours Data
 const locations = [
@@ -55,6 +56,11 @@ const locations = [
 ---
 
 <section class="section section--dark container contact">
+  <SectionHeader
+    title="3 Locations!"
+    text="We have three safe, psychedlic storefronts in Vancouver, BC, Canada"
+    sectionName="product"
+  />
   <div class="contact-container">
     <LocationsHeader />
     <div class="locations-card">

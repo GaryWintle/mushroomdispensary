@@ -4,20 +4,11 @@ import AdultsOnly from "./AdultsOnly.astro";
 ---
 
 <div class="locations-header">
-  <div class="header-text-container --desktop-only">
-    <h2 class="subtitle --locations --margin-bottom">3 Locations!</h2>
-    <p class="text-body-display">
-      We have three storefronts in Vancouver, BC, Canada
-    </p>
-  </div>
-
+  <p class="locations-header-text">Same phone number for all locations:</p>
   <div class="illo-container">
     <PhoneIllo />
   </div>
   <div class="bottom-text-container">
-    <p class="text-body-display --margin-bottom-large">
-      Same phone number for all locations:
-    </p>
     <a href="tel:+16043434687" class="subtitle --phonenumber">604-343-4687</a>
   </div>
   <div class="locations-header-container-adults-only">
@@ -33,28 +24,18 @@ import AdultsOnly from "./AdultsOnly.astro";
     flex-direction: column;
     align-items: center;
     gap: var(--sp-07);
-    padding-block-start: var(--sp-09) var(--sp-08);
-    padding-inline: var(--sp-05);
+    padding-block: var(--sp-07) var(--sp-08);
+    padding-inline: var(--sp-06);
     border: var(--border-surface-dark-thinnest);
     border-radius: var(--br-03);
     background-color: var(--color-neutral-600-50);
   }
-  .--bignumber {
-    font-size: 10rem;
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-box: trim-both cap alphabetic;
-  }
-  .--locations {
-    margin-top: 0.2em;
-    font-size: clamp(2rem, calc(5vw + 1rem), 3rem);
-    text-transform: uppercase;
+  .locations-header-text {
+    text-align: center;
   }
   .--phonenumber {
     font-family: var(--font-display);
-    font-size: clamp(2rem, calc(5vw + 1rem), 3rem);
+    font-size: clamp(1.7rem, calc(3vw + 1rem), 3rem);
     text-transform: uppercase;
   }
 

@@ -1,9 +1,13 @@
 ---
 import ArrowTwisty from "@components/artwork/ArrowTwisty.astro";
-const { title, text } = Astro.props;
+const {
+  title = "Section Title",
+  text = "Add any section description text here",
+  sectionName = "Header",
+} = Astro.props;
 ---
 
-<div class="section-header-body">
+<div class="section-header-body" data-animate={`${sectionName}-header`}>
   <h2 class="section-header-title">{title}</h2>
   <p class="section-header-text">
     {text}
@@ -22,7 +26,7 @@ const { title, text } = Astro.props;
     margin-block-end: var(--space-sub-section-block);
   }
   .section-header-title {
-    flex: 1 0 50%;
+    flex: 1 1 fill;
     font-family: var(--font-display);
     font-size: clamp(2.3rem, 6.5vw, 5.5rem);
     text-transform: uppercase;

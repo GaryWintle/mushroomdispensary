@@ -89,6 +89,7 @@ const products = [
     <SectionHeader
       title="Our Products"
       text="No other shop in the world carries the same range of products that we do!"
+      sectionName="product"
     />
     <div class="products-grid">
       {
@@ -115,13 +116,19 @@ const products = [
   </div>
 
   <style>
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+      align-items: stretch;
+      column-gap: var(--space-gutter-secondary);
+      row-gap: var(--space-gutter-primary);
+      margin-block-end: var(--space-sub-section-block);
+    }
     .products-cta {
       position: relative;
-      isolation: isolate; /* establishes stacking context for z-index children */
       display: grid;
       place-content: center;
     }
-
     .products-mushy-guy {
       position: absolute;
       top: -120%;
@@ -144,15 +151,6 @@ const products = [
       50% {
         transform: translateY(-3px);
       }
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
-      align-items: stretch;
-      column-gap: var(--space-gutter-secondary);
-      row-gap: var(--space-gutter-primary);
-      margin-block-end: var(--space-sub-section-block);
     }
 
     /* MOBILE */

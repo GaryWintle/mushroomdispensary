@@ -2,37 +2,34 @@
 
 ---
 
-<section class="section--colored testimonials">
-  <div class="container">
-    <div class="testimonials-flex">
-      <div class="testimonial test-1">
-        <p class="testimonial-quote">
-          “There’s no shortage of members at Larsen’s cafe and dispensary - more
-          than 20,000 at last count.”
-        </p>
-        <div>
-          <p class="organization-name">• VICE</p>
-        </div>
-      </div>
-      <div class="testimonial test-2">
-        <p class="testimonial-quote">
-          “...magic mushroom dispensaries... brazenly advertise their wares on
-          three of the city’s busiest thoroughfares.”
-        </p>
-        <div>
-          <p class="organization-name">• Globe and Mail</p>
-        </div>
-      </div>
+<section
+  class="section--colored testimonials container"
+  aria-label="Press mentions"
+  data-animation-testimonials
+>
+  <div class="testimonials-flex" role="list">
+    <div class="testimonial" role="listitem" data-animation-testimonial-card>
+      <blockquote class="testimonial-quote">
+        “There’s no shortage of members at Larsen’s cafe and dispensary - more
+        than 20,000 at last count.”
+      </blockquote>
+      <cite class="testimonials-organization-name">VICE</cite>
+    </div>
 
-      <div class="testimonial test-3">
-        <p class="testimonial-quote">
-          “Buying magic mushrooms... can be as easy as ordering your morning cup
-          of coffee.”
-        </p>
-        <div>
-          <p class="organization-name">• CBC News</p>
-        </div>
-      </div>
+    <div class="testimonial" role="listitem" data-animation-testimonial-card>
+      <blockquote class="testimonial-quote">
+        “...magic mushroom dispensaries... brazenly advertise their wares on
+        three of the city’s busiest thoroughfares.”
+      </blockquote>
+      <cite class="testimonials-organization-name">Globe and Mail</cite>
+    </div>
+
+    <div class="testimonial" role="listitem" data-animation-testimonial-card>
+      <blockquote class="testimonial-quote">
+        “Buying magic mushrooms... can be as easy as ordering your morning cup
+        of coffee.”
+      </blockquote>
+      <cite class="testimonials-organization-name">CBC News</cite>
     </div>
   </div>
 </section>
@@ -43,50 +40,40 @@
     gap: var(--sp-04);
   }
   .testimonial {
-    /* background-color: var(--color-surface-colored); */
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: space-between;
-    background-color: var(--color-neutral-600-50);
-    border-radius: var(--br-03);
     padding-inline: var(--sp-06);
     padding-block: var(--sp-07);
+    background-color: var(--color-neutral-600-50);
+    border-radius: var(--br-03);
     box-shadow: var(--card-shadow-neutral-deep);
     border: var(--border-surface-dark-thin);
-
-    /* backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px); */
   }
 
-  .test-1 {
-    flex: 1;
-  }
-  .test-2 {
-    flex: 1.2;
-  }
-
-  .test-3 {
-    flex: 1;
+  .testimonial:nth-child(2) {
+    flex: 1.2; /* gives the middle card slightly more visual weight */
   }
 
   .testimonial-quote {
+    margin-block-end: var(--sp-04);
     font-family: var(--font-body);
     font-size: var(--text-lg);
     line-height: var(--leading-loose);
-    margin-block-end: var(--sp-04);
     font-style: italic;
     text-wrap: balance;
   }
 
-  .organization-name {
-    color: var(--color-surface-colored-text-highlight);
-    font-family: var(--font-body);
+  .testimonials-organization-name {
+    font-family: var(--font-display);
     font-size: var(--text-base);
-    font-variation-settings:
-      "wdth" 110,
-      "wght" 700;
+    color: var(--color-surface-colored-text-highlight);
+    &::before {
+      content: "• ";
+    }
   }
-
+  /* TABLET */
   @media (max-width: 900px) {
     .testimonials-flex {
       overflow-x: scroll;
@@ -115,21 +102,32 @@
       scroll-snap-align: start;
       border: var(--border-surface-dark-thinnest);
     }
-    .testimonial-quote {
-      font-family: var(--font-body);
-      font-size: var(--text-lg);
-      line-height: 1.5;
-      margin-block-end: var(--sp-04);
-      font-style: italic;
-      text-wrap: balance;
+    .testimonial:nth-child(2) {
+      flex: 0 0 85%;
     }
-    .organization-name {
-      color: var(--color-surface-colored-text-highlight);
-      font-family: var(--font-display);
+    .testimonial-quote {
+      line-height: 1.5;
+    }
+    .testimonials-organization-name {
       font-size: var(--text-lg);
-      /* font-variation-settings:
-        "wdth" 110,
-        "wght" 700; */
     }
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from("[data-animation-testimonial-card]", {
+    scrollTrigger: {
+      trigger: "[data-animation-testimonials]",
+      start: "top 80%",
+    },
+    opacity: 0,
+    y: 20,
+    duration: 0.8,
+    ease: "power2.out",
+    stagger: 0.15,
+  });
+</script>

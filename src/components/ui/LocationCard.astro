@@ -152,8 +152,8 @@ const {
   /* MOBILE */
   @media (max-width: 650px) {
     .location-card {
-      flex-direction: column;
       overflow: unset;
+      flex-direction: column;
       flex: 0 0 85%;
       scroll-snap-align: start;
     }
@@ -161,7 +161,7 @@ const {
     .location-card-image {
       flex: 2 1 100%;
       height: auto;
-      aspect-ratio: 3 / 2;
+      aspect-ratio: 2.5 / 2;
       border-radius: var(--br-03) var(--br-03) 0 0;
       border-right: unset;
       border-bottom: var(--border-surface-color-thick);
@@ -173,8 +173,9 @@ const {
     .location-card-body {
       align-items: center;
       padding-block: var(--sp-06) var(--sp-09);
-      padding-inline: var(--sp-06);
+      padding-inline: var(--sp-07);
       border-radius: 0 0 var(--br-03) var(--br-03);
+      min-height: 18.75rem;
     }
     .location-card-title {
       text-align: center;

@@ -7,7 +7,7 @@
 
   /* Secondary */
   --color-secondary-200: oklch(0.61 0.244 353);
-  --color-secondary-300: oklch(from var(--color-secondary-200) 0.22 c h);
+  --color-secondary-300: oklch(from var(--color-secondary-200) 0.45 0.4 h);
 
   /* Neutrals */
   --color-neutral-100: oklch(0.99 0.0035 258);
@@ -91,9 +91,27 @@
   --br-03: 0.75rem; /* 12px */
 
   /* Border Width */
-  --border-thin: 1.5px;
+  --border-thin: 2px;
   --border-default: 3px;
   --border-thick: 5px;
+
+  /* Semantic Borders */
+  --border-photo-dark-thin: var(--border-thin) solid var(--color-neutral-500);
+  --border-surface-color-thin: var(--border-default) solid
+    var(--color-neutral-600);
+  --border-surface-dark-thin-highlight: var(--border-thin) solid
+    var(--color-primary-200);
+  --border-surface-dark-thin: var(--border-thin) solid
+    var(--color-secondary-200);
+  --border-surface-dark-thinnest: var(--border-thin) solid
+    var(--color-secondary-200);
+  --border-surface-color-thick: var(--border-thick) solid
+    var(--color-neutral-600);
+  --border-surface-dark-thick: var(--border-thick) solid
+    var(--color-secondary-200);
+
+  --border-cta: var(--border-default) solid var(--color-cta-border);
+  --border-cta-hover: var(--border-default) solid var(--color-cta-border-hover);
 
   /* EFFECTS */
 
@@ -119,20 +137,8 @@
   --art-shadow-color-medium: drop-shadow(5px 5px 0 var(--color-secondary-200));
   --art-shadow-color-deep: drop-shadow(8px 8px 0 var(--color-secondary-200));
 
-  /* Borders */
-  --border-photo-dark-thin: 2px solid var(--color-neutral-500);
-  --border-surface-color-thin: 3px solid var(--color-neutral-600);
-  --border-surface-dark-thin-highlight: 2px solid var(--color-primary-200);
-  --border-surface-dark-thin: 2px solid var(--color-secondary-200);
-  --border-surface-dark-thinnest: 1px solid var(--color-secondary-200);
-  --border-surface-color-thick: 4px solid var(--color-neutral-600);
-  --border-surface-dark-thick: 5px solid var(--color-secondary-200);
-
-  --border-cta: 2px solid var(--color-cta-border);
-  --border-cta-hover: 2px solid var(--color-cta-border-hover);
-
   /* Usability */
-  --keyboard-focus: 3px solid var(--color-primary-200);
+  --keyboard-focus: var(--border-default) solid var(--color-primary-200);
 
   /* TYPOGRAPHY */
 
@@ -146,7 +152,7 @@
   --text-base: clamp(1rem, 2.5vw, 1.125rem);
   --text-lg: clamp(1.2rem, 2.5vw, 1.25rem);
   --text-xl: clamp(1.3rem, calc(2vw + 1rem), 1.5rem);
-  --text-2xl: clamp(1.8rem, calc(2vw + 1rem), 2rem);
+  --text-2xl: clamp(2rem, calc(2vw + 1rem), 2rem);
   --text-hero: clamp(2.5rem, calc(2vw + 1rem), 2.8rem);
 
   /* Line height */

@@ -4,12 +4,17 @@ import AdultsOnly from "./AdultsOnly.astro";
 ---
 
 <div class="locations-header">
-  <p class="locations-header-text">Same phone number for all locations:</p>
   <div class="illo-container">
     <PhoneIllo />
   </div>
-  <div class="bottom-text-container">
-    <a href="tel:+16043434687" class="subtitle --phonenumber">604-343-4687</a>
+
+  <div class="locations-header-phone-contact-body">
+    <p class="locations-header-phone-contact-text">
+      Same phone number for all locations:
+    </p>
+    <a href="tel:+16043434687" class="subtitle location-header-phonenumber"
+      >604-343-4687</a
+    >
   </div>
   <div class="locations-header-container-adults-only">
     <AdultsOnly />
@@ -30,20 +35,13 @@ import AdultsOnly from "./AdultsOnly.astro";
     border-radius: var(--br-03);
     background-color: var(--color-neutral-600-50);
   }
-  .locations-header-text {
+  .locations-header-phone-contact-text {
     text-align: center;
   }
-  .--phonenumber {
+  .location-header-phonenumber {
     font-family: var(--font-display);
-    font-size: clamp(1.7rem, calc(3vw + 1rem), 3rem);
+    font-size: clamp(2.4rem, calc(5vw + 1rem), 3rem);
     text-transform: uppercase;
-  }
-
-  .--desktop-only {
-    display: block;
-  }
-  .--mobile-only {
-    display: none;
   }
 
   @media (max-width: 1135px) {

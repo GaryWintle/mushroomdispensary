@@ -20,19 +20,29 @@ const {
 } = Astro.props;
 ---
 
-<a class="card-wrapper" href={href}>
+<a class="product-card-link" href={href} data-animation="product-card">
   <div class="product-card section--light">
-    <div class="card-image">
-      <Image src={image} loading="lazy" width={600} height={400} alt={title} />
+    <div class="product-card-image">
+      <Image
+        src={image}
+        loading="lazy"
+        width={600}
+        height={400}
+        alt={`${title} product photo`}
+      />
     </div>
-    <div class="card-text-body">
-      <h3 class="card-title">{title}</h3>
-      <p class="card-description">{description}</p>
+    <div class="product-card-body">
+      <h3 class="product-card-title">{title}</h3>
+      <p class="product-card-description">{description}</p>
     </div>
   </div>
   {
     hasGuide && (
-      <div class="user-guide">
+      <div
+        class="product-card-guide"
+        role="img"
+        aria-label="Includes free user guide"
+      >
         <FreeUserGuideIcon />
       </div>
     )
@@ -40,43 +50,40 @@ const {
 </a>
 
 <style>
-  .card-wrapper {
-    display: block;
+  .product-card-link {
     position: relative;
+    display: block;
     transform: translate(0, 0);
     transition: transform 150ms ease-in;
   }
-  .card-wrapper:focus-visible {
+  .product-card-link:focus-visible {
     transform: translate(-2px, -5px);
   }
-  .card-wrapper:focus-visible .card-title {
+  .product-card-link:focus-visible .product-card-title {
     color: var(--color-surface-light-text-highlight);
+  }
+  .product-card-link:focus-visible .product-card {
+    box-shadow:
+      0 0 0 4px var(--color-neutral-600),
+      var(--card-shadow-color-deep);
   }
 
   .product-card {
     display: flex;
     flex-direction: column;
-    background: var(--color-surface-light);
-    /* border: var(--border-photo-dark-thin); */
-    border-radius: var(--br-03) 3rem var(--br-03) var(--br-03);
     height: 100%;
     overflow: hidden;
+    background: var(--color-surface-light);
+    border-radius: var(--br-03) 3rem var(--br-03) var(--br-03);
     box-shadow: var(--card-shadow-neutral-medium);
     transition: box-shadow 200ms ease-in-out;
   }
-  .product-card:focus-visible {
-    box-shadow:
-      0 0 0 4px var(--color-neutral-600),
-      var(--card-shadow-color-deep);
-    border: none;
-    /* border: var(--border-surface-color-thick); */
-  }
 
-  .card-image {
-    height: auto;
+  .product-card-image {
     aspect-ratio: 4 / 3;
+    height: auto;
+    overflow: hidden; /* clips image corners to card border-radius */
     border-bottom: var(--border-surface-color-thick);
-    overflow: hidden;
     & img {
       width: 100%;
       height: 100%;
@@ -84,78 +91,72 @@ const {
       display: block;
     }
   }
-  .card-text-body {
+
+  .product-card-body {
     flex: 1;
     padding-block-start: var(--sp-06);
     padding-block-end: var(--sp-07);
     padding-inline: var(--sp-05);
   }
 
-  .card-title {
-    font-family: var(--font-display);
+  .product-card-title {
     font-size: var(--text-xl);
     margin-block-end: var(--sp-02);
     letter-spacing: var(--tracking-loose);
-    line-height: var(--leading-tight);
-    /* text-transform: uppercase; */
     text-wrap: balance;
     transition: color 200ms ease-in;
   }
 
-  .card-description {
-    font-family: var(--font-body);
-    font-size: var(--text-lg);
+  .product-card-description {
     line-height: var(--leading-normal);
-    letter-spacing: var(--tracking-normal);
-    font-variation-settings: var(--fvs-regular-regular);
     text-wrap: pretty;
   }
 
-  .user-guide {
+  .product-card-guide {
+    --_guide-top: var(--guide-top, 38%);
+    --_guide-right: var(--guide-right, -1.125rem);
+
     position: absolute;
-    right: -18px;
-    top: 38%;
+    top: var(--_guide-top);
+    right: var(--_guide-right);
     transform: rotate(15deg);
     filter: var(--art-shadow-neutral-medium);
     transition: filter 200ms ease-in;
   }
 
   @media (hover: hover) {
-    .card-wrapper:hover {
+    .product-card-link:hover {
       transform: translate(-2px, -5px);
     }
-    .card-wrapper:hover .card-title {
+    .product-card-link:hover .product-card-title {
       color: var(--color-surface-light-text-highlight);
     }
-    .product-card:hover {
+    .product-card-link:hover .product-card {
       box-shadow:
         0 0 0 4px var(--color-neutral-600),
         var(--card-shadow-color-deep);
-      border: unset;
     }
   }
 
+  /* MOBILE */
   @media (max-width: 600px) {
-    .card-wrapper {
+    .product-card-link {
       scroll-snap-align: start;
     }
-    .card-image {
+    .product-card-image {
       aspect-ratio: 4 / 3.5;
     }
-    .card-title {
+    .product-card-title {
       letter-spacing: var(--tracking-tight);
     }
-    .card-description {
+    .product-card-description {
       line-height: var(--leading-loose);
     }
-    .card-text-body {
-      flex: 1;
+    .product-card-body {
       padding-block-end: var(--sp-05);
     }
-    .user-guide {
-      position: absolute;
-      right: -18px;
-      top: 41%;
+    .product-card-guide {
+      --guide-top: 41%;
     }
   }
 </style>

@@ -85,6 +85,8 @@
   --space-gutter-primary: clamp(var(--sp-05), 5vw, var(--sp-06));
   --space-gutter-secondary: clamp(var(--sp-04), 4.5vw, var(--sp-05));
 
+  --space-after-body-text: 0.3em;
+
   /* Border Radius */
   --br-01: 0.25rem; /* 4px */
   --br-02: 0.5rem; /* 8px */

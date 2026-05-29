@@ -2,33 +2,56 @@
 import NineteenPlus from "@components/artwork/NineteenPlus.astro";
 ---
 
-<div class="adults-only-body">
-  <h2 class="subtitle">Adults Only</h2>
-  <p class="adults-only-text">
-    Minors <span class="underline">cannot enter </span> unless accompanied by a parent.
-    Minors cannot make any purchases.
-  </p>
-  <div class="adults-only-icon" aria-hidden="true">
-    <NineteenPlus />
+<div class="adults-only-wrapper">
+  <div class="adults-only-body">
+    <h2 class="subtitle">Adults Only</h2>
+    <p class="adults-only-text">
+      Minors <span class="underline">cannot enter </span> unless accompanied by a
+      parent. Minors cannot make any purchases.
+    </p>
+    <div class="adults-only-icon" aria-hidden="true">
+      <NineteenPlus />
+    </div>
   </div>
 </div>
 
 <style>
+  .adults-only-wrapper {
+    display: grid;
+    place-items: center;
+  }
   .adults-only-body {
-    position: relative; /* For the 19+ icon */
-    padding-block: var(--sp-08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-block: 0;
     padding-inline: var(--sp-05);
   }
   .adults-only-text {
     width: min(100%, 45ch);
+    text-align: center;
+    margin-block-end: var(--sp-06);
   }
   .adults-only-icon {
-    position: absolute;
+    /* position: absolute; */
     top: 5%;
-    right: 0;
+    right: -9%;
   }
+
+  @media (max-width: 1135px) {
+    .adults-only-body {
+      width: min(100%, 70%);
+    }
+    .adults-only-icon {
+      top: 5%;
+      right: 0;
+    }
+  }
+
   @media (max-width: 600px) {
     .adults-only-body {
+      width: 100%;
       padding-block: var(--sp-04);
       padding-inline: var(--sp-06);
       text-align: center;

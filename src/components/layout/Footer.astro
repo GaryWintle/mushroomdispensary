@@ -3,23 +3,28 @@ import LogoRectangular from "@components/artwork/LogoRectangular.astro";
 ---
 
 <footer class="footer-wrapper section--colored">
-  <div class="container">
-    <nav class="nav-flex">
-      <div class="logo-container">
-        <LogoRectangular />
-      </div>
-      <div class="footer-text-container">
-        <ul class="nav-links-flex">
-          <li>Our Story</li>
-          <li>News</li>
-          <li>Contact</li>
-          <li>Menu</li>
+  <div class="footer-body container">
+    <a
+      href="/"
+      class="footer-logo"
+      aria-label="Medicinal Mushroom Dispensary - home"
+    >
+      <LogoRectangular />
+    </a>
+    <div class="footer-content">
+      <nav class="footer-navigation" aria-label="Footer navigation">
+        <ul class="footer-links" role="list">
+          <li><a href="">Our Story</a></li>
+          <li><a href="">News</a></li>
+          <li><a href="">Contact</a></li>
+          <li><a href="">Menu</a></li>
         </ul>
-        <p class="copyright-text">
-          © Medicinal Mushroom Dispensary 2026. All rights reserved.
-        </p>
-      </div>
-    </nav>
+      </nav>
+      <small class="footer-copyright">
+        © Medicinal Mushroom Dispensary <span id="footer-year">2026</span>. All
+        rights reserved.
+      </small>
+    </div>
   </div>
 </footer>
 
@@ -29,64 +34,75 @@ import LogoRectangular from "@components/artwork/LogoRectangular.astro";
     padding-block: var(--sp-04);
     background-color: var(--color-secondary-200);
   }
-  .container {
-    /* position: relative; */
-  }
-  .logo-container {
+  .footer-logo {
     width: min(100%, 12rem);
+    padding-block-end: var(--sp-04);
+    svg {
+      width: 100%;
+      height: auto;
+    }
   }
-  .logo-container svg {
-    width: 100%;
-    height: auto;
-  }
-  .nav-flex {
+  .footer-body {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
-  .nav-links-flex {
-    display: flex;
-    color: var(--color-nav-text);
-    /* gap: var(--sp-02); */
+  .footer-navigation {
+    margin-block-end: var(--sp-04);
   }
 
-  .nav-links-flex > li {
-    font-family: var(--font-display);
+  .footer-links {
+    display: flex;
+    justify-content: end;
+    li a {
+      padding-inline: var(--sp-04);
+      padding-block: var(--sp-05);
+      text-shadow: var(--text-shadow-color);
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      letter-spacing: var(--tracking-semiwide);
+      color: inherit;
+      @media (prefers-reduced-motion: no-preference) {
+        transition: color 200ms ease;
+      }
+    }
+    li:hover {
+      color: var(--color-nav-hover);
+    }
+  }
+  .footer-links > li a:focus-visible {
+    outline: var(--keyboard-focus);
+    outline-offset: 3px;
+  }
+  .footer-copyright {
+    display: block;
+    margin-inline-end: var(--sp-03);
+    text-align: end;
     font-size: var(--text-sm);
     letter-spacing: var(--tracking-semiwide);
-    padding-inline: var(--sp-04);
-    padding-block: var(--sp-05-5);
-    text-shadow: var(--text-shadow-color);
-    transition:
-      color 200ms ease,
-      background-color 200ms ease;
   }
 
-  .nav-links-flex > li:hover {
-    text-shadow: none;
-    cursor: pointer;
-  }
-  .copyright-text {
-    font-family: var(--font-body);
-    font-size: var(--text-sm);
-    text-align: end;
-    margin-inline-end: var(--sp-03);
-  }
-
+  /* TABLET */
   @media (max-width: 987px) {
-    .nav-flex {
-      display: flex;
+    .footer-body {
       flex-direction: column;
     }
-    .nav-links-flex > li {
-      padding-inline: var(--sp-03);
-      padding-block: var(--sp-05-5);
+    .footer-links {
+      justify-content: center;
+      li a {
+        padding-inline: var(--sp-03);
+        padding-block: var(--sp-05-5);
+      }
     }
-    .copyright-text {
+    .footer-copyright {
       text-align: center;
-      margin-inline-end: var(--sp-03);
     }
   }
 </style>
+
+<script>
+  document.getElementById("footer-year")!.textContent = new Date()
+    .getFullYear()
+    .toString();
+</script>

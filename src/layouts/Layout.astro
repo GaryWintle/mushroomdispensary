@@ -180,11 +180,18 @@ const ogImage =
   }
 
   body::before {
-    content: '';
+    content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     background:
+      linear-gradient(
+        to bottom,
+        oklch(from var(--color-neutral-600) l c h / 0.5) 0%,
+        oklch(from var(--color-neutral-600) l c h / 0) 40%,
+        oklch(from var(--color-neutral-600) l c h / 0) 80%,
+        oklch(from var(--color-secondary-200) l c h / 0) 100%
+      ),
       url("/images/mushdisp-pattern-10percent-pink.webp"),
       linear-gradient(
         to bottom,

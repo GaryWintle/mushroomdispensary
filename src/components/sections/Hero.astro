@@ -2,7 +2,7 @@
 import Smiley from "@components/artwork/Smiley.astro";
 import SeenOnTV from "@components/artwork/SeenOnTV.astro";
 import CanadaFlag from "@components/artwork/CanadaFlag.astro";
-import PhotoCarousel from "@components/sections/PhotoCarousel.astro";
+import CTAButton from "@components/ui/CTAButton.astro";
 
 import danaCounter from "@images/carousel/mushdisp-dana-counter.webp";
 import products from "@images/carousel/mushdisp-products.webp";
@@ -53,22 +53,26 @@ const images = [
         <div class="icon-smiley">
           <Smiley />
         </div>
-        <div class="icon-seen-on-tv">
-          <SeenOnTV />
-        </div>
         <h1 class="text-title-hero">
           Dedicated to&#8200;a&#8200;safe, psychedelic supply
         </h1>
-        <p class="text-body-display hero-text-body">
+
+        <p class="hero-text-body">
           We believe in the benefits of psychedelics and want to challenge
           <span class="inline-icon">
             <CanadaFlag />
           </span>
           's failed drug prohibition laws.
         </p>
+        <div class="news-cta-button">
+          <CTAButton text="Our Story" onLight />
+        </div>
       </div>
       <div class="hero-video --desktop-only">
         <div class="video-wrapper">
+          <div class="icon-seen-on-tv">
+            <SeenOnTV />
+          </div>
           <!-- To re-enable autoplay, add autoplay=1& before mute=1 in the src -->
           <div class="video-overlay"></div>
           <iframe
@@ -115,10 +119,13 @@ const images = [
   .hero-text-body {
     width: var(--measure-narrow);
   }
+  .hero-text-textandbutton-container {
+    gap: var(--sp-04);
+  }
 
   .hero-video {
     border-radius: var(--br-03);
-    overflow: hidden;
+    /* overflow: hidden; */
     box-shadow: var(--card-shadow-neutral-deep);
     aspect-ratio: 16 / 9;
   }
@@ -151,6 +158,7 @@ const images = [
     width: 100%;
     height: 100%;
     border: 0;
+    border-radius: var(--br-03);
   }
 
   .video-overlay {
@@ -178,7 +186,7 @@ const images = [
     position: absolute;
     right: 0;
     bottom: 0;
-    transform: translate(35%, -20%) rotate(-5deg);
+    transform: translate(35%, -20%) rotate(35deg);
     z-index: 2;
   }
 
@@ -224,7 +232,7 @@ const images = [
     }
     .hero-video {
       border-radius: var(--br-03);
-      overflow: hidden;
+      /* overflow: hidden; */
       border-radius: var(--br-03) var(--br-03) 0 0;
       box-shadow: var(--card-shadow-neutral-deep);
       aspect-ratio: 16 / 9;

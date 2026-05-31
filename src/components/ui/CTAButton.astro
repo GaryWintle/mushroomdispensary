@@ -1,5 +1,12 @@
 ---
-const { text = "XXXX", href, isExternal = false, ariaLabel } = Astro.props;
+const {
+  text = "XXXX",
+  href,
+  ariaLabel,
+  isExternal = false,
+  hasShadow = false,
+  onLight = false,
+} = Astro.props;
 ---
 
 <a
@@ -7,6 +14,7 @@ const { text = "XXXX", href, isExternal = false, ariaLabel } = Astro.props;
   target={isExternal ? "_blank" : undefined}
   href={href}
   class="cta-button"
+  class:list={["cta-button", { "card-shadow": hasShadow, "on-light": onLight }]}
   aria-label={ariaLabel}>{text}</a
 >
 
@@ -22,24 +30,53 @@ const { text = "XXXX", href, isExternal = false, ariaLabel } = Astro.props;
     border-radius: var(--br-03);
     padding-inline: var(--sp-07);
     padding-block: var(--sp-05);
-    box-shadow: 0 0 0 12px var(--color-surface-dark);
+    box-shadow: var(--card-shadow-neutral-medium);
     text-shadow: var(--text-shadow-color);
-    cursor: pointer;
     transform: translateY(0);
     transition:
       color 200ms ease,
-      background-color 300ms cubic-bezier(0.36, 0, 0.64, 1),
-      transform 250ms ease-in,
-      box-shadow 250ms ease-in;
+      background-color 150ms cubic-bezier(0.36, 0, 0.64, 1),
+      transform 200ms ease-in,
+      box-shadow 200ms ease-in;
   }
   .cta-button:hover,
   .cta-button:focus-visible {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
     color: var(--color-cta-text-hover);
     background-color: var(--color-cta-hover);
     border: var(--border-cta-hover);
     text-shadow: none;
-    box-shadow: 0 0 0 24px var(--color-surface-dark);
+    box-shadow: 5px 8px 0 var(--color-neutral-600);
+  }
+  .card-shadow {
+    box-shadow: 0 0 0 12px var(--color-surface-dark);
+    &:hover {
+      box-shadow: 0 0 0 24px var(--color-surface-dark);
+    }
+  }
+
+  .on-light {
+    border-radius: var(--br-02);
+    padding-inline: var(--sp-05);
+    padding-block: var(--sp-04);
+    text-shadow: unset;
+    box-shadow:
+      0 0 0 3px var(--color-neutral-600),
+      2px 2px 0 3px var(--color-neutral-600);
+    cursor: pointer;
+    transform: translateY(0);
+    transition:
+      color 200ms ease,
+      background-color 150ms cubic-bezier(0.36, 0, 0.64, 1),
+      transform 150ms ease-in,
+      box-shadow 200ms ease-in;
+  }
+  .on-light:hover,
+  .on-light:focus-visible {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 0 3px var(--color-neutral-600),
+      3px 4px 0 3px var(--color-neutral-600);
   }
 
   @media (prefers-reduced-motion: reduce) {

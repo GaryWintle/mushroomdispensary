@@ -39,19 +39,21 @@
 
   /* CTA Buttons */
   --color-cta: var(--color-secondary-200);
-  --color-cta-text: var(--color-primary-200);
+  --color-on-light-cta: var(--color-neutral-100);
+  --color-cta-text: var(--color-neutral-100);
   --color-cta-border: var(--color-primary-200);
-  --color-cta-hover: var(--color-neutral-200);
-  --color-cta-text-hover: var(--color-neutral-600);
-  --color-cta-border-hover: var(--color-secondary-200);
+  --color-cta-on-light-border: var(--color-secondary-200);
+  --color-cta-hover: var(--color-primary-200);
+  --color-cta-text-hover: var(--color-secondary-200);
+  --color-cta-border-hover: var(--color-primary-200);
 
   /* Navigation */
   --color-nav: var(--color-secondary-200);
   --color-nav-title: var(--color-primary-100);
   --color-nav-text: var(--color-neutral-200);
   --color-nav-border: var(--color-neutral-600);
-  --color-nav-hover: var(--color-neutral-200);
-  --color-nav-text-hover: var(--color-neutral-600);
+  --color-nav-hover: var(--color-primary-200);
+  --color-nav-text-hover: var(--color-secondary-200);
 
   /* Icons and illustrations */
   --art-light: var(--color-primary-200);
@@ -112,8 +114,8 @@
   --border-surface-dark-thick: var(--border-thick) solid
     var(--color-secondary-200);
 
-  --border-cta: var(--border-default) solid var(--color-cta-border);
-  --border-cta-hover: var(--border-default) solid var(--color-cta-border-hover);
+  --border-cta: var(--border-thin) solid var(--color-cta-border);
+  --border-cta-hover: var(--border-thin) solid var(--color-cta-border-hover);
 
   /* EFFECTS */
 

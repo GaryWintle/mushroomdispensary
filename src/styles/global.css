@@ -76,6 +76,9 @@ img {
 }
 .section--light {
   color: var(--color-surface-light-text);
+  --color-cta: var(--color-secondary-200);
+  --color-cta-text: var(--color-neutral-100);
+  --border-cta: var(--border-thin) solid var(--color-secondary-200);
 }
 .section--colored {
   color: var(--color-surface-colored-text);

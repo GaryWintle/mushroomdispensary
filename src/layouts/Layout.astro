@@ -194,7 +194,10 @@ const ogImage =
     background:
       linear-gradient(
         to bottom,
-        oklch(from var(--color-neutral-600) l c h / 0.5) 0%,
+        /* status-bar pink bleed — remove next 2 lines to revert */
+        var(--color-secondary-200) 0%,
+        oklch(from var(--color-neutral-600) l c h / 0) 8%,
+        /* original stops */ oklch(from var(--color-neutral-600) l c h / 0.5) 0%,
         oklch(from var(--color-neutral-600) l c h / 0) 40%,
         oklch(from var(--color-neutral-600) l c h / 0) 80%,
         oklch(from var(--color-secondary-200) l c h / 0) 100%

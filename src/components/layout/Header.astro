@@ -5,12 +5,13 @@ import MushDispLogoText from "@components/artwork/MushDispLogoText.astro";
 import Hamburger from "@images/mushdisp-hamburger-default.svg?raw";
 import HamburgerClose from "@images/mushdisp-hamburger-close.svg?raw";
 import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
+import NavLinks from "@components/ui/NavLinks.astro";
 ---
 
 <header class="section--colored nav">
   <div class="container">
     <nav class="nav-flex">
-      <div class="nav-logo-container">
+      <a href="/" class="nav-logo-container">
         <div class="nav-logo --hidden-on-mobile"><MushDispLogo /></div>
         <div class="nav-logo --hidden-on-desktop"><MushDispLogoMobile /></div>
         <div class="logo-text-container">
@@ -19,12 +20,9 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
             Mushrooms • DMT • Peyote • Kratom • LSD
           </p>
         </div>
-      </div>
+      </a>
       <ul class="nav-links-flex --hidden-on-mobile">
-        <li>Our Story</li>
-        <li>News</li>
-        <li>Contact</li>
-        <li>Menu</li>
+        <NavLinks />
       </ul>
       <button
         class="hamburger-btn --hidden-on-desktop"
@@ -46,11 +44,7 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
       <Fragment set:html={HamburgerClose} />
     </button>
     <ul class="nav-links-flex-mobile">
-      <li>Home</li>
-      <li>Our Story</li>
-      <li>News</li>
-      <li>Contact</li>
-      <li>Menu</li>
+      <NavLinks />
     </ul>
     <div class="wrapper-mushyguy-smiley">
       <MushyGuySmiley />
@@ -79,26 +73,24 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
   .nav-links-flex {
     display: flex;
     color: var(--color-nav-text);
-  }
-
-  .nav-links-flex > li {
-    font-family: var(--font-display);
-    font-size: var(--text-sm);
-    letter-spacing: var(--tracking-semiwide);
-    padding-inline: var(--sp-04);
-    padding-block: var(--sp-05-5);
-    border-left: var(--border-surface-color-thin);
-    text-shadow: var(--text-shadow-color);
-    transition:
-      color 200ms ease,
-      background-color 200ms ease;
-  }
-
-  .nav-links-flex > li:hover {
-    color: var(--color-nav-text-hover);
-    background-color: var(--color-nav-hover);
-    text-shadow: none;
-    cursor: pointer;
+    li {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      letter-spacing: var(--tracking-semiwide);
+      padding-inline: var(--sp-04);
+      padding-block: var(--sp-05-5);
+      border-left: var(--border-surface-color-thin);
+      text-shadow: var(--text-shadow-color);
+      transition:
+        color 200ms ease,
+        background-color 200ms ease;
+      &:hover {
+        color: var(--color-nav-text-hover);
+        background-color: var(--color-nav-hover);
+        text-shadow: none;
+        cursor: pointer;
+      }
+    }
   }
 
   .logo-text-container {
@@ -197,7 +189,7 @@ import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
       align-items: end;
       gap: var(--sp-07);
       padding-inline-end: var(--sp-04);
-      & li {
+      li {
         color: var(--color-nav-text);
         font-family: var(--font-display);
         font-size: var(--text-hero);

@@ -105,7 +105,7 @@ const images = [
 
   .hero-card {
     position: relative;
-    display: flex;
+    display: grid;
     flex-direction: column;
     gap: var(--sp-04);
     background-color: var(--color-surface-light);
@@ -117,7 +117,7 @@ const images = [
   }
 
   .hero-text-body {
-    width: var(--measure-narrow);
+    width: 100%;
   }
   .hero-text-textandbutton-container {
     gap: var(--sp-04);
@@ -210,6 +210,9 @@ const images = [
   }
 
   @container hero (max-width: 1177px) {
+  }
+
+  @container hero (max-width: 1177px) {
     .hero-grid {
       grid-template-columns: 1fr;
       gap: 0;
@@ -296,13 +299,6 @@ const images = [
     }
     .--desktop-only {
       display: none;
-    }
-    .text-title-hero {
-      font-size: var(--text-hero);
-      text-transform: uppercase;
-      text-wrap: balance;
-      text-box: trim-both cap alphabetic;
-      line-height: 1.05;
     }
 
     .text-body-display {

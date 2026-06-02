@@ -63,29 +63,50 @@
 
   /* UI DESIGN */
 
+  /* SPACING SYSTEM
+  Fixed Scale (--sp-**): this is for inside my components, UI density
+  Fluid Scale (--sp-fl-**): this is for between components, layout breathing room
+  Semantic Aliases: These all point to the above just like my colors, named by role and not size
+  */
+
   /* Spacing */
+
+  /* fixed scales */
   --sp-01: 0.25rem; /* 4px */
   --sp-02: 0.5rem; /* 8px */
   --sp-03: 0.75rem; /* 12px */
   --sp-04: 1rem; /* 16px */
-  --sp-05-5: 1.25rem;
   --sp-05: 1.5rem; /* 24px */
   --sp-06: 2rem; /* 32px */
   --sp-07: 3rem; /* 48px */
-  --sp-08: clamp(2rem, 5vw, 4rem);
-  --sp-09: clamp(3rem, 7vw, 6rem);
-  --sp-10: clamp(4rem, 9vw, 8rem);
+  --sp-08: 4rem; /* 64px */
+  --sp-09: 6rem; /* 96px */
+  --sp-10: 8rem; /* 128px */
+
+  /* fluid scales */
+  --sp-fluid-01: clamp(var(--sp-04), 2vw, var(--sp-05));
+  --sp-fluid-02: clamp(var(--sp-05), 3vw, var(--sp-06));
+  --sp-fluid-03: clamp(var(--sp-06), 4vw, var(--sp-07));
+  --sp-fluid-04: clamp(var(--sp-07), 5vw, var(--sp-08));
+  --sp-fluid-05: clamp(var(--sp-08), 6vw, var(--sp-09));
+  --sp-fluid-06: clamp(var(--sp-09), 7vw, var(--sp-10));
 
   /* Layout Specific Spacing */
   --max-width: min(100%, 90rem);
 
-  --space-section-block: clamp(6rem, 8vw, 8rem);
-  --space-section-inline: clamp(1.5rem, 5vw, 3rem);
+  --space-section-block: var(--sp-fluid-06);
+  --space-section-inline: var(--sp-fluid-03);
 
   --space-sub-section-block: clamp(2rem, 5vw, 4rem);
 
-  --space-gutter-primary: clamp(var(--sp-05), 5vw, var(--sp-06));
-  --space-gutter-secondary: clamp(var(--sp-04), 4.5vw, var(--sp-05));
+  --card-padding-block: var(--sp-fluid-03);
+  --card-padding-inline: var(--sp-fluid-02);
+
+  --body-padding-block: var(--sp-fluid-03);
+  --body-padding-inline: var(--sp-fluid-02);
+
+  --space-gutter-primary: var(--sp-fluid-02);
+  --space-gutter-secondary: var(--sp-04);
 
   --space-after-body-text: 0.3em;
 
@@ -101,6 +122,8 @@
 
   /* Semantic Borders */
   --border-photo-dark-thin: var(--border-thin) solid var(--color-neutral-500);
+  --border-photo-dark-default: var(--border-default) solid
+    var(--color-neutral-500);
   --border-surface-color-thin: var(--border-default) solid
     var(--color-neutral-600);
   --border-surface-dark-thin-highlight: var(--border-thin) solid
@@ -157,7 +180,7 @@
   --text-lg: clamp(1.2rem, 2.5vw, 1.25rem);
   --text-xl: clamp(1.3rem, calc(2vw + 1rem), 1.5rem);
   --text-2xl: clamp(2rem, calc(2vw + 1rem), 2rem);
-  --text-hero: clamp(2.5rem, calc(2.2vw + 1rem), 3.2rem);
+  --text-hero: clamp(2.3rem, calc(2vw + 1rem), 3.2rem);
 
   /* Line height */
   --leading-tight: 1.1;

@@ -64,7 +64,7 @@ import NavLinks from "@components/ui/NavLinks.astro";
     gap: var(--sp-04);
     background-color: var(--color-nav);
     padding-inline-start: 5.2rem;
-    padding-inline-end: var(--sp-05);
+    padding-inline-end: 0;
     border-radius: var(--br-03);
     justify-content: space-between;
     box-shadow: var(--card-shadow-neutral-deep);
@@ -78,12 +78,16 @@ import NavLinks from "@components/ui/NavLinks.astro";
       font-size: var(--text-sm);
       letter-spacing: var(--tracking-semiwide);
       padding-inline: var(--sp-04);
-      padding-block: var(--sp-05-5);
+      padding-block: var(--sp-05);
       border-left: var(--border-surface-color-thin);
       text-shadow: var(--text-shadow-color);
       transition:
         color 200ms ease,
         background-color 200ms ease;
+      &:last-child {
+        padding-inline-end: var(--sp-fluid-02);
+        border-radius: 0 var(--br-03) var(--br-03) 0;
+      }
       &:hover {
         color: var(--color-nav-text-hover);
         background-color: var(--color-nav-hover);

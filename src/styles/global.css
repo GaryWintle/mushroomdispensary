@@ -16,9 +16,6 @@
   line-gap-override: 16.34%;
   size-adjust: 122.39%;
 }
-* {
-  /* border: 2px solid red; */
-}
 
 .skip-link {
   position: absolute;
@@ -34,6 +31,7 @@
   background-color: var(--color-primary-200);
   color: var(--color-secondary-200);
 }
+
 html {
   overflow-x: clip;
   @media (prefers-reduced-motion: no-preference) {
@@ -103,33 +101,16 @@ h4 {
   letter-spacing: var(--tracking-tight);
 }
 p {
-  font-family: var(--font-body);
   font-size: var(--text-lg);
   line-height: var(--leading-loose);
   font-variation-settings: var(--fvs-regular-regular);
   text-wrap: balance;
 }
 
-.text-title-hero {
-  font-size: var(--text-hero);
-  text-transform: uppercase;
-  text-wrap: balance;
-  text-box: trim-both cap alphabetic;
-  line-height: 1;
-  letter-spacing: var(--tracking-tight);
-}
-
 .subtitle {
   margin-bottom: 0.2em;
   font-size: var(--text-2xl);
   color: var(--color-surface-dark-text-highlight);
-}
-
-.--margin-bottom {
-  margin-bottom: 0.2em;
-}
-.--margin-bottom-large {
-  margin-bottom: 0.5em;
 }
 
 .--center-text {

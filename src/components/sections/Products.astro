@@ -15,7 +15,6 @@ import imgBooks from "@images/products/books.jpg";
 
 const products = [
   {
-    id: 1,
     title: "Dried Mushrooms",
     description:
       "Classic and exotic dried strains, plus chocolates and gummies.",
@@ -24,7 +23,6 @@ const products = [
     href: "",
   },
   {
-    id: 2,
     title: "Mushroom Capsules",
     description:
       "Microdose capsules in precise strengths from 12.5mg to 500mg.",
@@ -33,7 +31,6 @@ const products = [
     href: "",
   },
   {
-    id: 3,
     title: "Kratom",
     description:
       "Powder and capsule form, with a range of strains for energy, focus, and relaxation.",
@@ -42,7 +39,6 @@ const products = [
     href: "",
   },
   {
-    id: 4,
     title: "Coca Leaf",
     description: "Whole leaf for chewing or powdered for tea, stocks vary.",
     image: imgCocaLeaf,
@@ -50,7 +46,6 @@ const products = [
     href: "",
   },
   {
-    id: 5,
     title: "Peyote",
     description: "The sacred mescaline cactus, dried or as live plants.",
     image: imgPeyote,
@@ -58,7 +53,6 @@ const products = [
     href: "",
   },
   {
-    id: 6,
     title: "LSD",
     description: "Liquid and paper tabs, available in microdose and full-dose.",
     image: imgLSD,
@@ -66,7 +60,6 @@ const products = [
     href: "",
   },
   {
-    id: 7,
     title: "DMT",
     description: "Intense 15-minute experiences via vape pen or raw powder.",
     image: imgDMT,
@@ -74,7 +67,6 @@ const products = [
     href: "",
   },
   {
-    id: 8,
     title: "Books & Art",
     description: "Books, comics and art — all priced below Amazon.",
     image: imgBooks,
@@ -103,11 +95,12 @@ const products = [
           />
         ))
       }
+      {products.length < 1 && <p>Currently Nothing on the Menu!</p>}
     </div>
 
     <div class="products-cta">
       <div class="products-cta-button">
-        <CTAButton text="View Our Full Menu!" />
+        <CTAButton text="View Our Full Menu!" href="/products" />
       </div>
       <div class="products-mushy-guy">
         <Fragment set:html={MushyGuyHazy} />
@@ -118,7 +111,7 @@ const products = [
   <style>
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
       align-items: stretch;
       column-gap: var(--space-gutter-secondary);
       row-gap: var(--space-gutter-primary);

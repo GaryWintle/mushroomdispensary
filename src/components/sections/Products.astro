@@ -77,7 +77,7 @@ const products = [
 ---
 
 <section class="section section--dark container">
-  <div class="products">
+  <div class="products" data-animation="products-wrapper">
     <SectionHeader
       title="Our Products"
       text="No other shop in the world carries the same range of products that we do!"
@@ -191,20 +191,24 @@ const products = [
     import { ScrollTrigger } from "gsap/ScrollTrigger";
     gsap.registerPlugin(ScrollTrigger);
 
+    const productsWrapper = document.querySelector('[data-animation="products-wrapper"]');
+    const productHeader = document.querySelector('[data-animate="product-header"]');
+    const productCards = document.querySelectorAll('[data-animation="product-card"]');
+
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".products",
+        trigger: productsWrapper,
         start: "top 80%",
       },
     });
 
-    tl.from(".product-heading", {
+    tl.from(productHeader, {
       opacity: 0,
       y: 20,
       duration: 0.5,
       ease: "power2.out",
     }).from(
-      "[data-animation='product-card']",
+      productCards,
       {
         opacity: 0,
         duration: 1,

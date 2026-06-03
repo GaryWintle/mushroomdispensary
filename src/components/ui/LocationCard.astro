@@ -21,7 +21,7 @@ const {
 } = Astro.props;
 ---
 
-<div class="location-card">
+<div class="location-card" data-animation="location-card">
   <a
     href={href}
     class="location-card-image"
@@ -77,7 +77,7 @@ const {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      @media (prefers-reduced-motion: no-preference) {
+      @media (hover: hover) and (prefers-reduced-motion: no-preference) {
         transition: scale 0.4s ease;
         &:hover {
           scale: 1.25;
@@ -118,8 +118,10 @@ const {
     color: var(--color-neutral-600);
     transition: color 200ms ease;
   }
-  .location-card:hover .location-card-title {
-    color: var(--color-surface-light-text-highlight);
+  @media (hover: hover) {
+    .location-card:hover .location-card-title {
+      color: var(--color-surface-light-text-highlight);
+    }
   }
   .location-card-address {
     margin-block-end: var(--sp-06);

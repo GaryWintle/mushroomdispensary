@@ -21,16 +21,17 @@ const { images, mobileHero = false } = Astro.props;
     "container",
     { "embla--mobile-hero": mobileHero },
   ]}
+  data-animation="photo-carousel"
   aria-label="Store photo gallery"
   aria-roledescription="carousel"
 >
-  <div class="photo-carousel-section-header-wrapper">
+  <div class="photo-carousel-section-header-wrapper" data-animation="pc-header">
     <SectionHeader
       title="In Vancouver?"
       text=" We're your #1 source for psychedelics and plant medicines."
     />
   </div>
-  <div class="embla__viewport">
+  <div class="embla__viewport" data-animation="pc-viewport">
     <div class="embla__container">
       {
         images.map((img, i) => (
@@ -79,16 +80,16 @@ const { images, mobileHero = false } = Astro.props;
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   gsap.registerPlugin(ScrollTrigger);
 
-  document.querySelectorAll(".embla").forEach((emblaEl) => {
-    const heading = emblaEl.querySelector(".photocarousel-heading");
-    if (!heading) return; // skip the hero carousel, it has no heading
+  document.querySelectorAll('[data-animation="photo-carousel"]').forEach((emblaEl) => {
+    const header = emblaEl.querySelector('[data-animation="pc-header"]');
+    if (!header) return; // skip carousels with no section header
 
     gsap
       .timeline({
         scrollTrigger: { trigger: emblaEl, start: "top 80%" },
       })
-      .from(heading, { opacity: 0, y: 20, duration: 0.5, ease: "power2.out" })
-      .from(emblaEl.querySelector(".embla__viewport"), {
+      .from(header, { opacity: 0, y: 20, duration: 0.5, ease: "power2.out" })
+      .from(emblaEl.querySelector('[data-animation="pc-viewport"]'), {
         opacity: 0,
         duration: 1,
         ease: "power2.out",
@@ -97,12 +98,6 @@ const { images, mobileHero = false } = Astro.props;
 </script>
 
 <style>
-  .photocarousel-heading {
-    display: flex;
-    gap: var(--sp-06);
-    align-items: center;
-    margin-block-end: var(--sp-08);
-  }
   .text-title-hero {
     flex: 1 0 none;
     color: var(--color-surface-dark-text-highlight);

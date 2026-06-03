@@ -15,9 +15,11 @@ import CTAButton from "@components/ui/CTAButton.astro";
 
 <section class="section-only-bottom">
   <div class="container">
-    <div class="logos-wrapper">
-      <h2 class="subtitle --center-text">Featured in</h2>
-      <div class="logos-flex">
+    <div class="logos-wrapper" data-animation="itn-wrapper">
+      <h2 class="in-the-news-subtitle center-text" data-animation="itn-heading">
+        Featured in
+      </h2>
+      <div class="logos-flex" data-animation="itn-logos">
         <Fragment set:html={newsLogo01} />
         <Fragment set:html={newsLogo02} />
         <Fragment set:html={newsLogo03} />
@@ -47,20 +49,25 @@ import CTAButton from "@components/ui/CTAButton.astro";
 
   gsap.registerPlugin(ScrollTrigger);
 
+  const wrapper = document.querySelector('[data-animation="itn-wrapper"]');
+  const heading = document.querySelector('[data-animation="itn-heading"]');
+  const logos = document.querySelectorAll('[data-animation="itn-logos"] svg');
+
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".logos-wrapper",
+      trigger: wrapper,
       start: "top 80%",
     },
   });
 
-  tl.from(".subtitle", {
+  tl.from(wrapper, {
     opacity: 0,
-    y: 20,
-    duration: 0.2,
+    y: 30,
+    duration: 0.6,
+    delay: 0.3,
     ease: "power2.out",
   }).from(
-    ".logos-flex svg",
+    logos,
     {
       opacity: 0,
       y: 20,
@@ -75,6 +82,12 @@ import CTAButton from "@components/ui/CTAButton.astro";
 <style>
   section {
     overflow: clip;
+  }
+
+  .in-the-news-subtitle {
+    margin-bottom: 0.2em;
+    font-size: var(--text-2xl);
+    color: var(--color-surface-dark-text-highlight);
   }
 
   .logos-wrapper {

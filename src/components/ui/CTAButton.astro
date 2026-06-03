@@ -39,7 +39,6 @@ const {
       transform 200ms ease-in,
       box-shadow 200ms ease-in;
   }
-  .cta-button:hover,
   .cta-button:focus-visible {
     transform: translateY(-3px);
     color: var(--color-cta-text-hover);
@@ -50,9 +49,6 @@ const {
   }
   .card-shadow {
     box-shadow: 0 0 0 12px var(--color-surface-dark);
-    &:hover {
-      box-shadow: 0 0 0 24px var(--color-surface-dark);
-    }
   }
 
   .on-light {
@@ -71,12 +67,31 @@ const {
       transform 150ms ease-in,
       box-shadow 200ms ease-in;
   }
-  .on-light:hover,
   .on-light:focus-visible {
     transform: translateY(-2px);
     box-shadow:
       0 0 0 3px var(--color-neutral-600),
       3px 4px 0 3px var(--color-neutral-600);
+  }
+
+  @media (hover: hover) {
+    .cta-button:hover {
+      transform: translateY(-3px);
+      color: var(--color-cta-text-hover);
+      background-color: var(--color-cta-hover);
+      border: var(--border-cta-hover);
+      text-shadow: none;
+      box-shadow: 5px 8px 0 var(--color-neutral-600);
+    }
+    .card-shadow:hover {
+      box-shadow: 0 0 0 24px var(--color-surface-dark);
+    }
+    .on-light:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 0 3px var(--color-neutral-600),
+        3px 4px 0 3px var(--color-neutral-600);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

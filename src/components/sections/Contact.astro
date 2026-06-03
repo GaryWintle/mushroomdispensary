@@ -55,11 +55,11 @@ const locations = [
 ];
 ---
 
-<section id="contact-section" class="section section--dark container contact">
+<section id="contact-section" class="section section--dark container contact" data-animation="contact-wrapper">
   <SectionHeader
     title="3 Locations!"
     text="We have three safe, psychedlic storefronts in Vancouver, BC, Canada"
-    sectionName="product"
+    sectionName="contact"
   />
   <div class="contact-container">
     <LocationsHeader />
@@ -145,20 +145,30 @@ const locations = [
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   gsap.registerPlugin(ScrollTrigger);
 
+  const contactWrapper = document.querySelector('[data-animation="contact-wrapper"]');
+  const sectionHeader = document.querySelector('[data-animate="contact-header"]');
+  const locationsHeader = document.querySelector('[data-animation="contact-locations-header"]');
+  const locationCards = document.querySelectorAll('[data-animation="location-card"]');
+
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".contact",
+      trigger: contactWrapper,
       start: "top 80%",
     },
   });
 
-  tl.from(".locations-header-container", {
+  tl.from(sectionHeader, {
+    opacity: 0,
+    y: 20,
+    duration: 0.5,
+    ease: "power2.out",
+  }).from(locationsHeader, {
     opacity: 0,
     y: 20,
     duration: 0.5,
     ease: "power2.out",
   }).from(
-    ".locations-card .location-card",
+    locationCards,
     {
       opacity: 0,
       duration: 1,

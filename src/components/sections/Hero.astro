@@ -185,18 +185,22 @@ import CTAButton from "@components/ui/CTAButton.astro";
 
     .hero-card {
       flex-direction: row;
-      gap: var(--sp-fluid-02);
-      align-items: start;
+      gap: var(--sp-fluid-03);
+      place-items: center;
+      text-align: center;
       border-radius: 0 0 var(--br-03) var(--br-03);
       border-top: var(--border-photo-dark-thin);
     }
+    .hero-title {
+      width: min(100%, 25ch);
+      font-size: var(--text-hero);
+    }
     .hero-text-body {
       text-box: trim-both cap alphabetic;
-      width: 100%;
+      width: min(100%, 55ch);
     }
     .hero-video {
       order: -1;
-      /* border-radius: var(--br-03) var(--br-03) 0 0; */
       box-shadow: var(--card-shadow-neutral-deep);
       aspect-ratio: 16 / 9;
     }
@@ -221,8 +225,8 @@ import CTAButton from "@components/ui/CTAButton.astro";
     }
 
     .icon-smiley :global(svg) {
-      width: 4rem;
-      height: 4rem;
+      width: 5rem;
+      height: 5rem;
     }
   }
 
@@ -238,7 +242,9 @@ import CTAButton from "@components/ui/CTAButton.astro";
       gap: var(--sp-fluid-02);
       border: var(--border-photo-dark-default);
       border-radius: var(--br-03);
-      align-items: start;
+
+      place-items: start;
+      text-align: start;
       margin-top: -80px;
       z-index: 2;
     }

@@ -88,13 +88,13 @@ const locations = [
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-areas: "sidebar cards";
-    gap: var(--sp-05);
+    gap: var(--space-gutter-primary);
   }
   .locations-card {
     grid-area: cards;
     display: flex;
     flex-direction: column;
-    gap: var(--sp-04);
+    gap: var(--space-gutter-secondary);
   }
   .contact-container-adults-only {
     display: none;
@@ -106,7 +106,7 @@ const locations = [
       grid-template-areas:
         "sidebar"
         "cards";
-      gap: var(--sp-05);
+      gap: var(--space-gutter-secondary);
     }
     .contact-container-adults-only {
       display: revert;

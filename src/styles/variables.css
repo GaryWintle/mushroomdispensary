@@ -105,7 +105,7 @@
   --body-padding-block: var(--sp-fluid-03);
   --body-padding-inline: var(--sp-fluid-02);
 
-  --space-gutter-primary: var(--sp-fluid-02);
+  --space-gutter-primary: var(--sp-05);
   --space-gutter-secondary: var(--sp-04);
 
   --space-after-body-text: 0.3em;

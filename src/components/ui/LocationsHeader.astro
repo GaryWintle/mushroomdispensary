@@ -3,30 +3,31 @@ import PhoneIllo from "@components/artwork/PhoneIllo.astro";
 import AdultsOnly from "./AdultsOnly.astro";
 ---
 
-<div class="locations-header">
+<section class="locations-header">
   <div class="locations-header-phone-contact-body">
     <div class="locations-header-illustration-container">
       <PhoneIllo />
     </div>
-  </div>
-  <section
-    class="locations-header-phone-text-container"
-    role="group"
-    aria-label="Contact phone number"
-  >
-    <p class="locations-header-phone-contact-text">
-      Same phone number for all locations:
-    </p>
-    <a
-      href="tel:+16043434687"
-      aria-label="Call 604-343-4687"
-      class="subtitle location-header-phonenumber">604-343-4687</a
+
+    <div
+      class="locations-header-phone-text-container"
+      role="group"
+      aria-label="Contact phone number"
     >
-  </section>
+      <p class="locations-header-phone-contact-text">
+        Same phone number for all locations:
+      </p>
+      <a
+        href="tel:+16043434687"
+        aria-label="Call 604-343-4687"
+        class="subtitle location-header-phonenumber">604-343-4687</a
+      >
+    </div>
+  </div>
   <div class="locations-header-container-adults-only">
     <AdultsOnly />
   </div>
-</div>
+</section>
 
 <style>
   .locations-header {
@@ -34,11 +35,16 @@ import AdultsOnly from "./AdultsOnly.astro";
     grid-area: sidebar;
     display: flex;
     flex-direction: column;
+    gap: var(--space-sub-section-block);
+  }
+  .locations-header-phone-contact-body {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: var(--sp-07);
-    padding-block: var(--sp-07) var(--sp-08);
-    padding-inline: var(--sp-06);
+    gap: var(--space-sub-section-block);
+    padding-block: var(--body-padding-block);
+    padding-inline: var(--body-padding-inline);
     border: var(--border-surface-dark-thinnest);
     border-radius: var(--br-03);
     background-color: var(--color-neutral-600-50);
@@ -66,7 +72,7 @@ import AdultsOnly from "./AdultsOnly.astro";
 
   @media (max-width: 1135px) {
     .locations-header {
-      padding-block: var(--sp-08) var(--sp-08);
+      gap: 0;
     }
     .location-header-phonenumber {
       font-size: clamp(2.3rem, calc(5vw + 1rem), 4rem);
@@ -77,16 +83,6 @@ import AdultsOnly from "./AdultsOnly.astro";
   }
   @media (max-width: 600px) {
     .locations-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: var(--border-surface-dark-thinnest);
-      border-radius: var(--br-03);
-      background-color: var(--color-neutral-600-50);
-
-      position: relative;
-      padding-block: var(--sp-07) var(--sp-07);
-      text-align: center;
     }
   }
 </style>

@@ -113,7 +113,7 @@ const products = [
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
       align-items: stretch;
-      column-gap: var(--space-gutter-secondary);
+      column-gap: calc(var(--space-gutter-secondary) + 5px);
       row-gap: var(--space-gutter-primary);
       margin-block-end: var(--space-sub-section-block);
     }

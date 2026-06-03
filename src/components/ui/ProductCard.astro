@@ -23,35 +23,36 @@ const {
 <a class="product-card-link" href={href} data-animation="product-card">
   <div class="product-card section--light">
     <div class="product-card-image">
-      <Image
-        src={image}
-        loading="lazy"
-        width={600}
-        height={400}
-        alt={`${title} product photo`}
-      />
+      <div class="product-card-image-inner">
+        <Image
+          src={image}
+          loading="lazy"
+          width={600}
+          height={400}
+          alt={`${title} product photo`}
+        />
+      </div>
+      {
+        hasGuide && (
+          <div
+            class="product-card-guide"
+            role="img"
+            aria-label="Includes free user guide"
+          >
+            <FreeUserGuideIcon />
+          </div>
+        )
+      }
     </div>
     <div class="product-card-body">
       <h3 class="product-card-title">{title}</h3>
       <p class="product-card-description">{description}</p>
     </div>
   </div>
-  {
-    hasGuide && (
-      <div
-        class="product-card-guide"
-        role="img"
-        aria-label="Includes free user guide"
-      >
-        <FreeUserGuideIcon />
-      </div>
-    )
-  }
 </a>
 
 <style>
   .product-card-link {
-    position: relative;
     display: block;
     transform: translate(0, 0);
     transition: transform 150ms ease-in;
@@ -72,7 +73,6 @@ const {
     display: flex;
     flex-direction: column;
     height: 100%;
-    overflow: hidden;
     background: var(--color-surface-light);
     border-radius: var(--br-03) 3rem var(--br-03) var(--br-03);
     box-shadow: var(--card-shadow-neutral-medium);
@@ -80,10 +80,19 @@ const {
   }
 
   .product-card-image {
+    position: relative;
     aspect-ratio: 4 / 3;
     height: auto;
-    overflow: hidden; /* clips image corners to card border-radius */
     border-bottom: var(--border-surface-color-thick);
+    /* no overflow: hidden here */
+  }
+
+  .product-card-image-inner {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: var(--br-03) 3rem 0 0;
+
     & img {
       width: 100%;
       height: 100%;
@@ -113,13 +122,10 @@ const {
   }
 
   .product-card-guide {
-    --_guide-top: var(--guide-top, 32%);
-    --_guide-right: var(--guide-right, -1.125rem);
-
     position: absolute;
-    top: var(--_guide-top);
-    right: var(--_guide-right);
-    transform: rotate(15deg);
+    bottom: 1.25rem;
+    right: -1.125rem;
+    transform: translateY(50%) rotate(15deg);
     filter: var(--art-shadow-neutral-medium);
     transition: filter 200ms ease-in;
   }

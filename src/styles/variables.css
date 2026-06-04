@@ -108,6 +108,11 @@
   --space-gutter-primary: var(--sp-05);
   --space-gutter-secondary: var(--sp-04);
 
+  --button-block-sm: 0.6em;
+  --button-inline-sm: 1.2em;
+  --button-block-md: 1.2em;
+  --button-inline-md: 2.4em;
+
   --space-after-body-text: 0.3em;
 
   /* Border Radius */

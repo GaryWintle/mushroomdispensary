@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import CarouselArrow from "@components/artwork/CarouselArrow.astro";
 import MushyGuySmiley from "@components/artwork/MushGuySmiley.astro";
-import ArrowTwisty from "@components/artwork/ArrowTwisty.astro";
 import SectionHeader from "@components/ui/SectionHeader.astro";
 
 interface Props {
@@ -80,21 +79,23 @@ const { images, mobileHero = false } = Astro.props;
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   gsap.registerPlugin(ScrollTrigger);
 
-  document.querySelectorAll('[data-animation="photo-carousel"]').forEach((emblaEl) => {
-    const header = emblaEl.querySelector('[data-animation="pc-header"]');
-    if (!header) return; // skip carousels with no section header
+  document
+    .querySelectorAll('[data-animation="photo-carousel"]')
+    .forEach((emblaEl) => {
+      const header = emblaEl.querySelector('[data-animation="pc-header"]');
+      if (!header) return; // skip carousels with no section header
 
-    gsap
-      .timeline({
-        scrollTrigger: { trigger: emblaEl, start: "top 80%" },
-      })
-      .from(header, { opacity: 0, y: 20, duration: 0.5, ease: "power2.out" })
-      .from(emblaEl.querySelector('[data-animation="pc-viewport"]'), {
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-      });
-  });
+      gsap
+        .timeline({
+          scrollTrigger: { trigger: emblaEl, start: "top 80%" },
+        })
+        .from(header, { opacity: 0, y: 20, duration: 0.5, ease: "power2.out" })
+        .from(emblaEl.querySelector('[data-animation="pc-viewport"]'), {
+          opacity: 0,
+          duration: 1,
+          ease: "power2.out",
+        });
+    });
 </script>
 
 <style>

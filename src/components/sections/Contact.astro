@@ -1,61 +1,17 @@
 ---
+import SectionHeader from "@components/ui/SectionHeader.astro";
 import LocationsHeader from "@components/ui/LocationsHeader.astro";
 import LocationCard from "@components/ui/LocationCard.astro";
 import AdultsOnly from "@components/ui/AdultsOnly.astro";
 
-// Map Photos
-import location1 from "@images/locations/Map01-davie.png";
-import location2 from "@images/locations/Map02-eastvancouver.png";
-import location3 from "@images/locations/Map03-mountpleasant.png";
-
-// Numbered Icons
-import LocationIcon01 from "@images/location1.svg?raw";
-import LocationIcon02 from "@images/location2.svg?raw";
-import LocationIcon03 from "@images/location3.svg?raw";
-import SectionHeader from "@components/ui/SectionHeader.astro";
-
-//Location & Hours Data
-const locations = [
-  {
-    cityArea: "West End Vancouver",
-    address: "1674 Davie St.",
-    storeHours: [
-      { days: "Mon-Wed", hours: "11am-7pm" },
-      { days: "Thu-Sat", hours: "10am-11pm" },
-      { days: "Sun", hours: "11am-6pm" },
-    ],
-    image: location1,
-    locationIcon: LocationIcon01,
-    href: "https://maps.app.goo.gl/ZWsd2aXFoNPHkgMFA",
-  },
-  {
-    cityArea: "East Vancouver",
-    address: "651 East Hastings",
-    storeHours: [
-      { days: "Mon-Thu", hours: "10am-10pm" },
-      { days: "Fri-Sat", hours: "10am-11pm" },
-      { days: "Sun", hours: "11am-6pm" },
-    ],
-    image: location2,
-    locationIcon: LocationIcon02,
-    href: "https://maps.app.goo.gl/fSV8WLYfYqDHX6oY8",
-  },
-  {
-    cityArea: "Mount Pleasant",
-    address: "247 West Broadway",
-    storeHours: [
-      { days: "Mon-Wed", hours: "11am-7pm" },
-      { days: "Thu-Sat", hours: "10am-10pm" },
-      { days: "Sun", hours: "11am-6pm" },
-    ],
-    image: location3,
-    locationIcon: LocationIcon03,
-    href: "https://maps.app.goo.gl/obv896WAwTtwXzNX7",
-  },
-];
+import { locations } from "@data/locations";
 ---
 
-<section id="contact-section" class="section section--dark container contact" data-animation="contact-wrapper">
+<section
+  id="contact-section"
+  class="section section--dark container contact"
+  data-animation="contact-wrapper"
+>
   <SectionHeader
     title="3 Locations!"
     text="We have three safe, psychedlic storefronts in Vancouver, BC, Canada"
@@ -145,10 +101,18 @@ const locations = [
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   gsap.registerPlugin(ScrollTrigger);
 
-  const contactWrapper = document.querySelector('[data-animation="contact-wrapper"]');
-  const sectionHeader = document.querySelector('[data-animate="contact-header"]');
-  const locationsHeader = document.querySelector('[data-animation="contact-locations-header"]');
-  const locationCards = document.querySelectorAll('[data-animation="location-card"]');
+  const contactWrapper = document.querySelector(
+    '[data-animation="contact-wrapper"]',
+  );
+  const sectionHeader = document.querySelector(
+    '[data-animate="contact-header"]',
+  );
+  const locationsHeader = document.querySelector(
+    '[data-animation="contact-locations-header"]',
+  );
+  const locationCards = document.querySelectorAll(
+    '[data-animation="location-card"]',
+  );
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -162,19 +126,21 @@ const locations = [
     y: 20,
     duration: 0.5,
     ease: "power2.out",
-  }).from(locationsHeader, {
-    opacity: 0,
-    y: 20,
-    duration: 0.5,
-    ease: "power2.out",
-  }).from(
-    locationCards,
-    {
+  })
+    .from(locationsHeader, {
       opacity: 0,
-      duration: 1,
+      y: 20,
+      duration: 0.5,
       ease: "power2.out",
-      stagger: 0.25,
-    },
-    "+=0.1",
-  );
+    })
+    .from(
+      locationCards,
+      {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.25,
+      },
+      "+=0.1",
+    );
 </script>

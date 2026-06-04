@@ -9,97 +9,32 @@ import Products from "@components/sections/Products.astro";
 import PhotoCarousel from "@components/sections/PhotoCarousel.astro";
 import Contact from "@components/sections/Contact.astro";
 
-import danaCounter from "@images/carousel/mushdisp-dana-counter.webp";
-import products from "@images/carousel/mushdisp-products.webp";
-import storefront from "@images/carousel/mushdisp-storefront.jpg";
-import mushcounter from "@images/carousel/mushdisp-mushcounter.jpg";
-import mushwithlabels from "@images/carousel/mushdisp-mushwithlabels.avif";
-import signage from "@images/carousel/mushdisp-signage.jpg";
-
-const images = [
-  {
-    src: danaCounter,
-    alt: "Store front on Main Street",
-    caption: "Founder Dana Larsen working the desk",
-  },
-  {
-    src: mushcounter,
-    alt: "Interior mushroom display",
-    caption: "A beautiful collection of just some of our products",
-  },
-  {
-    src: signage,
-    alt: "Interior mushroom display",
-    caption: "Please stop by for a visit!",
-  },
-  {
-    src: products,
-    alt: "Interior mushroom display",
-    caption: "A beautiful collection of just some of our products",
-  },
-  {
-    src: storefront,
-    alt: "Interior mushroom display",
-    caption: "Please stop by for a visit!",
-  },
-  {
-    src: mushwithlabels,
-    alt: "Interior mushroom display",
-    caption: "Please stop by for a visit!",
-  },
-];
-const imagesMobile = [
-  {
-    src: danaCounter,
-    alt: "Store front on Main Street",
-    caption: "Founder Dana Larsen working the desk",
-  },
-  {
-    src: mushcounter,
-    alt: "Interior mushroom display",
-    caption: "A beautiful collection of just some of our products",
-  },
-  {
-    src: products,
-    alt: "Interior mushroom display",
-    caption: "A beautiful collection of just some of our products",
-  },
-  {
-    src: storefront,
-    alt: "Interior mushroom display",
-    caption: "Please stop by for a visit!",
-  },
-  {
-    src: mushwithlabels,
-    alt: "Interior mushroom display",
-    caption: "Please stop by for a visit!",
-  },
-];
+import { images, imagesMobile } from "@data/images";
 ---
 
 <Layout>
-  <div class="carousel-container --mobile-only">
+  <div class="carousel-container mobile-only">
     <PhotoCarousel images={imagesMobile} mobileHero={true} />
   </div>
   <Hero />
   <Testimonials />
-  <div class="--mobile-only"><LogoMarquee /></div>
-  <div class="--desktop-only"><InTheNews /></div>
+  <div class="mobile-only"><LogoMarquee /></div>
+  <div class="desktop-only"><InTheNews /></div>
 
   <Products />
-  <div class="--desktop-only"><PhotoCarousel images={images} /></div>
+  <div class="desktop-only"><PhotoCarousel images={images} /></div>
   <Contact />
 </Layout>
 
 <style>
-  .--mobile-only {
+  .mobile-only {
     display: none;
   }
   @media (max-width: 850px) {
-    .--mobile-only {
+    .mobile-only {
       display: block;
     }
-    .--desktop-only {
+    .desktop-only {
       display: none;
     }
   }

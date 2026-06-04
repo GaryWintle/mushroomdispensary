@@ -4,14 +4,16 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@components/*": ["src/components/*"],
+      "@content/*": ["src/content/*"],
       "@layouts/*": ["src/layouts/*"],
       "@sections/*": ["src/sections/*"],
       "@styles/*": ["src/styles/*"],
       "@images/*": ["src/assets/images/*"],
       "@graphics/*": ["src/assets/graphics/*"],
-      "@data/*": ["src/data*"],
+      "@data/*": ["src/data/*"],
       "@utils/*": ["src/utils/*"]
     }
   }

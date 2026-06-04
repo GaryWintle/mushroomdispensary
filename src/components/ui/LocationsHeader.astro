@@ -43,6 +43,7 @@ import AdultsOnly from "./AdultsOnly.astro";
     align-items: center;
     justify-content: center;
     gap: var(--space-sub-section-block);
+    height: min(100%, 66.33%);
     padding-block: var(--body-padding-block);
     padding-inline: var(--body-padding-inline);
     border: var(--border-surface-dark-thinnest);
@@ -73,6 +74,9 @@ import AdultsOnly from "./AdultsOnly.astro";
   @media (max-width: 1135px) {
     .locations-header {
       gap: 0;
+    }
+    .locations-header-phone-contact-body {
+      height: auto;
     }
     .location-header-phonenumber {
       font-size: clamp(2.3rem, calc(5vw + 1rem), 4rem);

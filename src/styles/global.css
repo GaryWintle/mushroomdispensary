@@ -70,6 +70,12 @@ img {
   padding-inline: var(--space-section-inline);
 }
 
+.container--narrow {
+  width: var(--max-width-narrow);
+  margin-inline: auto;
+  padding-inline: var(--space-section-inline);
+}
+
 /* Cascading text color */
 
 .section--dark {

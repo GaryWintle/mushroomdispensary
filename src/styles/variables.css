@@ -2,8 +2,9 @@
   /* COLOR PALETTE */
 
   /* Primary */
+  --color-primary-300: oklch(57.269% 0.16637 44.061);
   --color-primary-200: oklch(93.515% 0.197 104.636);
-  --color-primary-100: oklch(from var(--color-primary-200) 95% 0.165 100);
+  --color-primary-100: oklch(94.102% 0.14633 105.122);
 
   /* Secondary */
   --color-secondary-200: oklch(0.61 0.244 353);
@@ -93,6 +94,7 @@
 
   /* Layout Specific Spacing */
   --max-width: min(100%, 90rem);
+  --max-width-narrow: min(100%, 70.875rem);
 
   --space-section-block: var(--sp-fluid-06);
   --space-section-inline: var(--sp-fluid-03);
@@ -194,8 +196,8 @@
 
   /* Letter spacing */
   --tracking-tight: -0.03em;
-  --tracking-semiwide: 0.05em;
-  --tracking-wide: 0.08em;
+  --tracking-semiwide: 0.02em;
+  --tracking-wide: 0.05em;
 
   /* Font Body Variations */
   --fvs-tight-heavy: "wdth" 90, "wght" 950;

@@ -12,7 +12,7 @@ export async function getStaticPaths() {
       <div class="product-body-media"></div>
       <div class="product-body section--light">
         <div class="product-copy">
-          <h1>Kratom</h1>
+          <h1 class="product-title">Kratom</h1>
           <h2 class="product-tagline">
             Energy booster, mood lifter, pain reliever, and support for opioid
             withdrawal symptoms
@@ -70,6 +70,9 @@ export async function getStaticPaths() {
   .product-copy > * + * {
     /* margin-top: 0.6em; */
   }
+  .product-title {
+    font-size: var(--text-hero);
+  }
   .product-tagline {
     margin-top: 0.3em;
     font-family: var(--font-body);
@@ -106,7 +109,7 @@ export async function getStaticPaths() {
   .product-button-container {
     display: flex;
     flex-direction: column;
-    gap: var(--sp-02);
+    gap: var(--sp-03);
   }
   .product-button {
     padding-block: var(--button-block-sm);

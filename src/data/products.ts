@@ -30,7 +30,7 @@ export const products = [
       "Powder and capsule form, with a range of strains for energy, focus, and relaxation.",
     image: imgKratom,
     hasGuide: true,
-    href: "",
+    href: "/products/kratom",
   },
   {
     title: "Coca Leaf",

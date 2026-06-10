@@ -16,6 +16,10 @@
   --color-neutral-500: oklch(32.738% 0.02662 310.53);
   --color-neutral-600: oklch(0.28 0.02 312);
 
+  --label-green-200: oklch(66.445% 0.19843 136.622);
+  --label-orange-200: oklch(69.823% 0.16307 58.812);
+  --label-red-200: oklch(62.049% 0.2282 27.077);
+
   /* Transparencies */
   --color-neutral-600-50: oklch(from var(--color-neutral-600) l c h / 0.5);
   --color-neutral-600-90: oklch(from var(--color-secondary-200) l c h / 0.3);
@@ -98,6 +102,8 @@
 
   --space-section-block: var(--sp-fluid-06);
   --space-section-inline: var(--sp-fluid-03);
+
+  --space-page-block: var(--sp-fluid-04);
 
   --space-sub-section-block: clamp(2rem, 5vw, 4rem);
 

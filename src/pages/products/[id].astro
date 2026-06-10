@@ -1,0 +1,260 @@
+---
+import CTAButton from "@components/ui/CTAButton.astro";
+import Layout from "@layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const products = await getCollection("products");
+  return products.map((entry: CollectionEntry<"products">) => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+}
+
+type Props = {
+  entry: CollectionEntry<"products">;
+};
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, tagline, experience, safetyNote, image, userGuide, mailOrder } =
+  entry.data;
+
+const experienceLabels = {
+  beginner: "Beginner-friendly",
+  intermediate: "Some experience needed",
+  advanced: "Experienced users only",
+};
+---
+
+<Layout>
+  <section class="product-section section--dark container--narrow test">
+    <p class="product-breadcrumbs">
+      <a href="/">home</a> / <a href="/products">menu</a> / {
+        title.toLowerCase()
+      }
+    </p>
+    <div class="product-grid">
+      <div class="product-body-media">
+        <img src={image} alt={title} />
+      </div>
+      <div class="product-body section--light">
+        <div class="product-copy">
+          <span
+            class:list={[
+              "badge",
+              { "badge--beginner": experience === "beginner" },
+              { "badge--intermediate": experience === "intermediate" },
+              { "badge--advanced": experience === "advanced" },
+            ]}>{experienceLabels[experience]}</span
+          >
+          <h1 class="product-title">Kratom</h1>
+          <h2 class="product-tagline">{tagline}</h2>
+          <div class="product-description">
+            <Content />
+          </div>
+        </div>
+        {
+          safetyNote && (
+            <blockquote class="product-warning">{safetyNote}</blockquote>
+          )
+        }
+        <div class="product-button-container">
+          {
+            mailOrder ? (
+              <CTAButton onLight text="Order Online" />
+            ) : (
+              <CTAButton onLight text="Visit One of our Stores" href="" />
+            )
+          }
+          {
+            userGuide && (
+              <div class="product-user-guide-container">
+                <CTAButton onLight text="Free User Guide" />
+                <p class="product-user-guide-helper-text">
+                  Full safety guide included with every in-store purchase
+                </p>
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .product-section {
+    padding-block: calc(var(--space-page-block) - 1.4rem)
+      var(--space-page-block); /*The calc is just to help align the visuals due to the breadcrumbs */
+  }
+  .product-breadcrumbs {
+    font-size: var(--text-sm);
+    margin-bottom: var(--sp-fluid-01);
+    letter-spacing: var(--tracking-wide);
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-gutter-primary);
+  }
+  .product-body-media {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--br-03);
+    border: var(--border-photo-dark-thin);
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: right;
+    }
+    box-shadow: var(--card-shadow-neutral-deep);
+  }
+  .product-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-06);
+    padding-block-start: var(--body-padding-block);
+    padding-block-end: calc(var(--body-padding-block) * 1.2);
+    padding-inline: calc(var(--body-padding-inline) * 1.5);
+    background-color: var(--color-surface-light);
+    border-radius: var(--br-03);
+    box-shadow: var(--card-shadow-neutral-deep);
+  }
+  .product-copy > * + * {
+    /* margin-top: 0.6em; */
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding-inline: var(--button-inline-sm);
+    padding-block: var(--button-block-sm);
+    border-radius: var(--br-02);
+    margin-bottom: var(--sp-fluid-01);
+    font-size: var(--text-xsm);
+    font-variation-settings:
+      "wdth" 100,
+      "wght" 600;
+    letter-spacing: var(--tracking-semiwide);
+    color: var(--color-neutral-100);
+  }
+  .badge--beginner {
+    background-color: var(--label-green-200);
+  }
+  .badge--intermediate {
+    background-color: var(--label-orange-200);
+  }
+  .badge--advanced {
+    background-color: var(--label-red-200);
+  }
+  .product-title {
+    font-size: var(--text-hero);
+  }
+  .product-tagline {
+    margin-top: 0.3em;
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    font-variation-settings:
+      "wdth" 100,
+      "wght" 300;
+    color: var(--color-surface-light-text-highlight);
+    line-height: var(--leading-normal);
+    font-style: italic;
+    text-wrap: pretty;
+    letter-spacing: var(--tracking-semiwide);
+  }
+  :global(.product-description) {
+    p {
+      margin-top: 0.75em;
+      font-size: var(--text-base);
+      line-height: var(--leading-loose);
+      font-variation-settings:
+        "wdth" 100,
+        "wght" 500;
+      text-wrap: pretty;
+    }
+    p + p {
+      margin-top: 0.5em;
+    }
+    ul {
+      padding-left: 1em;
+      margin-top: 0.6em;
+      list-style: disc;
+    }
+    li {
+      font-size: var(--text-base);
+      line-height: var(--leading-tight);
+      margin-top: 0.5em;
+    }
+    li::marker {
+      color: var(--color-secondary-200);
+    }
+    strong {
+      font-variation-settings:
+        "wdth" 100,
+        "wght" 800;
+    }
+    em {
+      font-style: italic;
+    }
+  }
+  .product-warning {
+    padding-inline: var(--sp-fluid-02);
+    padding-block: var(--sp-fluid-01);
+    background-color: var(--color-primary-100);
+    font-variation-settings:
+      "wdth" 95,
+      "wght" 600;
+    color: var(--color-primary-300);
+    border: 2px solid var(--color-primary-300);
+    border-radius: var(--br-02);
+  }
+  .product-button-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-04);
+  }
+  .product-user-guide-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-03);
+  }
+  .product-button {
+    width: 100%;
+    padding-block: var(--button-block-md);
+    padding-inline: var(--button-inline-md);
+    border: 2px solid var(--color-neutral-600);
+    background-color: var(--color-cta);
+    color: var(--color-cta-text);
+    border-radius: var(--br-02);
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    text-box: trim-both cap alphabetic;
+  }
+  .product-user-guide-helper-text {
+    align-self: center;
+    font-size: var(--text-sm);
+    font-variation-settings:
+      "wdth" 95,
+      "wght" 400;
+    color: var(--color-surface-light-text-highlight);
+    font-style: italic;
+    text-align: center;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 800px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .product-body {
+      padding-block: var(--body-padding-block);
+      padding-inline: var(--body-padding-inline);
+    }
+  }
+</style>

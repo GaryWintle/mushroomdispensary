@@ -49,7 +49,7 @@ const experienceLabels = {
               { "badge--advanced": experience === "advanced" },
             ]}>{experienceLabels[experience]}</span
           >
-          <h1 class="product-title">Kratom</h1>
+          <h1 class="product-title">{title}</h1>
           <h2 class="product-tagline">{tagline}</h2>
           <div class="product-description">
             <Content />
@@ -109,7 +109,7 @@ const experienceLabels = {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: right;
+      object-position: center;
     }
     box-shadow: var(--card-shadow-neutral-deep);
   }
@@ -240,7 +240,7 @@ const experienceLabels = {
     font-variation-settings:
       "wdth" 95,
       "wght" 400;
-    color: var(--color-surface-light-text-highlight);
+    color: var(--color-surface-light-text);
     font-style: italic;
     text-align: center;
     text-wrap: pretty;

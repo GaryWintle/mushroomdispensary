@@ -23,11 +23,11 @@ const {
     <div class="product-card-image">
       <div class="product-card-image-inner">
         <img
-          src={`/.netlify/images?url=${encodeURIComponent(image)}&w=600&h=450&fit=cover&fm=webp`}
-          alt={`${title} product photo`}
+          src={image}
           loading="lazy"
-          width="600"
-          height="450"
+          width={600}
+          height={400}
+          alt={`${title} product photo`}
         />
       </div>
       {

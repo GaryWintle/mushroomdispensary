@@ -1,9 +1,9 @@
 ---
+order: 8
 title: "Books & Art"
 slug: "books-and-art"
-category: "plant-medicine"
-experience: "beginner"
-tagline: "Books, comics and art — all priced below Amazon."
+category: "merchandise"
+tagline: "Books, comics and art — all priced below Amazon!"
 image: "https://res.cloudinary.com/dcvyiqwda/image/upload/v1781077085/books_bxqjkb.jpg"
 mailOrder: false
 ---

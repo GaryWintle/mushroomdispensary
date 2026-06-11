@@ -4,6 +4,7 @@ const {
   title = "Section Title",
   text = "Add any section description text here",
   sectionName = "Header",
+  hasArrow,
 } = Astro.props;
 ---
 
@@ -12,17 +13,22 @@ const {
   <p class="section-header-text">
     {text}
   </p>
-  <div class="products-twisty-arrow">
-    <ArrowTwisty />
-  </div>
+  {
+    hasArrow && (
+      <div class="products-twisty-arrow">
+        <ArrowTwisty />
+      </div>
+    )
+  }
 </div>
 
 <style>
   /* DESKTOP */
   .section-header-body {
+    position: relative;
     display: flex;
     gap: var(--sp-06);
-    align-items: center;
+    align-items: end;
     margin-block-end: var(--space-sub-section-block);
   }
   .section-header-title {
@@ -38,13 +44,19 @@ const {
   .section-header-text {
     width: min(100%, 35ch);
     font-size: var(--text-lg);
+    text-box: trim-both cap alphabetic;
+  }
+  .products-twisty-arrow {
+    position: absolute;
+    right: 0;
+    bottom: -90%;
   }
 
   /* TABLET */
   @media (max-width: 1075px) {
     .section-header-body {
       flex-direction: column;
-      /* align-items: center; */
+      align-items: center;
       text-align: center;
     }
     .products-twisty-arrow {
@@ -55,9 +67,7 @@ const {
   /* MOBILE */
   @media (max-width: 600px) {
     .section-header-body {
-      display: flex;
       gap: var(--sp-04);
-      align-items: center;
     }
     .section-header-title {
       flex: 1 0 none;

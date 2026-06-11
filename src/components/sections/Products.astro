@@ -1,9 +1,8 @@
 ---
 import CTAButton from "@components/ui/CTAButton.astro";
+import ProductGrid from "@components/ui/ProductGrid.astro";
 import SectionHeader from "@components/ui/SectionHeader.astro";
-import ProductCard from "@components/ui/ProductCard.astro";
 import MushyGuyHazy from "@images/mushyguyHazy.svg?raw";
-import { products } from "@data/products.ts";
 ---
 
 <section class="section section--dark container">
@@ -12,22 +11,9 @@ import { products } from "@data/products.ts";
       title="Our Products"
       text="No other shop in the world carries the same range of products that we do!"
       sectionName="product"
+      hasArrow
     />
-    <div class="products-grid">
-      {
-        products.map((product) => (
-          <ProductCard
-            title={product.title}
-            description={product.description}
-            image={product.image}
-            hasGuide={product.hasGuide}
-            href={product.href}
-          />
-        ))
-      }
-      {products.length < 1 && <p>Currently Nothing on the Menu!</p>}
-    </div>
-
+    <ProductGrid limit={8} />
     <div class="products-cta">
       <div class="products-cta-button">
         <CTAButton text="View Our Full Menu!" href="/products" />
@@ -39,14 +25,6 @@ import { products } from "@data/products.ts";
   </div>
 
   <style>
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
-      align-items: stretch;
-      column-gap: calc(var(--space-gutter-secondary) + 5px);
-      row-gap: var(--space-gutter-primary);
-      margin-block-end: var(--space-sub-section-block);
-    }
     .products-cta {
       position: relative;
       display: grid;
@@ -77,42 +55,14 @@ import { products } from "@data/products.ts";
     }
 
     /* MOBILE */
-    @media (max-width: 600px) {
-      .products-grid {
-        grid-template-columns: unset;
-        grid-auto-flow: column;
-        grid-auto-columns: 85%;
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        margin-inline: calc(-1 * var(--space-section-inline));
-        padding-inline: var(--space-section-inline);
-        margin-block-end: var(--sp-08);
-        scroll-padding-inline: var(--space-section-inline);
-        mask-image: linear-gradient(
-          to right,
-          transparent,
-          black 5%,
-          black 95%,
-          transparent
-        );
-        -webkit-mask-image: linear-gradient(
-          to right,
-          transparent,
-          black 5%,
-          black 95%,
-          transparent
-        );
-      }
-      .products-cta-button {
-        display: grid;
-        text-align: center;
-      }
-      .products-mushy-guy {
-        top: -120%;
-        right: calc(50% - 14rem);
-        width: 6rem;
-      }
+    .products-cta-button {
+      display: grid;
+      text-align: center;
+    }
+    .products-mushy-guy {
+      top: -120%;
+      right: calc(50% - 14rem);
+      width: 6rem;
     }
   </style>
 

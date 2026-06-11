@@ -1,12 +1,10 @@
 ---
-import { Image } from "astro:assets";
-import type { ImageMetadata } from "astro";
 import FreeUserGuideIcon from "./FreeUserGuideIcon.astro";
 
 interface Props {
   title: string;
   description: string;
-  image: ImageMetadata;
+  image: string;
   hasGuide: boolean;
   href: string;
 }
@@ -24,7 +22,7 @@ const {
   <div class="product-card section--light">
     <div class="product-card-image">
       <div class="product-card-image-inner">
-        <Image
+        <img
           src={image}
           loading="lazy"
           width={600}

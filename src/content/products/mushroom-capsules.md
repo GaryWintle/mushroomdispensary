@@ -1,4 +1,5 @@
 ---
+order: 2
 title: "Mushroom Capsules"
 slug: "mushroom-capsules"
 category: "psilocybin"

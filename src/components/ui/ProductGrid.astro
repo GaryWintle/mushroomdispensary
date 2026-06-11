@@ -1,0 +1,161 @@
+---
+import ProductCard from "@components/ui/ProductCard.astro";
+import { getCollection } from "astro:content";
+
+interface Props {
+  limit?: number;
+  hasFilter: boolean;
+}
+
+const { limit, hasFilter } = Astro.props;
+const allProducts = await getCollection("products");
+const products = limit
+  ? allProducts
+      .filter((p) => p.data.order !== undefined)
+      .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
+      .slice(0, limit)
+  : allProducts.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+---
+
+<div class="product-grid-wrapper">
+  {
+    hasFilter && (
+      <div class="filter-strip">
+        <button class="filter-btn active" data-filter="all">
+          All
+        </button>
+        <button class="filter-btn" data-filter="psilocybin">
+          Mushrooms
+        </button>
+        <button class="filter-btn" data-filter="lsd">
+          LSD
+        </button>
+        <button class="filter-btn" data-filter="dmt">
+          DMT
+        </button>
+        <button class="filter-btn" data-filter="plant-medicine">
+          Plant Medicine
+        </button>
+        <button class="filter-btn" data-filter="kratom">
+          Kratom
+        </button>
+        <button class="filter-btn" data-filter="merchandise">
+          Merchandise
+        </button>
+      </div>
+    )
+  }
+
+  <div class="products-grid">
+    {
+      products.map((product) => (
+        <div class="product-card-wrapper" data-category={product.data.category}>
+          <ProductCard
+            title={product.data.title}
+            description={product.data.tagline}
+            image={product.data.image}
+            hasGuide={!!product.data.userGuide}
+            href={`/products/${product.id}`}
+          />
+        </div>
+      ))
+    }
+    {products.length < 1 && <p>Currently Nothing on the Menu!</p>}
+  </div>
+</div>
+
+<style>
+  .product-grid-wrapper {
+    display: contents;
+  }
+  .product-card-wrapper {
+    display: contents;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+    align-items: stretch;
+    column-gap: calc(var(--space-gutter-secondary) + 5px);
+    row-gap: var(--space-gutter-primary);
+    margin-block-end: var(--space-sub-section-block);
+  }
+
+  .filter-strip {
+    display: flex;
+    gap: var(--sp-02);
+    flex-wrap: wrap;
+    margin-block-end: var(--sp-05);
+  }
+
+  .filter-btn {
+    padding-block: var(--button-block-sm);
+    padding-inline: var(--button-inline-sm);
+    border-radius: var(--br-03);
+    border: var(--border-thin) solid var(--color-surface-dark-border);
+    background: none;
+    color: var(--color-surface-dark-text);
+    font-size: var(--text-sm);
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition:
+      background 150ms ease,
+      color 150ms ease;
+  }
+
+  .filter-btn.active {
+    background: var(--color-surface-colored);
+    color: var(--color-surface-colored-text);
+    border-color: var(--color-surface-colored);
+  }
+
+  @media (max-width: 600px) {
+    .products-grid {
+      grid-template-columns: unset;
+      grid-auto-flow: column;
+      grid-auto-columns: 85%;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      margin-inline: calc(-1 * var(--space-section-inline));
+      padding-inline: var(--space-section-inline);
+      margin-block-end: var(--sp-08);
+      scroll-padding-inline: var(--space-section-inline);
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 5%,
+        black 95%,
+        transparent
+      );
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 5%,
+        black 95%,
+        transparent
+      );
+    }
+  }
+</style>
+
+<script>
+  const filterButtons =
+    document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const cardWrappers = document.querySelectorAll<HTMLElement>(
+    ".product-card-wrapper",
+  );
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter;
+
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      cardWrappers.forEach((card) => {
+        const match = filter === "all" || card.dataset.category === filter;
+        card.style.display = match ? "contents" : "none";
+      });
+    });
+  });
+</script>

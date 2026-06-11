@@ -18,10 +18,20 @@ type Props = {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, tagline, experience, safetyNote, image, userGuide, mailOrder } =
-  entry.data;
+const {
+  title,
+  tagline,
+  experience = "beginner",
+  safetyNote,
+  image,
+  userGuide,
+  mailOrder,
+} = entry.data;
 
-const experienceLabels = {
+const experienceLabels: Record<
+  "beginner" | "intermediate" | "advanced",
+  string
+> = {
   beginner: "Beginner-friendly",
   intermediate: "Some experience needed",
   advanced: "Experienced users only",
@@ -105,13 +115,13 @@ const experienceLabels = {
     border-radius: var(--br-03);
     border: var(--border-photo-dark-thin);
     overflow: hidden;
+    box-shadow: var(--card-shadow-neutral-deep);
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
     }
-    box-shadow: var(--card-shadow-neutral-deep);
   }
   .product-body {
     display: flex;
@@ -159,7 +169,7 @@ const experienceLabels = {
     font-size: var(--text-lg);
     font-variation-settings:
       "wdth" 100,
-      "wght" 300;
+      "wght" 400;
     color: var(--color-surface-light-text-highlight);
     line-height: var(--leading-normal);
     font-style: italic;
@@ -186,7 +196,7 @@ const experienceLabels = {
     }
     li {
       font-size: var(--text-base);
-      line-height: var(--leading-tight);
+      line-height: var(--leading-loose);
       margin-top: 0.5em;
     }
     li::marker {

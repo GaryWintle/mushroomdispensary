@@ -1,4 +1,5 @@
 ---
+order: 4
 title: "Coca Leaf"
 slug: "coca-leaf"
 category: "plant-medicine"

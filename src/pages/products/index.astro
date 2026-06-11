@@ -1,9 +1,18 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import ProductCard from "@components/ui/ProductCard.astro";
+import ProductGrid from "@components/ui/ProductGrid.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
 ---
 
 <Layout>
-  <h1>Products</h1>
+  <section class="section section--dark container">
+    <SectionHeader
+      title="Our Menu"
+      text="Browse through our menu of many, many psychedelic products!"
+    />
+    <ProductGrid hasFilter />
+  </section>
 </Layout>
 
 <style></style>

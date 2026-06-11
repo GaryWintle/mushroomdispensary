@@ -1,4 +1,5 @@
 ---
+order: 5
 title: "Peyote"
 slug: "peyote"
 category: "plant-medicine"

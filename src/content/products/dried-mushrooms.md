@@ -1,4 +1,5 @@
 ---
+order: 1
 title: "Dried Mushrooms"
 slug: "dried-mushrooms"
 category: "psilocybin"

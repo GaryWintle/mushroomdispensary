@@ -21,7 +21,7 @@ auth:
   last_name_claim: last_name
   avatar_url_claim: avatar_url
 
-logo_url: https://decapbridge.com/decapcms-with-bridge.svg
+logo_url: https://res.cloudinary.com/dcvyiqwda/image/upload/v1781077085/books_bxqjkb.jpg
 site_url: https://mushroomdispensary.netlify.app
 
 media_folder: public/images/products

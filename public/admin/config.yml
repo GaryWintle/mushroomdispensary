@@ -1,0 +1,60 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: public/images/products
+public_folder: /images/products
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "src/content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Psilocybin Mushrooms", value: "psilocybin" }
+          - { label: "LSD", value: "lsd" }
+          - { label: "DMT", value: "dmt" }
+          - { label: "Plant Medicine", value: "plant-medicine" }
+          - { label: "Kratom", value: "kratom" }
+          - { label: "Merchandise", value: "merchandise" }
+      - label: "Experience Level"
+        name: "experience"
+        widget: "select"
+        options:
+          - { label: "Beginner-friendly", value: "beginner" }
+          - { label: "Some experience needed", value: "intermediate" }
+          - { label: "Experienced users only", value: "advanced" }
+      - { label: "Tagline", name: "tagline", widget: "string" }
+      - { label: "Hero Image", name: "image", widget: "string" }
+      - {
+          label: "Safety Note",
+          name: "safetyNote",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Mail Order Available",
+          name: "mailOrder",
+          widget: "boolean",
+          default: false,
+        }
+      - {
+          label: "User Guide PDF",
+          name: "userGuide",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Display Order",
+          name: "order",
+          widget: "number",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }

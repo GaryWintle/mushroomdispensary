@@ -21,7 +21,7 @@ auth:
   last_name_claim: last_name
   avatar_url_claim: avatar_url
 
-logo_url: https://res.cloudinary.com/dcvyiqwda/image/upload/v1781077085/books_bxqjkb.jpg
+logo_url: https://res.cloudinary.com/dcvyiqwda/image/upload/v1781164448/MushroomLogo_acxtuc.svg
 site_url: https://mushroomdispensary.netlify.app
 
 media_folder: public/images/products

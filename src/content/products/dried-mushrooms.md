@@ -1,14 +1,15 @@
 ---
+title: Dried Mushrooms
+slug: dried-mushrooms
+category: psilocybin
+experience: beginner
+tagline: Classic and exotic dried strains, plus chocolates and gummies.
+image: https://res.cloudinary.com/dcvyiqwda/image/upload/v1781075350/mushrooms_cm84tu.webp
+safetyNote: Start low and go slow. Set and setting matter. Not recommended for
+  those with a personal or family history of psychosis.
+mailOrder: false
+userGuide: /guides/psilocybe-mushroom-guide.pdf
 order: 1
-title: "Dried Mushrooms"
-slug: "dried-mushrooms"
-category: "psilocybin"
-experience: "beginner"
-tagline: "Classic and exotic dried strains, plus chocolates and gummies."
-safetyNote: "Start low and go slow. Set and setting matter. Not recommended for those with a personal or family history of psychosis."
-image: "https://res.cloudinary.com/dcvyiqwda/image/upload/v1781075350/mushrooms_cm84tu.webp"
-mailOrder: true
-userGuide: "/guides/psilocybe-mushroom-guide.pdf"
 ---
 
 We carry a rotating selection of dried psilocybe cubensis mushrooms, from approachable beginner strains to more potent exotic varieties. All dried mushrooms can be eaten directly, brewed as tea, or blended into food like chocolate or peanut butter.

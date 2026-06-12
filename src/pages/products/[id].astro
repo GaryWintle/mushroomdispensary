@@ -1,5 +1,6 @@
 ---
 import CTAButton from "@components/ui/CTAButton.astro";
+import IconWarning from "@components/artwork/IconWarning.astro";
 import Layout from "@layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
@@ -64,7 +65,12 @@ const experienceLabels = {
         </div>
         {
           safetyNote && (
-            <blockquote class="product-warning">{safetyNote}</blockquote>
+            <div class="product-warning-container">
+              <div class="product-warning-icon-container">
+                <IconWarning />
+              </div>
+              <blockquote class="product-warning">{safetyNote}</blockquote>
+            </div>
           )
         }
         <div class="product-button-container">
@@ -131,9 +137,6 @@ const experienceLabels = {
     border-radius: var(--br-03);
     box-shadow: var(--card-shadow-neutral-deep);
   }
-  .product-copy > * + * {
-    /* margin-top: 0.6em; */
-  }
   .badge {
     display: inline-flex;
     align-items: center;
@@ -188,13 +191,13 @@ const experienceLabels = {
     }
     ul {
       padding-left: 1em;
-      margin-top: 0.6em;
+      margin-top: 0.5em;
       list-style: disc;
     }
     li {
       font-size: var(--text-base);
       line-height: var(--leading-loose);
-      margin-top: 0.5em;
+      margin-top: 0.2em;
     }
     li::marker {
       color: var(--color-secondary-200);
@@ -208,16 +211,25 @@ const experienceLabels = {
       font-style: italic;
     }
   }
-  .product-warning {
-    padding-inline: var(--sp-fluid-02);
+  .product-warning-container {
+    display: flex;
+    padding-inline-start: var(--sp-fluid-01);
+    padding-inline-end: var(--sp-fluid-02);
+    gap: var(--sp-03);
     padding-block: var(--sp-fluid-01);
-    background-color: var(--color-primary-100);
-    font-variation-settings:
-      "wdth" 95,
-      "wght" 600;
     color: var(--color-primary-300);
     border: 2px solid var(--color-primary-300);
     border-radius: var(--br-02);
+    background-color: var(--color-primary-100);
+  }
+  .product-warning-icon-container {
+    flex: 0 0 auto;
+    width: 1.8rem;
+  }
+  .product-warning {
+    font-variation-settings:
+      "wdth" 95,
+      "wght" 600;
   }
   .product-button-container {
     display: flex;

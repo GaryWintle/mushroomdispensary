@@ -1,10 +1,298 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import NewsCard from "@components/ui/NewsCard.astro";
+import NewsVideo from "@components/ui/NewsVideo.astro";
+import { news, newsVideos } from "@data/news";
+
+// Featured story leads the grid; everything else stays reverse-chronological.
+const featured = news.filter((n) => n.featured);
+const rest = news.filter((n) => !n.featured);
+const ordered = [...featured, ...rest];
+
+// Years for the filter strip, newest first (articles only — the video block
+// is a fixed showcase at the top and isn't filtered).
+const years = [...new Set(news.map((n) => n.year))].sort((a, b) =>
+  b.localeCompare(a),
+);
+
+const pageTitle = "In the News | The Medicinal Mushroom Dispensary";
+const pageDescription =
+  "Press coverage of The Medicinal Mushroom Dispensary from 2019 to 2024 — from VICE, CBC, the Globe and Mail, CTV, Salon and more, charting Vancouver's psilocybin movement, the police raids and the court win.";
+const pageUrl = "https://www.mushroomdispensary.com/news";
+
+// ItemList (press articles) + VideoObject entries, emitted as one @graph so
+// search engines can index both the coverage list and the video clips.
+const itemList = {
+  "@type": "ItemList",
+  name: "The Medicinal Mushroom Dispensary in the News",
+  description: pageDescription,
+  numberOfItems: news.length,
+  itemListOrder: "https://schema.org/ItemListOrderDescending",
+  itemListElement: news.map((item, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    url: item.url,
+    name: item.title,
+  })),
+};
+
+const videoObjects = newsVideos
+  .filter((v) => v.youtubeId)
+  .map((v) => ({
+    "@type": "VideoObject",
+    name: v.title,
+    description: `${v.source} news coverage — ${v.title}`,
+    thumbnailUrl: [`https://i.ytimg.com/vi/${v.youtubeId}/hqdefault.jpg`],
+    uploadDate: v.datetime,
+    contentUrl: `https://www.youtube.com/watch?v=${v.youtubeId}`,
+    embedUrl: `https://www.youtube.com/embed/${v.youtubeId}`,
+    publisher: { "@type": "Organization", name: v.source },
+  }));
+
+const newsJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [itemList, ...videoObjects],
+};
 ---
 
-<Layout>
-  <section class="section section--dark"></section>
-  <h1>Latest News</h1>
+<Layout title={pageTitle} description={pageDescription} url={pageUrl}>
+  <section
+    class="section section--dark container"
+    aria-labelledby="news-heading"
+  >
+    <h1 id="news-heading" class="visually-hidden">
+      The Medicinal Mushroom Dispensary in the News — press coverage 2019–2024
+    </h1>
+
+    <SectionHeader
+      title="In the News"
+      text="This is just some of the news we've made since opening in 2019."
+      sectionName="news"
+    />
+
+    {/* VIDEO COVERAGE — 2 × 2 block at the top */}
+    <div class="news-videos" data-animation="news-videos">
+      <ul class="news-videos-grid">
+        {newsVideos.map((video) => <NewsVideo {...video} />)}
+      </ul>
+    </div>
+
+    {/* ARTICLE ARCHIVE — filterable, featured story first */}
+    <div class="news-wrapper" data-animation="news-wrapper">
+      <div
+        class="filter-strip"
+        role="group"
+        aria-label="Filter news stories by year"
+      >
+        <button class="filter-btn active" data-filter="all" aria-pressed="true">
+          All
+        </button>
+        {
+          years.map((year) => (
+            <button class="filter-btn" data-filter={year} aria-pressed="false">
+              {year}
+            </button>
+          ))
+        }
+      </div>
+
+      <ul class="news-grid">
+        {ordered.map((item) => <NewsCard {...item} />)}
+      </ul>
+
+      <p class="news-empty" hidden>No stories for that year yet.</p>
+    </div>
+  </section>
+
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(newsJsonLd)}
+  />
 </Layout>
 
-<style></style>
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* VIDEO SECTION — 2 × 2 grid of slots */
+  .news-videos {
+    margin-block-start: calc(
+      -1 * var(--space-sub-section-block) + var(--sp-05)
+    );
+    margin-block-end: var(--space-sub-section-block);
+  }
+  .news-videos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: calc(var(--space-gutter-secondary) + 5px);
+    row-gap: var(--space-gutter-primary);
+  }
+
+  /* FILTER + GRID */
+  .filter-strip {
+    display: flex;
+    gap: var(--sp-02);
+    flex-wrap: wrap;
+    margin-block-end: var(--sp-06);
+  }
+  .filter-btn {
+    padding-block: var(--button-block-sm);
+    padding-inline: var(--button-inline-sm);
+    border-radius: var(--br-03);
+    border: var(--border-thin) solid var(--color-surface-dark-border);
+    background: none;
+    color: var(--color-surface-dark-text);
+    font-size: var(--text-sm);
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition:
+      background 150ms ease,
+      color 150ms ease,
+      border-color 150ms ease;
+  }
+  .filter-btn.active {
+    background: var(--color-surface-colored);
+    color: var(--color-surface-colored-text);
+    border-color: var(--color-surface-colored);
+  }
+  @media (hover: hover) {
+    /* .filter-btn:not(.active):hover {
+      border-color: var(--color-primary-200);
+      color: var(--color-surface-dark-text-highlight);
+    } */
+  }
+  .filter-btn:focus-visible {
+    outline: var(--keyboard-focus);
+    outline-offset: 2px;
+  }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
+    align-items: stretch;
+    column-gap: calc(var(--space-gutter-secondary) + 5px);
+    row-gap: var(--space-gutter-primary);
+  }
+
+  .news-empty {
+    margin-block-start: var(--sp-05);
+    color: var(--color-surface-dark-text);
+    text-align: center;
+  }
+
+  /* MOBILE — single readable column, scrollable filter row */
+  @media (max-width: 600px) {
+    .news-grid,
+    .news-videos-grid {
+      grid-template-columns: 1fr;
+    }
+    .filter-strip {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-inline: calc(-1 * var(--space-section-inline));
+      padding-inline: var(--space-section-inline);
+    }
+    .filter-strip::-webkit-scrollbar {
+      display: none;
+    }
+    .filter-btn {
+      flex: 0 0 auto;
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  // --- Year filter (articles only) -----------------------------------------
+  const filterButtons =
+    document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const cardWrappers =
+    document.querySelectorAll<HTMLElement>(".news-card-wrapper");
+  const emptyMessage = document.querySelector<HTMLElement>(".news-empty");
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter;
+
+      filterButtons.forEach((b) => {
+        const isActive = b === btn;
+        b.classList.toggle("active", isActive);
+        b.setAttribute("aria-pressed", String(isActive));
+      });
+
+      let visible = 0;
+      cardWrappers.forEach((card) => {
+        const match = filter === "all" || card.dataset.year === filter;
+        card.hidden = !match;
+        if (match) visible++;
+      });
+
+      if (emptyMessage) emptyMessage.hidden = visible !== 0;
+    });
+  });
+
+  // --- Scroll reveal (matches the products section) ------------------------
+  const prefersReduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (!prefersReduced) {
+    const wrapper = document.querySelector('[data-animation="news-wrapper"]');
+    const header = document.querySelector('[data-animate="news-header"]');
+    // Reveal the inner .news-card, NOT the outer .news-card-link — the link
+    // owns the :hover lift, and GSAP's inline transform would otherwise
+    // override it (inline styles beat the stylesheet :hover rule).
+    const cards = document.querySelectorAll(".news-grid .news-card");
+
+    // Header reveals on its own trigger so it's never gated by the (taller)
+    // video grid pushing the archive below the fold.
+    gsap.from(header, {
+      scrollTrigger: { trigger: header, start: "top 95%", once: true },
+      opacity: 0,
+      y: 20,
+      duration: 0.5,
+      ease: "power2.out",
+    });
+
+    // Video slots reveal as they enter the viewport.
+    gsap.from('[data-animation="news-videos"] .news-video', {
+      scrollTrigger: {
+        trigger: '[data-animation="news-videos"]',
+        start: "top 85%",
+        once: true,
+      },
+      opacity: 0,
+      y: 20,
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: 0.08,
+    });
+
+    // Article cards reveal as the archive scrolls into view. clearProps strips
+    // GSAP's leftover inline transform once done so the card is pure-CSS again.
+    gsap.from(cards, {
+      scrollTrigger: { trigger: wrapper, start: "top 80%", once: true },
+      opacity: 0,
+      y: 20,
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: 0.04,
+      clearProps: "transform",
+    });
+  }
+</script>

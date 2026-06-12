@@ -163,6 +163,7 @@
   --card-shadow-color-shallow: 3px 3px 0 var(--color-secondary-200);
   --card-shadow-color-medium: 5px 5px 0 var(--color-secondary-200);
   --card-shadow-color-deep: 8px 8px 0 var(--color-secondary-200);
+  --card-shadow-color-primary-deep: 8px 8px 0 var(--color-primary-200);
 
   /* text shadows */
   --text-shadow-color: 0 0 12px

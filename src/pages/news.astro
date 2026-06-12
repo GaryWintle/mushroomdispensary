@@ -62,7 +62,7 @@ const newsJsonLd = {
     aria-labelledby="news-heading"
   >
     <h1 id="news-heading" class="visually-hidden">
-      The Medicinal Mushroom Dispensary in the News — press coverage 2019–2024
+      The Medicinal Mushroom Dispensary in the News — press coverage 2019–2026
     </h1>
 
     <SectionHeader
@@ -128,15 +128,21 @@ const newsJsonLd = {
   /* VIDEO SECTION — 2 × 2 grid of slots */
   .news-videos {
     margin-block-start: calc(
-      -1 * var(--space-sub-section-block) + var(--sp-05)
+      -1 * var(--space-sub-section-block) + var(--sp-07)
     );
     margin-block-end: var(--space-sub-section-block);
   }
   .news-videos-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     column-gap: calc(var(--space-gutter-secondary) + 5px);
     row-gap: var(--space-gutter-primary);
+  }
+  /* Step down to 2 columns on tablet before going single-column on mobile. */
+  @media (max-width: 850px) {
+    .news-videos-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   /* FILTER + GRID */

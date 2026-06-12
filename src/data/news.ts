@@ -15,8 +15,10 @@ export interface NewsItem {
   datetime: string;
   /** Year string — drives the filter strip. */
   year: string;
-  /** Set true on a single story to show it as the full-width hero card. */
+  /** Set true to promote a story to a wide landmark hero card at the top. */
   featured?: boolean;
+  /** Badge label on the hero card. Defaults to "Landmark". */
+  badge?: string;
   /** Optional pull-quote / summary shown only on the featured hero card. */
   blurb?: string;
 }
@@ -38,10 +40,24 @@ export interface NewsVideoItem {
 }
 
 // --- VIDEO NEWS STORIES --------------------------------------------------
-// Four slots at the top of the page. Fill in `youtubeId` (and the title /
+// Slots at the top of the page. Fill in `youtubeId` (and the title /
 // source / date) for each clip you want to feature. Empty slots render a
 // tasteful "coming soon" placeholder until you add a link.
 export const newsVideos: NewsVideoItem[] = [
+  {
+    youtubeId: "0rFVeZ9mpe0",
+    title: "Vancouver city councillors propose regulating magic mushroom shops",
+    source: "CityNews",
+    date: "Apr 2024",
+    datetime: "2024-04-04",
+  },
+  {
+    youtubeId: "simOoRuaGTI",
+    title: "Magic mushrooms are illegal. But should they be?",
+    source: "CHEK Media",
+    date: "Mar 2024",
+    datetime: "2024-03-29",
+  },
   {
     youtubeId: "stopsPoOX-4",
     title:
@@ -76,8 +92,42 @@ export const newsVideos: NewsVideoItem[] = [
 ];
 
 // --- PRINT / ONLINE COVERAGE ---------------------------------------------
-// Newest first. Exactly one item should carry `featured: true`.
+// Newest first. Items with `featured: true` render as wide landmark heroes.
 export const news: NewsItem[] = [
+  {
+    title: "Vancouver Magic Mushroom Dispensaries: Complete Guide (2026)",
+    url: "https://healingmaps.com/vancouver-magic-mushroom-dispensaries-guide/",
+    source: "Healing Maps",
+    date: "May 9, 2026",
+    datetime: "2026-05-09",
+    year: "2026",
+  },
+  {
+    title: "Searching for Drug Peace Review: Amsterdam Comes to East Van",
+    url: "https://povmagazine.com/searching-for-drug-peace-review-amsterdam-comes-to-east-van/",
+    source: "POV Magazine",
+    date: "May 1, 2026",
+    datetime: "2026-05-01",
+    year: "2026",
+  },
+  {
+    title:
+      "War On Drugs Film 'Searching For Drug Peace' To Premiere At Hot Docs",
+    url: "https://deadline.com/2026/04/searching-for-drug-peace-teaser-trailer-hot-docs-1236871330/",
+    source: "Deadline",
+    date: "Apr 24, 2026",
+    datetime: "2026-04-24",
+    year: "2026",
+  },
+  {
+    title:
+      "Raids on Medical Cannabis Dispensaries Threaten Drug-Testing Services",
+    url: "https://thetyee.ca/News/2025/01/30/Raids-Medical-Cannabis-Dispensaries/",
+    source: "The Tyee",
+    date: "Jan 30, 2025",
+    datetime: "2025-01-30",
+    year: "2025",
+  },
   {
     title:
       "Vancouver magic mushroom dispensary gets business licence re-instated",
@@ -105,6 +155,7 @@ export const news: NewsItem[] = [
     datetime: "2024-08-28",
     year: "2024",
     featured: true,
+    badge: "Landmark Ruling!",
     // blurb:
     //   "After the November raids, a B.C. judge ruled the City of Vancouver had failed to prove the dispensary sold psilocybin — a landmark decision that kept the doors open and made national headlines.",
   },

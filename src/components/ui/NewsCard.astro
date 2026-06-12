@@ -11,6 +11,7 @@ const {
   datetime,
   year,
   featured = false,
+  badge = "Landmark",
   blurb,
 } = Astro.props;
 ---
@@ -37,7 +38,7 @@ const {
         { "news-card--featured": featured },
       ]}
     >
-      {featured && <span class="news-card-badge">Landmark Ruling!</span>}
+      <!-- {featured && <span class="news-card-badge">{badge}</span>} -->
 
       <div class="news-card-main">
         <div class="news-card-top">
@@ -170,10 +171,18 @@ const {
   }
 
   /* ---------------------------------------------------------------------- */
-  /* FEATURED HERO — full-width, brand pink, larger type + pull-quote       */
+  /* FEATURED HERO — wide brand-pink landmark card, larger type + quote      */
   /* ---------------------------------------------------------------------- */
+  /* Default to a single column so it never forces a phantom column on
+     mobile/tablet. Only span two columns once the grid is wide enough to
+     actually have them (matches the ~400px-min auto-fill grid). */
   .news-card-wrapper--featured {
-    grid-column: 1 / 3;
+    grid-column: auto;
+  }
+  @media (min-width: 900px) {
+    .news-card-wrapper--featured {
+      grid-column: 1 / 3;
+    }
   }
 
   .news-card--featured {

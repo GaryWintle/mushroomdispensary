@@ -69,8 +69,9 @@ const {
     height: 100%;
     gap: var(--sp-04);
     background: var(--color-surface-light);
-    border-radius: var(--br-03) 3rem var(--br-03) var(--br-03);
-    box-shadow: var(--card-shadow-neutral-medium);
+    border: var(--border-photo-dark-thin);
+    border-radius: var(--br-03);
+    box-shadow: var(--card-shadow-neutral-shallow);
     padding-block: var(--card-padding-block);
     padding-inline: var(--sp-05);
     transition: box-shadow 200ms ease-in-out;
@@ -93,10 +94,13 @@ const {
     border-block-end: var(--border-surface-dark-thin);
   }
   .news-card-source {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: var(--text-lg);
     line-height: var(--leading-tight);
     letter-spacing: var(--tracking-tight);
+    font-variation-settings:
+      "wdth" 95,
+      "wght" 650;
     color: var(--color-surface-light-text-highlight);
   }
   .news-card-date {
@@ -159,14 +163,14 @@ const {
     }
     .news-card-link:hover .news-card {
       box-shadow:
-        0 0 0 4px var(--color-neutral-600),
+        0 0 0 3px var(--color-neutral-600),
         var(--card-shadow-color-deep);
     }
     .news-card-link:hover .news-card-title {
       color: var(--color-surface-light-text-highlight);
     }
     .news-card-link:hover .news-card-arrow {
-      transform: translateX(4px);
+      transform: translateX(3px);
     }
   }
 
@@ -191,7 +195,7 @@ const {
     align-items: stretch;
     gap: var(--sp-fluid-03);
     background: var(--color-surface-colored);
-    box-shadow: var(--card-shadow-neutral-deep);
+    box-shadow: var(--card-shadow-neutral-medium);
     padding-block: var(--body-padding-block);
     padding-inline: var(--sp-fluid-02);
   }
@@ -262,7 +266,7 @@ const {
   @media (hover: hover) {
     .news-card-link:hover .news-card--featured {
       box-shadow:
-        0 0 0 4px var(--color-neutral-600),
+        0 0 0 3px var(--color-neutral-600),
         var(--card-shadow-color-primary-deep);
     }
     .news-card-link:hover .news-card--featured .news-card-title {

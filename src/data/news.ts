@@ -46,14 +46,14 @@ export interface NewsVideoItem {
 export const newsVideos: NewsVideoItem[] = [
   {
     youtubeId: "0rFVeZ9mpe0",
-    title: "Vancouver city councillors propose regulating magic mushroom shops",
+    title: "Vancouver City Councillors Propose Regulating Magic Mushroom Shops",
     source: "CityNews",
     date: "Apr 2024",
     datetime: "2024-04-04",
   },
   {
     youtubeId: "simOoRuaGTI",
-    title: "Magic mushrooms are illegal. But should they be?",
+    title: "Magic Mushrooms Are Illegal. But Should They Be?",
     source: "CHEK Media",
     date: "Mar 2024",
     datetime: "2024-03-29",
@@ -61,7 +61,7 @@ export const newsVideos: NewsVideoItem[] = [
   {
     youtubeId: "stopsPoOX-4",
     title:
-      "Vancouver city councillors reinstate mushroom dispensary's business license",
+      "Vancouver City Councillors Reinstate Mushroom Dispensary's Business License",
     source: "CityNews",
     date: "Mar 2024",
     datetime: "2024-03-06",
@@ -69,14 +69,14 @@ export const newsVideos: NewsVideoItem[] = [
   {
     youtubeId: "X_ci6hUYPiU",
     title:
-      "'The reaction has been hysteria': drug policy reform activist on sending magic mushrooms to MLAs",
+      "'The Reaction Has Been Hysteria': Drug Policy Reform Activist on Sending Magic Mushrooms to MLAs",
     source: "CBC News",
     date: "Jan 2024",
     datetime: "2024-01-04",
   },
   {
     youtubeId: "OBFM87RW8KE",
-    title: "Magic mushroom packages anger B.C. MLA",
+    title: "Magic Mushroom Packages Anger B.C. MLA",
     source: "CityNews",
     date: "Jan 2024",
     datetime: "2024-01-03",
@@ -84,7 +84,7 @@ export const newsVideos: NewsVideoItem[] = [
   {
     youtubeId: "uzEbKYUQ2rM",
     title:
-      "Mushroom, illicit drug dispensary owner released after Vancouver police raids",
+      "Mushroom, Illicit Drug Dispensary Owner Released After Vancouver Police Raids",
     source: "CityNews",
     date: "Nov 2023",
     datetime: "2023-11-01",

@@ -8,6 +8,7 @@ import InTheNews from "@components/sections/InTheNews.astro";
 import Products from "@components/sections/Products.astro";
 import PhotoCarousel from "@components/sections/PhotoCarousel.astro";
 import Contact from "@components/sections/Contact.astro";
+import ScrollPinTester from "@components/sections/ScrollPinTester.astro";
 
 import { images, imagesMobile } from "@data/images";
 ---
@@ -20,6 +21,7 @@ import { images, imagesMobile } from "@data/images";
   <Testimonials />
   <div class="mobile-only"><LogoMarquee /></div>
   <div class="desktop-only"><InTheNews /></div>
+  <!-- <ScrollPinTester /> -->
 
   <Products />
   <div class="desktop-only"><PhotoCarousel images={images} /></div>

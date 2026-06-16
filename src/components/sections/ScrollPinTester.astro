@@ -1,0 +1,50 @@
+---
+import MushGuyHazy from "@components/artwork/MushGuyHazy.astro";
+---
+
+<div class="stage">
+  <div class="pin-wrap" data-anim-mushy-pin>
+    <div class="mushy" data-anim-mushy-target><MushGuyHazy /></div>
+  </div>
+</div>
+
+<style>
+  .stage {
+    position: relative;
+    height: 100vh;
+    background-color: pink;
+    z-index: 9999;
+  }
+  .pin-wrap {
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+  }
+  .mushy {
+    width: 8rem;
+    transform-origin: 31% 69%;
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const pinWrap = document.querySelector("[data-anim-mushy-pin]");
+  const mushy = document.querySelector("[data-anim-mushy-target]");
+
+  gsap.to(mushy, {
+    scale: 300,
+    opacity: 1,
+    ease: "none",
+    scrollTrigger: {
+      trigger: pinWrap,
+      start: "top top",
+      end: "+=5000",
+      pin: true,
+      scrub: true,
+    },
+  });
+</script>
